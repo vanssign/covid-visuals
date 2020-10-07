@@ -7,10 +7,31 @@ export default function Home(props) {
     const [chartData,updateChart]= useState({labels:["1","2","3","4","5"],
     datasets:[
       {
-          label:"covid-cases",
+          label:"total-cases",
           data:[1,1,1,1,1]
       }
   ]})
+  const [chartDataDeceased,updateChartDeceased]=useState({labels:["1","2","3","4","5"],
+  datasets:[
+    {
+        label:"deceased",
+        data:[1,1,1,1,1]
+    }
+]})
+const [chartDataRecovered,updateChartRecovered]=useState({labels:["1","2","3","4","5"],
+datasets:[
+  {
+      label:"Recovered",
+      data:[1,1,1,1,1]
+  }
+]})
+const [chartDataActive,updateChartActive]=useState({labels:["1","2","3","4","5"],
+datasets:[
+  {
+      label:"active-cases",
+      data:[1,1,1,1,1]
+  }
+]})
     if(props.isLoading){
         return(
             <div className="container-fluid text-center">
@@ -42,6 +63,19 @@ export default function Home(props) {
       for(let i=0;i<props.cases.data.length;i++){
           totalcases[i]= props.cases.data[i].summary.total
       }
+      var deceasedcases=[];
+      for(let i=0;i<props.cases.data.length;i++){
+        deceasedcases[i]= props.cases.data[i].summary.deaths
+    }
+    var recoveredcases=[];
+    for(let i=0;i<props.cases.data.length;i++){
+      recoveredcases[i]= props.cases.data[i].summary.discharged
+  }
+  var activecases=[];
+  for(let i=0;i<props.cases.data.length;i++){
+    activecases[i]= totalcases[i]-recoveredcases[i]
+}
+
       function formGraph(){
 
           updateChart({
@@ -50,19 +84,66 @@ export default function Home(props) {
               label:"Total cases",
               data:totalcases,
               pointRadius: 0,
-              borderWidth: 2
+              borderWidth: 2,
+              borderColor:'blue',
+              backgroundColor:'rgba(0,0,255,0.1)'
 
           }]
         })
+        updateChartDeceased({
+            labels:labelArray,
+            datasets:[{
+                label:"Deceased",
+                data:deceasedcases,
+                pointRadius: 0,
+                borderWidth: 2,
+                borderColor:'black'
+            }]
+          })
+          updateChartRecovered({
+            labels:labelArray,
+            datasets:[{
+                label:"Recovered",
+                data:recoveredcases,
+                pointRadius: 0,
+                borderWidth: 2,
+                borderColor:'green',
+                backgroundColor:'rgba(0,255,0,0.1)'
+  
+            }]
+          })
+          updateChartActive({
+            labels:labelArray,
+            datasets:[{
+                label:"Active Cases",
+                data:activecases,
+                pointRadius: 0,
+                borderWidth: 2,
+                borderColor:'red',
+                backgroundColor:'rgba(255,0,0,0.1)'
+  
+            }]
+          })
+        
         }
 
     return (
        
         <div>
-             {console.log(chartData)}
+             
              <p className="lead">Best viewed on larger screen sizes for now</p>
+             <Button onClick={()=>{formGraph()}}>Compute Graphs</Button>
+             <br/>
+             <br/>
             <Line data={chartData}/>
-            <Button onClick={()=>{formGraph()}}>Compute Graph</Button>
+            <br/>
+            <Line data={chartDataActive}/>
+            <br/>
+            <Line data={chartDataRecovered}/>
+            <br/>
+            <Line data={chartDataDeceased}/>
+            
+            
         </div>
     )
 }
