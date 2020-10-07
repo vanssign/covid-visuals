@@ -73,7 +73,7 @@ datasets:[
   }
   var activecases=[];
   for(let i=0;i<props.cases.data.length;i++){
-    activecases[i]= totalcases[i]-recoveredcases[i]
+    activecases[i]= totalcases[i]-recoveredcases[i]-deceasedcases[i]
 }
 
       function formGraph(){
