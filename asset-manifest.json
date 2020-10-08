@@ -1,26 +1,26 @@
 {
   "files": {
     "main.css": "/covid-visuals/static/css/main.5f361e03.chunk.css",
-    "main.js": "/covid-visuals/static/js/main.19f63c08.chunk.js",
-    "main.js.map": "/covid-visuals/static/js/main.19f63c08.chunk.js.map",
+    "main.js": "/covid-visuals/static/js/main.1128889b.chunk.js",
+    "main.js.map": "/covid-visuals/static/js/main.1128889b.chunk.js.map",
     "runtime-main.js": "/covid-visuals/static/js/runtime-main.17be3502.js",
     "runtime-main.js.map": "/covid-visuals/static/js/runtime-main.17be3502.js.map",
-    "static/css/2.9792af2f.chunk.css": "/covid-visuals/static/css/2.9792af2f.chunk.css",
-    "static/js/2.b4ff3c66.chunk.js": "/covid-visuals/static/js/2.b4ff3c66.chunk.js",
-    "static/js/2.b4ff3c66.chunk.js.map": "/covid-visuals/static/js/2.b4ff3c66.chunk.js.map",
+    "static/css/2.6b6eb0d3.chunk.css": "/covid-visuals/static/css/2.6b6eb0d3.chunk.css",
+    "static/js/2.2d8bf3a0.chunk.js": "/covid-visuals/static/js/2.2d8bf3a0.chunk.js",
+    "static/js/2.2d8bf3a0.chunk.js.map": "/covid-visuals/static/js/2.2d8bf3a0.chunk.js.map",
     "index.html": "/covid-visuals/index.html",
-    "precache-manifest.7e4260bc928d81a03ac65675ebe573c1.js": "/covid-visuals/precache-manifest.7e4260bc928d81a03ac65675ebe573c1.js",
+    "precache-manifest.e0aab1f8069be376b76813c4fefeb1e8.js": "/covid-visuals/precache-manifest.e0aab1f8069be376b76813c4fefeb1e8.js",
     "service-worker.js": "/covid-visuals/service-worker.js",
-    "static/css/2.9792af2f.chunk.css.map": "/covid-visuals/static/css/2.9792af2f.chunk.css.map",
+    "static/css/2.6b6eb0d3.chunk.css.map": "/covid-visuals/static/css/2.6b6eb0d3.chunk.css.map",
     "static/css/main.5f361e03.chunk.css.map": "/covid-visuals/static/css/main.5f361e03.chunk.css.map",
-    "static/js/2.b4ff3c66.chunk.js.LICENSE.txt": "/covid-visuals/static/js/2.b4ff3c66.chunk.js.LICENSE.txt",
+    "static/js/2.2d8bf3a0.chunk.js.LICENSE.txt": "/covid-visuals/static/js/2.2d8bf3a0.chunk.js.LICENSE.txt",
     "static/media/font-awesome.min.css": "/covid-visuals/static/media/fontawesome-webfont.fee66e71.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.17be3502.js",
-    "static/css/2.9792af2f.chunk.css",
-    "static/js/2.b4ff3c66.chunk.js",
+    "static/css/2.6b6eb0d3.chunk.css",
+    "static/js/2.2d8bf3a0.chunk.js",
     "static/css/main.5f361e03.chunk.css",
-    "static/js/main.19f63c08.chunk.js"
+    "static/js/main.1128889b.chunk.js"
   ]
 }
