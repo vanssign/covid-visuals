@@ -138,30 +138,29 @@ export default function Home(props) {
         const Deceased=deceasedcases[lastindex];
 
         const IncreaseFlag=[];
-        if(totalcases[lastindex]>totalcases[lastindex-1]){
-            IncreaseFlag[0]=true
+        if(totalcases[lastindex]<totalcases[lastindex-1]){
+            IncreaseFlag[0]=false
         }
-        else IncreaseFlag[0]=false;
-        if(activecases[lastindex]>totalcases[lastindex-1]){
-            IncreaseFlag[1]=true
+        else IncreaseFlag[0]=true;
+        if(activecases[lastindex]<totalcases[lastindex-1]){
+            IncreaseFlag[1]=false
         }
-        else IncreaseFlag[1]=false;
-        if(recoveredcases[lastindex]>recoveredcases[lastindex-1]){
-            IncreaseFlag[2]=true
+        else IncreaseFlag[1]=true;
+        if(recoveredcases[lastindex]<recoveredcases[lastindex-1]){
+            IncreaseFlag[2]=false
         }
-        else IncreaseFlag[2]=false;
-        if(deceasedcases[lastindex]>deceasedcases[lastindex-1]){
-            IncreaseFlag[3]=true
+        else IncreaseFlag[2]=true;
+        if(deceasedcases[lastindex]<deceasedcases[lastindex-1]){
+            IncreaseFlag[3]=false
         }
-        else IncreaseFlag[3]=false;
+        else IncreaseFlag[3]=true;
 
         const fontawesomeFlag=[];
         for(let i=0;i<4;i++){
             if(IncreaseFlag[i]){
                 fontawesomeFlag[i]='fa-arrow-up'
             }
-            else
-            fontawesomeFlag[i]='fa-arrow-down'
+            else fontawesomeFlag[i]='fa-arrow-down'
         }
 
 
