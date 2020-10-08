@@ -107,7 +107,7 @@ datasets:[
 
 
   function formGraph(){
-    console.log(labelArray)
+    setModal(!modal);
               updateChart({
               labels:labelArray,
               datasets:[{
@@ -161,18 +161,16 @@ datasets:[
                 <p className="lead">Under maintanence</p>
                 <Button outline color="info"
                     onClick={toggle}>Change State</Button>
-                     <Button onClick={()=>{formGraph()}}>Compute Graphs</Button>
                 <Modal isOpen={modal}
                     toggle={toggle}
                     className={className}>
-                    <ModalHeader toggle={toggle}>Modal title</ModalHeader>
                     <ModalBody>
                         <input type="radio" id="andaman" name="indianstate" value="andaman"/>
                         <label for="andaman">Andaman and Nicobar</label><br/>
                     </ModalBody>
                     <ModalFooter>
                         <Button color="primary"
-                            onClick={toggle}>Do Something</Button>
+                             onClick={()=>{formGraph()}} >Compute Graphs</Button>
                         {' '} </ModalFooter>
                 </Modal>
                 <Line data={chartData}/>
