@@ -56,28 +56,27 @@ datasets:[
     }
     else if(props.cases!=null){
       var labelArray=[];
+      var str=[]
       for(let i=0;i<props.cases.data.length;i++){
-          labelArray[i]=`${props.cases.data[i].day}`;
+       str[i] =`${props.cases.data[i].day}`;
+       var res=str[i].split("-");
+       labelArray[i]=res[2]+'/'+res[1];
+
       }
       var totalcases=[];
-      for(let i=0;i<props.cases.data.length;i++){
-          totalcases[i]= props.cases.data[i].summary.total
-      }
       var deceasedcases=[];
+      var recoveredcases=[];
+      var activecases=[];
       for(let i=0;i<props.cases.data.length;i++){
-        deceasedcases[i]= props.cases.data[i].summary.deaths
-    }
-    var recoveredcases=[];
-    for(let i=0;i<props.cases.data.length;i++){
-      recoveredcases[i]= props.cases.data[i].summary.discharged
-  }
-  var activecases=[];
-  for(let i=0;i<props.cases.data.length;i++){
-    activecases[i]= totalcases[i]-recoveredcases[i]-deceasedcases[i]
-}
+          totalcases[i]= props.cases.data[i].summary.total;
+          deceasedcases[i]= props.cases.data[i].summary.deaths;
+          recoveredcases[i]= props.cases.data[i].summary.discharged;
+          activecases[i]= totalcases[i]-recoveredcases[i]-deceasedcases[i];
+      }
+      
 
       function formGraph(){
-
+console.log(labelArray)
           updateChart({
           labels:labelArray,
           datasets:[{
