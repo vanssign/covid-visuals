@@ -228,7 +228,9 @@ export default function Home(props) {
 
             <div>
 
-                <p className="lead">Best viewed on larger screen sizes for now</p>
+                <small className="d-md-none"><i className="fa fa-info-circle fa-lg"></i> Best viewed on larger screen sizes for now</small>
+                <br/>
+                <h3>Latest Stats</h3>
                 <div className="row">
                     <div className="col-6 col-md-3 pt-4">
                         <p style={{color:'blue'}}>{`${Total}`} <i className={`fa fa-lg ${fontawesomeFlag[0]}`}></i></p>
@@ -253,6 +255,7 @@ export default function Home(props) {
                         formGraph()
                     }
                 }>Compute Graphs</Button>
+                <br/>
                 <br/>
                 <Line data={chartData}/>
                 <br/>
