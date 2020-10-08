@@ -264,6 +264,8 @@ export default function Home(props) {
                 <Line data={chartDataRecovered}/>
                 <br/>
                 <Line data={chartDataDeceased}/>
+                <br/>
+                <br/>
 
 
             </div>

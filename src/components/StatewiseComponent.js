@@ -7,6 +7,7 @@ import {
     ModalBody,
     ModalFooter
 } from 'reactstrap';
+import {Link} from 'react-router-dom';
 
 export default function Statewise(props) {
     const {className} = props;
@@ -158,7 +159,7 @@ datasets:[
             }
         return (
             <div>
-                <p className="lead">Under maintanence</p>
+                <p className="lead">Under Maintenance, check <Link to="/home">Stats of India</Link></p>
                 <Button outline color="info"
                     onClick={toggle}>Change State</Button>
                 <Modal isOpen={modal}
@@ -180,6 +181,8 @@ datasets:[
                 <Line data={chartDataRecovered}/>
                 <br/>
                 <Line data={chartDataDeceased}/>
+                <br/>
+                <br/>
 
             </div>
         )

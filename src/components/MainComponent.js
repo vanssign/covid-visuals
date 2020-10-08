@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from './HeaderComponent';
 import Home from './HomeComponent';
+import About from './AboutComponent';
 import Footer from './FooterComponent';
 import {Switch,Route,Redirect,withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
@@ -44,6 +45,7 @@ class Main extends Component {
                 <Switch>
                     <Route exact path="/home" component={HomePage}/>
                     <Route exact path="/state-wise" component={StatewisePage}/>
+                    <Route exact path="/about" component={()=><About/>}/>
                     {/* <Route exact path="/indian-states" component={()=><RenderIndianStates/>}/>  */}
                     <Redirect to="/home"/>
                 </Switch>

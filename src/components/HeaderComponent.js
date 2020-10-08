@@ -33,9 +33,9 @@ const Header = (props) => {
               <NavLink className="nav-link" to="/state-wise">State-Wise</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink className="nav-link" to="/state-wise">About</NavLink>
+              <NavLink className="nav-link" to="/about">About</NavLink>
             </NavItem>
-            <UncontrolledDropdown nav inNavbar>
+            {/* <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
                 Documentation
               </DropdownToggle>
@@ -52,9 +52,9 @@ const Header = (props) => {
                   three
                 </DropdownItem>
               </DropdownMenu>
-            </UncontrolledDropdown>
+            </UncontrolledDropdown> */}
           </Nav>
-          <NavbarText>for educational purposes only</NavbarText>
+          <NavbarText>For Educational Purposes Only</NavbarText>
         </Collapse>
         
       </Navbar>
