@@ -12,7 +12,15 @@ import {Link} from 'react-router-dom';
 export default function Statewise(props) {
     const {className} = props;
     const [modal, setModal] = useState(false);
-    const[SelectedState,UpdateState]=useState('Null')
+    const[SelectedState,UpdateState]=useState('Null');
+    var [DeltaIncrease,UpdateDeltaIncrease]=useState([]);
+    var [IncreaseFlag,UpdateIncreaseFlag]=useState([]);
+    var [fontawesomeFlag,UpdatefontawesomeFlag]=useState([]);
+    var [Total,UpdateTotal]=useState(' ');
+    var [Deceased,UpdateDeceased]=useState(' ');
+    var [Recovered,UpdateRecovered]=useState(' ');
+    var [Active,UpdateActive]=useState(' ');
+
     const [chartData,updateChart]= useState({labels:["1","2","3","4","5"],
     datasets:[
       {
@@ -80,7 +88,8 @@ datasets:[
         var deceasedcases=[];
         var recoveredcases=[];
         var activecases=[];
-        var lastIndex=props.cases.data.length-1;
+       
+        var lastindex=props.cases.data.length-1;
 
         
        
@@ -121,8 +130,42 @@ function changeState(){
     
     }
     }
-    
-    console.log(totalcases);
+        UpdateTotal(totalcases[lastindex]);
+        UpdateActive(activecases[lastindex]);
+        UpdateRecovered(recoveredcases[lastindex]);
+        UpdateDeceased(deceasedcases[lastindex]);
+        
+        DeltaIncrease[0]=Math.abs(totalcases[lastindex]-totalcases[lastindex-1]);
+        DeltaIncrease[1]=Math.abs(activecases[lastindex]-activecases[lastindex-1])
+        DeltaIncrease[2]=Math.abs(recoveredcases[lastindex]-recoveredcases[lastindex-1])
+        DeltaIncrease[3]=Math.abs(deceasedcases[lastindex]-deceasedcases[lastindex-1])
+
+        
+        if(totalcases[lastindex]<totalcases[lastindex-1]){
+            IncreaseFlag[0]=false
+        }
+        else IncreaseFlag[0]=true;
+        if(activecases[lastindex]<activecases[lastindex-1]){
+            IncreaseFlag[1]=false
+        }
+        else IncreaseFlag[1]=true;
+        if(recoveredcases[lastindex]<recoveredcases[lastindex-1]){
+            IncreaseFlag[2]=false
+        }
+        else IncreaseFlag[2]=true;
+        if(deceasedcases[lastindex]<deceasedcases[lastindex-1]){
+            IncreaseFlag[3]=false
+        }
+        else IncreaseFlag[3]=true;
+
+        
+        for(let i=0;i<4;i++){
+            if(IncreaseFlag[i]){
+                fontawesomeFlag[i]='fa-arrow-up'
+            }
+            else fontawesomeFlag[i]='fa-arrow-down'
+        }
+
               updateChart({
               labels:labelArray,
               datasets:[{
@@ -180,7 +223,7 @@ function changeState(){
                     toggle={toggle}
                     className={className}>
                     <ModalBody>
-                      {props.cases.data[lastIndex].regional.map((region,index)=>(
+                      {props.cases.data[lastindex].regional.map((region,index)=>(
                           <>
                           <input type="radio" id={`region${index}`} name="indianstate" value={region.loc}/>
                       <label for={`region${index}`}>{region.loc}</label><br/>
@@ -199,7 +242,35 @@ function changeState(){
                         {' '} </ModalFooter>
                 </Modal>
                 <Button color="secondary"
-                             onClick={()=>{formGraph()}} >Compute Graphs</Button>
+                             onClick={()=>{formGraph()}} >Compute Data</Button>
+                             <br/>
+                             <br/>
+                              <h3>Latest Stats</h3>
+                <div className="row">
+                    <div className="col-6 col-md-3 pt-4">
+                        <p style={{color:'blue'}}>{`${Total}`}<br/>
+                        {`${DeltaIncrease[0]}`} <i className={`fa fa-lg ${fontawesomeFlag[0]}`}></i></p>
+                        <small>Total</small>
+                    </div>
+                    <div className="col-6 col-md-3 pt-4">
+                    <p style={{color:'red'}}>{`${Active}`}<br/>
+                    {`${DeltaIncrease[1]}`} <i className={`fa fa-lg ${fontawesomeFlag[1]}`}></i></p>
+                        <small>Active</small>
+                    </div>
+                    <div className="col-6 col-md-3 pt-4">
+                    <p style={{color:'green'}}>{`${Recovered}`} <br/>
+                    {`${DeltaIncrease[2]}`} <i className={`fa fa-lg ${fontawesomeFlag[2]}`}></i></p>
+                        <small>Recovered</small>
+                    </div>
+                    <div className="col-6 col-md-3 pt-4">
+                    <p style={{color:'black'}}>{`${Deceased}`}<br/>
+                    {`${DeltaIncrease[3]}`} <i className={`fa fa-lg ${fontawesomeFlag[3]}`}></i></p>
+                        <small>Deceased</small>
+                    </div>
+                </div>
+               
+        <small className="text-muted">{`Last updated: ${props.cases.lastOriginUpdate}`}</small>
+                <br/>
                 <Line data={chartData}/>
                 <br/>
                 <Line data={chartDataActive}/>
