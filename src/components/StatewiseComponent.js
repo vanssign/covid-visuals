@@ -80,6 +80,7 @@ datasets:[
         var deceasedcases=[];
         var recoveredcases=[];
         var activecases=[];
+        var lastIndex=props.cases.data.length-1;
 
         
        
@@ -179,10 +180,17 @@ function changeState(){
                     toggle={toggle}
                     className={className}>
                     <ModalBody>
-                        <input type="radio" id="andhrapradesh" name="indianstate" value="Andhra Pradesh"/>
-                        <label for="andaman">Andhra Pradesh</label><br/>
-                        <input type="radio" id="delhi" name="indianstate" value="Delhi"/>
-                        <label for="andaman">Delhi</label><br/>
+                      {props.cases.data[lastIndex].regional.map((region,index)=>(
+                          <>
+                          <input type="radio" id={`region${index}`} name="indianstate" value={region.loc}/>
+                      <label for={`region${index}`}>{region.loc}</label><br/>
+                      </>
+                      ))
+
+                      }
+                        
+                        {/* <input type="radio" id="delhi" name="indianstate" value="Delhi"/>
+                        <label for="andaman">Delhi</label><br/> */}
                     </ModalBody>
                     <ModalFooter>
                     <Button color="secondary"
