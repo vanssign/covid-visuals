@@ -12,6 +12,7 @@ import {Link} from 'react-router-dom';
 export default function Statewise(props) {
     const {className} = props;
     const [modal, setModal] = useState(false);
+    const[SelectedState,UpdateState]=useState('Null')
     const [chartData,updateChart]= useState({labels:["1","2","3","4","5"],
     datasets:[
       {
@@ -80,35 +81,47 @@ datasets:[
         var recoveredcases=[];
         var activecases=[];
 
-        for(let i=0;i<props.cases.data.length;i++){
-
-
-            for(let j=0;j<props.cases.data[i].regional.length;j++){
-                if(props.cases.data[i].regional[j].loc==='Andaman and Nicobar Islands'){
-                  x= j
-                }
-                else x=-1
-                }
-            
-            if(x===-1){
-                totalcases[i]=0;
-                deceasedcases[i]=0;
-                recoveredcases[i]=0;
-                activecases[i]=0
-
-            }
-            else{
-            totalcases[i]= props.cases.data[i].regional[x].totalConfirmed;
-            deceasedcases[i]= props.cases.data[i].regional[x].deaths;
-            recoveredcases[i]= props.cases.data[i].regional[x].discharged;
-            activecases[i]= totalcases[i]-recoveredcases[i]-deceasedcases[i]
         
-        }
-        }
+       
+              
+      
 
-
-  function formGraph(){
+var radiobtns = document.getElementsByName('indianstate'); 
+function changeState(){
+    for(let i = 0; i < radiobtns.length; i++) { 
+        if(radiobtns[i].checked===true){
+        UpdateState(`${radiobtns[i].value}`)}
+    } 
     setModal(!modal);
+}
+  function formGraph(){
+    console.log(SelectedState)
+    for(let i=0;i<props.cases.data.length;i++){
+        x=-1;
+        for(let j=0;j<props.cases.data[i].regional.length;j++){
+            if(props.cases.data[i].regional[j].loc===SelectedState){
+              x= j
+              break;
+            }
+        }
+        
+        if(x===-1){
+            totalcases[i]=0;
+            deceasedcases[i]=0;
+            recoveredcases[i]=0;
+            activecases[i]=0
+
+        }
+        else{
+        totalcases[i]= props.cases.data[i].regional[x].totalConfirmed;
+        deceasedcases[i]= props.cases.data[i].regional[x].deaths;
+        recoveredcases[i]= props.cases.data[i].regional[x].discharged;
+        activecases[i]= totalcases[i]-recoveredcases[i]-deceasedcases[i]
+    
+    }
+    }
+    
+    console.log(totalcases);
               updateChart({
               labels:labelArray,
               datasets:[{
@@ -160,20 +173,25 @@ datasets:[
         return (
             <div>
                 <p className="lead">Under Maintenance, check <Link to="/home">Stats of India</Link></p>
-                <Button outline color="info"
-                    onClick={toggle}>Change State</Button>
+                <Button color="secondary"
+                    onClick={toggle}>Change State</Button> <p>{`Current State: ${SelectedState}`}</p>
                 <Modal isOpen={modal}
                     toggle={toggle}
                     className={className}>
                     <ModalBody>
-                        <input type="radio" id="andaman" name="indianstate" value="andaman"/>
-                        <label for="andaman">Andaman and Nicobar</label><br/>
+                        <input type="radio" id="andhrapradesh" name="indianstate" value="Andhra Pradesh"/>
+                        <label for="andaman">Andhra Pradesh</label><br/>
+                        <input type="radio" id="delhi" name="indianstate" value="Delhi"/>
+                        <label for="andaman">Delhi</label><br/>
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="primary"
-                             onClick={()=>{formGraph()}} >Compute Graphs</Button>
+                    <Button color="secondary"
+                             onClick={()=>{changeState()}} >Select State</Button><br/>
+                        
                         {' '} </ModalFooter>
                 </Modal>
+                <Button color="secondary"
+                             onClick={()=>{formGraph()}} >Compute Graphs</Button>
                 <Line data={chartData}/>
                 <br/>
                 <Line data={chartDataActive}/>

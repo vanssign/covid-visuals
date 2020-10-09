@@ -136,13 +136,18 @@ export default function Home(props) {
         const Active=activecases[lastindex];
         const Recovered=recoveredcases[lastindex];
         const Deceased=deceasedcases[lastindex];
+        const DeltaIncrease=[];
+        DeltaIncrease[0]=Math.abs(totalcases[lastindex]-totalcases[lastindex-1]);
+        DeltaIncrease[1]=Math.abs(activecases[lastindex]-activecases[lastindex-1])
+        DeltaIncrease[2]=Math.abs(recoveredcases[lastindex]-recoveredcases[lastindex-1])
+        DeltaIncrease[3]=Math.abs(deceasedcases[lastindex]-deceasedcases[lastindex-1])
 
         const IncreaseFlag=[];
         if(totalcases[lastindex]<totalcases[lastindex-1]){
             IncreaseFlag[0]=false
         }
         else IncreaseFlag[0]=true;
-        if(activecases[lastindex]<totalcases[lastindex-1]){
+        if(activecases[lastindex]<activecases[lastindex-1]){
             IncreaseFlag[1]=false
         }
         else IncreaseFlag[1]=true;
@@ -227,27 +232,34 @@ export default function Home(props) {
 
             <div>
 
-                <small className="d-md-none"><i className="fa fa-info-circle fa-lg"></i> Best viewed on larger screen sizes for now</small>
+                
                 <br/>
                 <h3>Latest Stats</h3>
                 <div className="row">
                     <div className="col-6 col-md-3 pt-4">
-                        <p style={{color:'blue'}}>{`${Total}`} <i className={`fa fa-lg ${fontawesomeFlag[0]}`}></i></p>
+                        <p style={{color:'blue'}}>{`${Total}`}<br/>
+                        {`${DeltaIncrease[0]}`} <i className={`fa fa-lg ${fontawesomeFlag[0]}`}></i></p>
                         <small>Total</small>
                     </div>
                     <div className="col-6 col-md-3 pt-4">
-                    <p style={{color:'red'}}>{`${Active}`} <i className={`fa fa-lg ${fontawesomeFlag[1]}`}></i></p>
+                    <p style={{color:'red'}}>{`${Active}`}<br/>
+                    {`${DeltaIncrease[1]}`} <i className={`fa fa-lg ${fontawesomeFlag[1]}`}></i></p>
                         <small>Active</small>
                     </div>
                     <div className="col-6 col-md-3 pt-4">
-                    <p style={{color:'green'}}>{`${Recovered}`} <i className={`fa fa-lg ${fontawesomeFlag[2]}`}></i></p>
+                    <p style={{color:'green'}}>{`${Recovered}`} <br/>
+                    {`${DeltaIncrease[2]}`} <i className={`fa fa-lg ${fontawesomeFlag[2]}`}></i></p>
                         <small>Recovered</small>
                     </div>
                     <div className="col-6 col-md-3 pt-4">
-                    <p style={{color:'black'}}>{`${Deceased}`} <i className={`fa fa-lg ${fontawesomeFlag[3]}`}></i></p>
+                    <p style={{color:'black'}}>{`${Deceased}`}<br/>
+                    {`${DeltaIncrease[3]}`} <i className={`fa fa-lg ${fontawesomeFlag[3]}`}></i></p>
                         <small>Deceased</small>
                     </div>
                 </div>
+               
+        <small className="text-muted">{`Last updated: ${props.cases.lastOriginUpdate}`}</small>
+                <br/>
                 <br/>
                 <Button onClick={
                     () => {
@@ -255,6 +267,7 @@ export default function Home(props) {
                     }
                 }>Compute Graphs</Button>
                 <br/>
+                <small className="d-md-none"><i className="fa fa-info-circle fa-lg"></i> Best viewed on larger screen sizes for now</small>
                 <br/>
                 <Line data={chartData}/>
                 <br/>
