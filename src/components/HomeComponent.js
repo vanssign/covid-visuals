@@ -261,13 +261,13 @@ export default function Home(props) {
         <small className="text-muted">{`Last updated: ${props.cases.lastOriginUpdate}`}</small>
                 <br/>
                 <br/>
-                <Button onClick={
+                <Button color="light" onClick={
                     () => {
                         formGraph()
                     }
                 }>Compute Graphs</Button>
                 <br/>
-                <small className="d-md-none"><i className="fa fa-info-circle fa-lg"></i> Best viewed on larger screen sizes for now</small>
+                <small className="d-md-none"><i className="fa fa-info-circle fa-lg"></i> Best Viewed on Larger Screen Sizes</small>
                 <br/>
                 <Line data={chartData}/>
                 <br/>

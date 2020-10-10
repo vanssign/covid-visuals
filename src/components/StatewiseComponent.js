@@ -101,8 +101,7 @@ function changeState(){
     for(let i = 0; i < radiobtns.length; i++) { 
         if(radiobtns[i].checked===true){
         UpdateState(`${radiobtns[i].value}`)}
-    } 
-    setModal(!modal);
+    }
 }
   function formGraph(){
     console.log(SelectedState)
@@ -212,13 +211,16 @@ function changeState(){
       
                 }]
               })
+              setModal(!modal);
             
             }
         return (
             <div>
-                <p className="lead">Under Maintenance, check <Link to="/home">Stats of India</Link></p>
-                <Button color="secondary"
-                    onClick={toggle}>Change State</Button> <p>{`Current State: ${SelectedState}`}</p>
+                <br/>
+                <Button color="light"
+                    onClick={toggle}>Change State</Button> 
+                    <br/><br/>
+                    <p className="lead"><span className="font-weight-bolder">Current State:</span> {`${SelectedState}`}</p>
                 <Modal isOpen={modal}
                     toggle={toggle}
                     className={className}>
@@ -236,15 +238,14 @@ function changeState(){
                         <label for="andaman">Delhi</label><br/> */}
                     </ModalBody>
                     <ModalFooter>
-                    <Button color="secondary"
-                             onClick={()=>{changeState()}} >Select State</Button><br/>
+                        <small>Select State and then Compute Data</small>
+                    <Button color="light"
+                             onClick={()=>{changeState()}} >Select State</Button>
+                    <Button color="light"
+                             onClick={()=>{formGraph()}} >Compute Data</Button>
                         
                         {' '} </ModalFooter>
                 </Modal>
-                <Button color="secondary"
-                             onClick={()=>{formGraph()}} >Compute Data</Button>
-                             <br/>
-                             <br/>
                               <h3>Latest Stats</h3>
                 <div className="row">
                     <div className="col-6 col-md-3 pt-4">
@@ -269,8 +270,9 @@ function changeState(){
                     </div>
                 </div>
                
-        <small className="text-muted">{`Last updated: ${props.cases.lastOriginUpdate}`}</small>
-                <br/>
+        <small className="text-muted">{`Last updated: ${props.cases.lastOriginUpdate}`}</small><br/>
+        <small className="d-md-none"><i className="fa fa-info-circle fa-lg"></i> Best Viewed on Larger Screen Sizes</small>
+        <br/>
                 <Line data={chartData}/>
                 <br/>
                 <Line data={chartDataActive}/>
