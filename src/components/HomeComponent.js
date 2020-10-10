@@ -234,7 +234,7 @@ export default function Home(props) {
 
                 
                 <br/>
-                <h3>Latest Stats</h3>
+                <p className="lead"><span className="font-weight-bolder">Latest Stats: </span>India</p>
                 <div className="row">
                     <div className="col-6 col-md-3 pt-4">
                         <p style={{color:'blue'}}>{`${Total}`}<br/>

@@ -220,10 +220,18 @@ function changeState(){
                 <Button color="light"
                     onClick={toggle}>Change State</Button> 
                     <br/><br/>
-                    <p className="lead"><span className="font-weight-bolder">Current State:</span> {`${SelectedState}`}</p>
+                    
                 <Modal isOpen={modal}
                     toggle={toggle}
                     className={className}>
+                        <ModalHeader>
+                        <small>Select a radio button, Press Select State and then Compute Data</small>
+                        <br/>
+                    <Button color="light"
+                             onClick={()=>{changeState()}} >Select State</Button>
+                    <Button color="light"
+                             onClick={()=>{formGraph()}} >Compute Data</Button>
+                        </ModalHeader>
                     <ModalBody>
                       {props.cases.data[lastindex].regional.map((region,index)=>(
                           <>
@@ -238,15 +246,11 @@ function changeState(){
                         <label for="andaman">Delhi</label><br/> */}
                     </ModalBody>
                     <ModalFooter>
-                        <small>Select State and then Compute Data</small>
-                    <Button color="light"
-                             onClick={()=>{changeState()}} >Select State</Button>
-                    <Button color="light"
-                             onClick={()=>{formGraph()}} >Compute Data</Button>
+                      
                         
                         {' '} </ModalFooter>
                 </Modal>
-                              <h3>Latest Stats</h3>
+                <p className="lead"><span className="font-weight-bolder">Latest Stats:</span> {`${SelectedState}`}</p>
                 <div className="row">
                     <div className="col-6 col-md-3 pt-4">
                         <p style={{color:'blue'}}>{`${Total}`}<br/>
