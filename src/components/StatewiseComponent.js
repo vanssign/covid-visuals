@@ -12,7 +12,7 @@ import {Link} from 'react-router-dom';
 export default function Statewise(props) {
     const {className} = props;
     const [modal, setModal] = useState(false);
-    const[SelectedState,UpdateState]=useState('Null');
+    const[SelectedState,UpdateState]=useState('None');
     var [DeltaIncrease,UpdateDeltaIncrease]=useState([]);
     var [IncreaseFlag,UpdateIncreaseFlag]=useState([]);
     var [fontawesomeFlag,UpdatefontawesomeFlag]=useState([]);
@@ -227,10 +227,12 @@ function changeState(){
                         <ModalHeader>
                         <small>Select a radio button, Press Select State and then Compute Data</small>
                         <br/>
-                    <Button color="light"
+                    <Button className="mr-2" color="light"
                              onClick={()=>{changeState()}} >Select State</Button>
                     <Button color="light"
                              onClick={()=>{formGraph()}} >Compute Data</Button>
+                             <br/>
+        <small>Selected: <span className="text-info font-weight-bolder">{`${SelectedState}`}</span></small>
                         </ModalHeader>
                     <ModalBody>
                       {props.cases.data[lastindex].regional.map((region,index)=>(
