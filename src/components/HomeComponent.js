@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {Line, Bar, Pie} from 'react-chartjs-2'
-import {Button} from 'reactstrap'
+import {Button} from 'reactstrap';
+
 
 
 export default function Home(props) {
@@ -132,6 +133,7 @@ export default function Home(props) {
             activecases[i] = totalcases[i] - recoveredcases[i] - deceasedcases[i];
         }
         var lastindex=props.cases.data.length-1;
+
         const Total = totalcases[lastindex];
         const Active=activecases[lastindex];
         const Recovered=recoveredcases[lastindex];

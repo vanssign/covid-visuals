@@ -21,13 +21,13 @@ const Header = (props) => {
 
   return (
     <div>
-      <Navbar light className="bg-light" expand="md">
-        <NavbarBrand to="/">Covid Visualiser</NavbarBrand>
+      <Navbar dark className="bg-dark" expand="xs">
+        <NavbarBrand to="/">Covid Stats</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink className="nav-link" to="/home">India</NavLink>
+              <NavLink className="nav-link" to="/india">India</NavLink>
             </NavItem>
             <NavItem>
               <NavLink className="nav-link" to="/state-wise">State Wise</NavLink>
@@ -35,26 +35,7 @@ const Header = (props) => {
             <NavItem>
               <NavLink className="nav-link" to="/about">About</NavLink>
             </NavItem>
-            {/* <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Documentation
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>
-                  one
-                </DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>
-                  two
-                </DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>
-                  three
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown> */}
           </Nav>
-          <NavbarText>For Educational Purposes Only</NavbarText>
         </Collapse>
         
       </Navbar>
