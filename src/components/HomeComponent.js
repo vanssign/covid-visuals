@@ -89,7 +89,28 @@ export default function Home(props) {
             }
         ]
     })
-    if (props.isLoading) {
+    const [chartDataTests, updateChartTests] = useState({
+        labels: [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+        ],
+        datasets: [
+            {
+                label: "no. of tests",
+                data: [
+                    1,
+                    1,
+                    1,
+                    1,
+                    1
+                ]
+            }
+        ]
+    })
+    if (props.isLoading || props.testsisLoading) {
         return (
             <div className="container-fluid text-center">
 
@@ -113,7 +134,9 @@ export default function Home(props) {
         )
     } else if (props.cases != null) {
         var labelArray = [];
-        var str = []
+        var testlabelArray=[];
+        var str = [];
+        var teststr=[];
         for (let i = 0; i < props.cases.data.length; i++) {
             str[i] = `${
                 props.cases.data[i].day
@@ -122,15 +145,28 @@ export default function Home(props) {
             labelArray[i] = res[2] + '/' + res[1];
 
         }
+        for (let i = 0; i < props.tests.data.length; i++) {
+            teststr[i] = `${
+                props.tests.data[i].day
+            }`;
+            var res = teststr[i].split("-");
+            testlabelArray[i] = res[2] + '/' + res[1];
+
+        }
+
         var totalcases = [];
         var deceasedcases = [];
         var recoveredcases = [];
         var activecases = [];
+        var nooftests=[];
         for (let i = 0; i < props.cases.data.length; i++) {
             totalcases[i] = props.cases.data[i].summary.total;
             deceasedcases[i] = props.cases.data[i].summary.deaths;
             recoveredcases[i] = props.cases.data[i].summary.discharged;
             activecases[i] = totalcases[i] - recoveredcases[i] - deceasedcases[i];
+        }
+        for(let i=0;i<props.tests.data.length;i++){
+            nooftests[i]=props.tests.data[i].totalSamplesTested;
         }
         var lastindex=props.cases.data.length-1;
 
@@ -227,6 +263,20 @@ export default function Home(props) {
                     }
                 ]
             })
+            updateChartTests({
+                labels: testlabelArray,
+                datasets: [
+                    {
+                        label: "Samples Tested",
+                        data: nooftests,
+                        pointRadius: 0,
+                        borderWidth: 2,
+                        borderColor: 'orange',
+                        backgroundColor: 'rgba(253,227,167,0.5)'
+
+                    }
+                ]
+            })
 
         }
 
@@ -279,6 +329,7 @@ export default function Home(props) {
                 <br/>
                 <Line data={chartDataDeceased}/>
                 <br/>
+                <Line data={chartDataTests}/>
                 <br/>
 
 

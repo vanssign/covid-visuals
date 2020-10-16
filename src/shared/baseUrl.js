@@ -1,1 +1,1 @@
-export const baseUrl ='https://api.rootnet.in/covid19-in/stats/history/';
+export const baseUrl ='https://api.rootnet.in/covid19-in/stats/';
