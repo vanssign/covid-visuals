@@ -110,11 +110,12 @@ export default function Home(props) {
             }
         ]
     })
-    if (props.isLoading || props.testsisLoading) {
+    if (props.isLoading || props.testsisLoading ) {
+        
         return (
             <div className="container-fluid text-center">
 
-                <img src="https://64.media.tumblr.com/30989303b244278454e07c53dd3a47ac/tumblr_nxa257Q6Zh1uzo3myo1_500.gif" className="img-fluid"/>
+                 <img src="https://64.media.tumblr.com/30989303b244278454e07c53dd3a47ac/tumblr_nxa257Q6Zh1uzo3myo1_500.gif" className="img-fluid"/> 
 
 
             </div>
@@ -132,7 +133,22 @@ export default function Home(props) {
             </div>
 
         )
-    } else if (props.cases != null) {
+    }
+    else if (props.testserrMess) {
+        return (
+            <div className="container">
+                <div className="row">
+                    <h4>{
+                        props.testserrMess
+                    }</h4>
+
+                </div>
+
+            </div>
+
+        )
+    } 
+    else if (props.cases != null && props.tests !=null) {
         var labelArray = [];
         var testlabelArray=[];
         var str = [];

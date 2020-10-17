@@ -34,7 +34,7 @@ class Main extends Component {
                 isLoading={this.props.cases.isLoading}
                 errMess={this.props.cases.errMess}
                 tests={this.props.tests.tests}
-                testsLoading={this.props.tests.isLoading}
+                testsisLoading={this.props.tests.isLoading}
                 testserrMess={this.props.tests.errMess}
                 />
             )

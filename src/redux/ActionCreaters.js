@@ -49,7 +49,7 @@ export const fetchTests=()=>(dispatch)=>{
     return axios.get(baseUrl+'testing/history/data')
     .then(res=>dispatch(addTests(res.data)))
     .catch(function(error){
-        dispatch(casesLoading(false))
+        dispatch(testsLoading(false))
         const errmess='Error: '+ error.message;
         return dispatch(testsFailed(errmess));
 
