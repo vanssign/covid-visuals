@@ -6,7 +6,8 @@ export default function About() {
 <div>
     <br/>
     <h3>App Information</h3>
-    <p>The App uses <a href="https://api.rootnet.in/covid19-in/stats/history">api.rootnet.in</a> as backend</p>
+    <p>The App uses <a href="https://api.rootnet.in/">api.rootnet.in</a> as backend
+    </p>
     <p ><bold>Dependencies and Packages used:</bold><br/>
         "axios": "^0.20.0"<br/>
     "bootstrap": "^4.5.2"<br/>

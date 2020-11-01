@@ -51,10 +51,12 @@ class Main extends Component {
             <div>
                 <Header/>
                 <Switch>
+                    
            
                     <Route exact path="/home" component={HomePage}/>
                     <Route exact path="/state-wise" component={StatewisePage}/>
                     <Route exact path="/about" component={()=><About/>}/>
+                   
                   
                     {/* <Route exact path="/indian-states" component={()=><RenderIndianStates/>}/>  */}
                     <Redirect to="/home"/>
