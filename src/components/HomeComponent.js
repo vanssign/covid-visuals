@@ -317,7 +317,7 @@ export default function Home(props) {
                     <BreadcrumbItem active>India</BreadcrumbItem>
                     <BreadcrumbItem>
                         <Link to="/state-wise">
-                            <small>State</small>
+                            <small className="text-info">State</small>
                         </Link>
                     </BreadcrumbItem>
                 </Breadcrumb>
@@ -327,7 +327,7 @@ export default function Home(props) {
                         <span className="font-weight-bolder">Latest Stats:
                         </span>India</p>
                     <p>Looking for&nbsp;
-                        <Link to="/state-wise">State-Wise</Link>
+                        <Link className="text-info" to="/state-wise">State-Wise</Link>
                         &nbsp;data?</p>
                     <div className="row">
                         <div className="col-6 col-md-3 pt-4">
@@ -412,10 +412,6 @@ export default function Home(props) {
                         }`
                     }</small>
                     <br/>
-                    <br/>
-                    <small className="d-md-none">
-                        <i className="fa fa-info-circle fa-lg"></i>
-                        Best Viewed on Larger Screen Sizes</small>
                     <br/>
                     <div className="slider">
                         <div className="slides">

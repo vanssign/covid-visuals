@@ -232,17 +232,12 @@ function changeState(){
         return (
             <>
             <Breadcrumb>
-        <BreadcrumbItem><Link to="/home">India</Link></BreadcrumbItem>
-        <BreadcrumbItem active>{`${SelectedState}`} <button className="btn btn-link"
+        <BreadcrumbItem className="text-info"><Link to="/home">India</Link></BreadcrumbItem>
+        <BreadcrumbItem active>{`${SelectedState}`} <button className="btn btn-link text-info"
                     onClick={toggle}><i className="fa fa-edit"></i></button></BreadcrumbItem>
       </Breadcrumb>
             <div className="container">
-                
                 <br/>
-                <Button color="light"
-                    onClick={toggle}>Change State</Button> 
-                    <br/><br/>
-                    
                 <Modal isOpen={modal}
                     toggle={toggle}
                     className={className}>
@@ -307,7 +302,6 @@ function changeState(){
                 </div>
                
         <small className="text-muted">{`Last updated: ${props.cases.lastOriginUpdate}`}</small><br/>
-        <small className="d-md-none"><i className="fa fa-info-circle fa-lg"></i> Best Viewed on Larger Screen Sizes</small>
         <br/>
         <div className="slider">
                         <div className="slides">
