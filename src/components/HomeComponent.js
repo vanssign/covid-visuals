@@ -298,6 +298,19 @@ export default function Home(props) {
 
         }
 
+        function scrollInto1(){
+            document.getElementById("slide-1").scrollIntoView(true);
+        }
+        function scrollInto2(){
+            document.getElementById("slide-2").scrollIntoView(true);
+        }
+        function scrollInto3(){
+            document.getElementById("slide-3").scrollIntoView(true);
+        }
+        function scrollInto4(){
+            document.getElementById("slide-4").scrollIntoView(true);
+        }
+
         return (
             <>
                 <Breadcrumb>
@@ -318,7 +331,7 @@ export default function Home(props) {
                         &nbsp;data?</p>
                     <div className="row">
                         <div className="col-6 col-md-3 pt-4">
-                            <div className="container btn btn-primary">
+                            <button onClick={()=>scrollInto1()} className="container btn btn-primary">
                                 <p>{
                                     `${Total}`
                                 }<br/> {
@@ -333,10 +346,10 @@ export default function Home(props) {
                                     }></i>
                                 </p>
                                 <small>Total</small>
-                            </div>
+                            </button>
                         </div>
                         <div className="col-6 col-md-3 pt-4">
-                            <div className="container btn btn-danger">
+                            <button onClick={()=>scrollInto2()} className="container btn btn-danger">
                                 <p>{
                                     `${Active}`
                                 }<br/> {
@@ -351,10 +364,10 @@ export default function Home(props) {
                                     }></i>
                                 </p>
                                 <small>Active</small>
-                            </div>
+                            </button>
                         </div>
                         <div className="col-6 col-md-3 pt-4 ">
-                            <div className="container btn btn-success">
+                            <button onClick={()=>scrollInto3()} className="container btn btn-success">
                                 <p>{
                                     `${Recovered}`
                                 }
@@ -370,10 +383,10 @@ export default function Home(props) {
                                     }></i>
                                 </p>
                                 <small>Recovered</small>
-                            </div>
+                            </button>
                         </div>
                         <div className="col-6 col-md-3 pt-4 ">
-                            <div className="container btn btn-dark">
+                            <button onClick={()=>scrollInto4()} className="container btn btn-dark">
                                 <p>{
                                     `${Deceased}`
                                 }<br/> {
@@ -388,7 +401,7 @@ export default function Home(props) {
                                     }></i>
                                 </p>
                                 <small>Deceased</small>
-                            </div>
+                            </button>
                         </div>
                     </div>
 

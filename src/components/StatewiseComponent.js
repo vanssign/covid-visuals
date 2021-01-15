@@ -215,6 +215,20 @@ function changeState(){
               setModal(!modal);
             
             }
+
+            function scrollInto1(){
+                document.getElementById("slide-1").scrollIntoView(true);
+            }
+            function scrollInto2(){
+                document.getElementById("slide-2").scrollIntoView(true);
+            }
+            function scrollInto3(){
+                document.getElementById("slide-3").scrollIntoView(true);
+            }
+            function scrollInto4(){
+                document.getElementById("slide-4").scrollIntoView(true);
+            }
+
         return (
             <>
             <Breadcrumb>
@@ -263,32 +277,32 @@ function changeState(){
                 <p className="lead"><span className="font-weight-bolder">Latest Stats:</span> {`${SelectedState}`}</p>
                 <div className="row">
                     <div className="col-6 col-md-3 pt-4">
-                    <div className="container btn btn-primary">
+                    <button className="container btn btn-primary" onClick={()=>scrollInto1()}>
                         <p>{`${Total}`}<br/>
                         {`${DeltaIncrease[0]}`} <i className={`fa fa-lg ${fontawesomeFlag[0]}`}></i></p>
                         <small>Total</small>
-                    </div>
+                    </button>
                     </div>
                     <div className="col-6 col-md-3 pt-4">
-                    <div className="container btn btn-danger">
+                    <button className="container btn btn-danger" onClick={()=>scrollInto2()}>
                     <p>{`${Active}`}<br/>
                     {`${DeltaIncrease[1]}`} <i className={`fa fa-lg ${fontawesomeFlag[1]}`}></i></p>
                         <small>Active</small>
-                    </div>
+                    </button>
                     </div>
                     <div className="col-6 col-md-3 pt-4">
-                    <div className="container btn btn-success">
+                    <button className="container btn btn-success" onClick={()=>scrollInto3()}>
                     <p>{`${Recovered}`} <br/>
                     {`${DeltaIncrease[2]}`} <i className={`fa fa-lg ${fontawesomeFlag[2]}`}></i></p>
                         <small>Recovered</small>
-                    </div>
+                    </button>
                     </div>
                     <div className="col-6 col-md-3 pt-4">
-                    <div className="container btn btn-dark">
+                    <button className="container btn btn-dark" onClick={()=>scrollInto4()}>
                     <p>{`${Deceased}`}<br/>
                     {`${DeltaIncrease[3]}`} <i className={`fa fa-lg ${fontawesomeFlag[3]}`}></i></p>
                         <small>Deceased</small>
-                    </div>
+                    </button>
                     </div>
                 </div>
                
