@@ -5,13 +5,14 @@ import {
     Modal,
     ModalHeader,
     ModalBody,
-    ModalFooter
+    ModalFooter,
+    Breadcrumb, BreadcrumbItem
 } from 'reactstrap';
 import {Link} from 'react-router-dom';
 
 export default function Statewise(props) {
     const {className} = props;
-    const [modal, setModal] = useState(false);
+    const [modal, setModal] = useState(true);
     const[SelectedState,UpdateState]=useState('None');
     var [DeltaIncrease,UpdateDeltaIncrease]=useState([]);
     var [IncreaseFlag,UpdateIncreaseFlag]=useState([]);
@@ -215,7 +216,14 @@ function changeState(){
             
             }
         return (
+            <>
+            <Breadcrumb>
+        <BreadcrumbItem><Link to="/home">India</Link></BreadcrumbItem>
+        <BreadcrumbItem active>{`${SelectedState}`} <button className="btn btn-link"
+                    onClick={toggle}><i className="fa fa-edit"></i></button></BreadcrumbItem>
+      </Breadcrumb>
             <div className="container">
+                
                 <br/>
                 <Button color="light"
                     onClick={toggle}>Change State</Button> 
@@ -287,17 +295,25 @@ function changeState(){
         <small className="text-muted">{`Last updated: ${props.cases.lastOriginUpdate}`}</small><br/>
         <small className="d-md-none"><i className="fa fa-info-circle fa-lg"></i> Best Viewed on Larger Screen Sizes</small>
         <br/>
-                <Line data={chartData}/>
-                <br/>
-                <Line data={chartDataActive}/>
-                <br/>
-                <Line data={chartDataRecovered}/>
-                <br/>
-                <Line data={chartDataDeceased}/>
-                <br/>
-                <br/>
+        <div className="slider">
+                        <div className="slides">
+                            <div id="slide-1">
+                            <Line data={chartData}/>
+                            </div>
+                            <div id="slide-2">
+                            <Line data={chartDataActive}/>
+                            </div>
+                            <div id="slide-3">
+                            <Line data={chartDataRecovered}/>
+                            </div>
+                            <div id="slide-4">
+                            <Line data={chartDataDeceased}/>
+                            </div>
+                        </div>
+                    </div>
 
             </div>
+            </>
         )
     }
 }

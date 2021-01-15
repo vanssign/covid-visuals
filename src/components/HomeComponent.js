@@ -1,6 +1,7 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {Line, Bar, Pie} from 'react-chartjs-2'
-import {Button} from 'reactstrap';
+import {Button, Breadcrumb, BreadcrumbItem} from 'reactstrap';
+import {Link} from 'react-router-dom';
 
 
 
@@ -110,12 +111,12 @@ export default function Home(props) {
             }
         ]
     })
-    if (props.isLoading || props.testsisLoading ) {
-        
+    if (props.isLoading || props.testsisLoading) {
+
         return (
             <div className="container-fluid text-center">
 
-                 <img src="https://64.media.tumblr.com/30989303b244278454e07c53dd3a47ac/tumblr_nxa257Q6Zh1uzo3myo1_500.gif" className="img-fluid"/> 
+                <img src="https://64.media.tumblr.com/30989303b244278454e07c53dd3a47ac/tumblr_nxa257Q6Zh1uzo3myo1_500.gif" className="img-fluid"/>
 
 
             </div>
@@ -133,8 +134,7 @@ export default function Home(props) {
             </div>
 
         )
-    }
-    else if (props.testserrMess) {
+    } else if (props.testserrMess) {
         return (
             <div className="container">
                 <div className="row">
@@ -143,16 +143,14 @@ export default function Home(props) {
                     }</h4>
 
                 </div>
-
             </div>
 
         )
-    } 
-    else if (props.cases != null && props.tests !=null) {
+    } else if (props.cases != null && props.tests != null) {
         var labelArray = [];
-        var testlabelArray=[];
+        var testlabelArray = [];
         var str = [];
-        var teststr=[];
+        var teststr = [];
         for (let i = 0; i < props.cases.data.length; i++) {
             str[i] = `${
                 props.cases.data[i].day
@@ -174,57 +172,63 @@ export default function Home(props) {
         var deceasedcases = [];
         var recoveredcases = [];
         var activecases = [];
-        var nooftests=[];
+        var nooftests = [];
         for (let i = 0; i < props.cases.data.length; i++) {
             totalcases[i] = props.cases.data[i].summary.total;
             deceasedcases[i] = props.cases.data[i].summary.deaths;
             recoveredcases[i] = props.cases.data[i].summary.discharged;
             activecases[i] = totalcases[i] - recoveredcases[i] - deceasedcases[i];
         }
-        for(let i=0;i<props.tests.data.length;i++){
-            nooftests[i]=props.tests.data[i].totalSamplesTested;
+        for (let i = 0; i < props.tests.data.length; i++) {
+            nooftests[i] = props.tests.data[i].totalSamplesTested;
         }
-        var lastindex=props.cases.data.length-1;
+        var lastindex = props.cases.data.length - 1;
 
         const Total = totalcases[lastindex];
-        const Active=activecases[lastindex];
-        const Recovered=recoveredcases[lastindex];
-        const Deceased=deceasedcases[lastindex];
-        const DeltaIncrease=[];
-        DeltaIncrease[0]=Math.abs(totalcases[lastindex]-totalcases[lastindex-1]);
-        DeltaIncrease[1]=Math.abs(activecases[lastindex]-activecases[lastindex-1])
-        DeltaIncrease[2]=Math.abs(recoveredcases[lastindex]-recoveredcases[lastindex-1])
-        DeltaIncrease[3]=Math.abs(deceasedcases[lastindex]-deceasedcases[lastindex-1])
+        const Active = activecases[lastindex];
+        const Recovered = recoveredcases[lastindex];
+        const Deceased = deceasedcases[lastindex];
+        const DeltaIncrease = [];
+        DeltaIncrease[0] = Math.abs(totalcases[lastindex] - totalcases[lastindex - 1]);
+        DeltaIncrease[1] = Math.abs(activecases[lastindex] - activecases[lastindex - 1])
+        DeltaIncrease[2] = Math.abs(recoveredcases[lastindex] - recoveredcases[lastindex - 1])
+        DeltaIncrease[3] = Math.abs(deceasedcases[lastindex] - deceasedcases[lastindex - 1])
 
-        const IncreaseFlag=[];
-        if(totalcases[lastindex]<totalcases[lastindex-1]){
-            IncreaseFlag[0]=false
-        }
-        else IncreaseFlag[0]=true;
-        if(activecases[lastindex]<activecases[lastindex-1]){
-            IncreaseFlag[1]=false
-        }
-        else IncreaseFlag[1]=true;
-        if(recoveredcases[lastindex]<recoveredcases[lastindex-1]){
-            IncreaseFlag[2]=false
-        }
-        else IncreaseFlag[2]=true;
-        if(deceasedcases[lastindex]<deceasedcases[lastindex-1]){
-            IncreaseFlag[3]=false
-        }
-        else IncreaseFlag[3]=true;
+        const IncreaseFlag = [];
+        if (totalcases[lastindex] < totalcases[lastindex - 1]) {
+            IncreaseFlag[0] = false
+        } else 
+            IncreaseFlag[0] = true;
+        
+        if (activecases[lastindex] < activecases[lastindex - 1]) {
+            IncreaseFlag[1] = false
+        } else 
+            IncreaseFlag[1] = true;
+        
+        if (recoveredcases[lastindex] < recoveredcases[lastindex - 1]) {
+            IncreaseFlag[2] = false
+        } else 
+            IncreaseFlag[2] = true;
+        
+        if (deceasedcases[lastindex] < deceasedcases[lastindex - 1]) {
+            IncreaseFlag[3] = false
+        } else 
+            IncreaseFlag[3] = true;
+        
 
-        const fontawesomeFlag=[];
-        for(let i=0;i<4;i++){
-            if(IncreaseFlag[i]){
-                fontawesomeFlag[i]='fa-arrow-up'
-            }
-            else fontawesomeFlag[i]='fa-arrow-down'
+        const fontawesomeFlag = [];
+        for (let i = 0; i < 4; i++) {
+            if (IncreaseFlag[i]) {
+                fontawesomeFlag[i] = 'fa-arrow-up'
+            } else 
+                fontawesomeFlag[i] = 'fa-arrow-down'
+            
         }
 
 
         function formGraph() {
-            console.log(labelArray)
+            document.getElementById('btnCompute').remove();
+
             updateChart({
                 labels: labelArray,
                 datasets: [
@@ -235,7 +239,6 @@ export default function Home(props) {
                         borderWidth: 2,
                         borderColor: 'blue',
                         backgroundColor: 'rgba(0,0,255,0.1)'
-
                     }
                 ]
             })
@@ -296,65 +299,139 @@ export default function Home(props) {
         }
 
         return (
-
-            <div className="container">
-                <br/>
-                <p className="lead"><span className="font-weight-bolder">Latest Stats: </span>India</p>
-                <div className="row">
-                    <div className="col-6 col-md-3 pt-4">
-                        <div className="container btn btn-primary">
-                        <p>{`${Total}`}<br/>
-                        {`${DeltaIncrease[0]}`} <i className={`fa fa-lg ${fontawesomeFlag[0]}`}></i></p>
-                        <small>Total</small>
+            <>
+                <Breadcrumb>
+                    <BreadcrumbItem active>India</BreadcrumbItem>
+                    <BreadcrumbItem>
+                        <Link to="/state-wise">
+                            <small>State</small>
+                        </Link>
+                    </BreadcrumbItem>
+                </Breadcrumb>
+                <div className="container">
+                    <br/>
+                    <p className="lead">
+                        <span className="font-weight-bolder">Latest Stats:
+                        </span>India</p>
+                    <p>Looking for&nbsp;
+                        <Link to="/state-wise">State-Wise</Link>
+                        &nbsp;data?</p>
+                    <div className="row">
+                        <div className="col-6 col-md-3 pt-4">
+                            <div className="container btn btn-primary">
+                                <p>{
+                                    `${Total}`
+                                }<br/> {
+                                    `${
+                                        DeltaIncrease[0]
+                                    }`
+                                }
+                                    <i className={
+                                        `fa fa-lg ${
+                                            fontawesomeFlag[0]
+                                        }`
+                                    }></i>
+                                </p>
+                                <small>Total</small>
+                            </div>
+                        </div>
+                        <div className="col-6 col-md-3 pt-4">
+                            <div className="container btn btn-danger">
+                                <p>{
+                                    `${Active}`
+                                }<br/> {
+                                    `${
+                                        DeltaIncrease[1]
+                                    }`
+                                }
+                                    <i className={
+                                        `fa fa-lg ${
+                                            fontawesomeFlag[1]
+                                        }`
+                                    }></i>
+                                </p>
+                                <small>Active</small>
+                            </div>
+                        </div>
+                        <div className="col-6 col-md-3 pt-4 ">
+                            <div className="container btn btn-success">
+                                <p>{
+                                    `${Recovered}`
+                                }
+                                    <br/> {
+                                    `${
+                                        DeltaIncrease[2]
+                                    }`
+                                }
+                                    <i className={
+                                        `fa fa-lg ${
+                                            fontawesomeFlag[2]
+                                        }`
+                                    }></i>
+                                </p>
+                                <small>Recovered</small>
+                            </div>
+                        </div>
+                        <div className="col-6 col-md-3 pt-4 ">
+                            <div className="container btn btn-dark">
+                                <p>{
+                                    `${Deceased}`
+                                }<br/> {
+                                    `${
+                                        DeltaIncrease[3]
+                                    }`
+                                }
+                                    <i className={
+                                        `fa fa-lg ${
+                                            fontawesomeFlag[3]
+                                        }`
+                                    }></i>
+                                </p>
+                                <small>Deceased</small>
+                            </div>
                         </div>
                     </div>
-                    <div className="col-6 col-md-3 pt-4">
-                    <div className="container btn btn-danger">
-                    <p>{`${Active}`}<br/>
-                    {`${DeltaIncrease[1]}`} <i className={`fa fa-lg ${fontawesomeFlag[1]}`}></i></p>
-                        <small>Active</small>
-                    </div>
-                    </div>
-                    <div className="col-6 col-md-3 pt-4 ">
-                    <div className="container btn btn-success">
-                    <p>{`${Recovered}`} <br/>
-                    {`${DeltaIncrease[2]}`} <i className={`fa fa-lg ${fontawesomeFlag[2]}`}></i></p>
-                        <small>Recovered</small>
-                    </div>
-                    </div>
-                    <div className="col-6 col-md-3 pt-4 ">
-                    <div className="container btn btn-dark">
-                    <p>{`${Deceased}`}<br/>
-                    {`${DeltaIncrease[3]}`} <i className={`fa fa-lg ${fontawesomeFlag[3]}`}></i></p>
-                        <small>Deceased</small>
-                    </div>
+
+                    <small className="text-muted">
+                        {
+                        `Last updated: ${
+                            props.cases.lastOriginUpdate
+                        }`
+                    }</small>
+                    <br/>
+                    <br/>
+                    <small className="d-md-none">
+                        <i className="fa fa-info-circle fa-lg"></i>
+                        Best Viewed on Larger Screen Sizes</small>
+                    <br/>
+                    <div className="slider">
+                        <div className="slides">
+                            <div id="btnCompute">
+                        <Button color="light"
+                        onClick={
+                            () => {
+                                formGraph()
+                            }
+                    }>Compute Graphs</Button></div>
+                            <div id="slide-1">
+                            <Line data={chartData}/>
+                            </div>
+                            <div id="slide-2">
+                            <Line data={chartDataActive}/>
+                            </div>
+                            <div id="slide-3">
+                            <Line data={chartDataRecovered}/>
+                            </div>
+                            <div id="slide-4">
+                            <Line data={chartDataDeceased}/>
+                            </div>
+                            <div id="slide-5">
+                            <Line data={chartDataTests}/>
+                            </div>
+                        </div>
                     </div>
                 </div>
-               
-        <small className="text-muted">{`Last updated: ${props.cases.lastOriginUpdate}`}</small>
-                <br/>
-                <br/>
-                <Button color="light" onClick={
-                    () => {
-                        formGraph()
-                    }
-                }>Compute Graphs</Button>
-                <br/>
-                <small className="d-md-none"><i className="fa fa-info-circle fa-lg"></i> Best Viewed on Larger Screen Sizes</small>
-                <br/>
-                <Line data={chartData}/>
-                <br/>
-                <Line data={chartDataActive}/>
-                <br/>
-                <Line data={chartDataRecovered}/>
-                <br/>
-                <Line data={chartDataDeceased}/>
-                <br/>
-                <Line data={chartDataTests}/>
-                <br/>
-
-
-            </div>
+            </>
         )
     }
 }

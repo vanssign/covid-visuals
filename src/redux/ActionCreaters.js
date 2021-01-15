@@ -1,5 +1,5 @@
 import * as ActionTypes from './ActionTypes';
-import {baseUrl} from '../shared/baseUrl';
+import {baseUrl,newsAPIbaseUrl} from '../shared/baseUrl';
 import axios from 'axios'
 
 export const casesLoading=()=>({
@@ -32,6 +32,21 @@ export const addTests=(tests)=>({
 
 });
 
+export const newsLoading=()=>({
+    type:ActionTypes.NEWS_LOADING
+});
+
+export const newsFailed=(errmess)=>({
+    type:ActionTypes.NEWS_FAILED,
+    payload:errmess
+});
+
+export const addNews=(news)=>({
+    type:ActionTypes.ADD_NEWS,
+    payload:news
+
+});
+
 export const fetchCases=()=>(dispatch)=>{
     dispatch(casesLoading(true));
     return axios.get(baseUrl+'history/data')
@@ -52,6 +67,16 @@ export const fetchTests=()=>(dispatch)=>{
         dispatch(testsLoading(false))
         const errmess='Error: '+ error.message;
         return dispatch(testsFailed(errmess));
+    })
+}
 
+export const fetchNews=()=>(dispatch)=>{
+    dispatch(newsLoading(true));
+    return axios.get(newsAPIbaseUrl)
+    .then(res=>dispatch(addNews(res.data)))
+    .catch(function(error){
+        dispatch(newsLoading(false))
+        const errmess='Error: '+ error.message;
+        return dispatch(newsFailed(errmess));
     })
 }

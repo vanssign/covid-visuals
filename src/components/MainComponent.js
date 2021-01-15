@@ -5,19 +5,21 @@ import About from './AboutComponent';
 import Footer from './FooterComponent';
 import {Switch,Route,Redirect,withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
-import { fetchCases,fetchTests } from "../redux/ActionCreaters";
+import { fetchCases,fetchTests,fetchNews } from "../redux/ActionCreaters";
 import Statewise from './StatewiseComponent';
 
 
 const mapStateToProps = state =>{
     return {
        cases: state.cases,
-       tests:state.tests
+       tests:state.tests,
+       news:state.news
      } 
    }
 const mapDispatchToProps=(dispatch)=>({
     fetchCases:()=>dispatch(fetchCases()),
-    fetchTests:()=>dispatch(fetchTests())
+    fetchTests:()=>dispatch(fetchTests()),
+    fetchNews:()=>dispatch(fetchNews())
    });
 
 class Main extends Component {
@@ -25,6 +27,7 @@ class Main extends Component {
     componentDidMount(){
         this.props.fetchCases();
         this.props.fetchTests();
+        this.props.fetchNews();
     }
 
     render() {
@@ -51,14 +54,9 @@ class Main extends Component {
             <div>
                 <Header/>
                 <Switch>
-                    
-           
                     <Route exact path="/home" component={HomePage}/>
                     <Route exact path="/state-wise" component={StatewisePage}/>
                     <Route exact path="/about" component={()=><About/>}/>
-                   
-                  
-                    {/* <Route exact path="/indian-states" component={()=><RenderIndianStates/>}/>  */}
                     <Redirect to="/home"/>
                 </Switch>
                 <Footer/>

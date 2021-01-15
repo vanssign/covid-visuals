@@ -5,12 +5,7 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
-  NavItem,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  NavbarText
+  NavItem
 } from 'reactstrap';
 import {NavLink} from 'react-router-dom'
 
@@ -30,7 +25,7 @@ const Header = (props) => {
               <NavLink className="nav-link" to="/home">India</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink className="nav-link" to="/state-wise">State Wise</NavLink>
+              <NavLink className="nav-link" to="/news">News</NavLink>
             </NavItem>
             <NavItem>
               <NavLink className="nav-link" to="/about">About</NavLink>
