@@ -261,7 +261,6 @@ export default function Home(props) {
                         borderWidth: 2,
                         borderColor: 'green',
                         backgroundColor: 'rgba(0,255,0,0.1)'
-
                     }
                 ]
             })
@@ -298,31 +297,37 @@ export default function Home(props) {
 
         return (
 
-            <div>
-
-                
+            <div className="container">
                 <br/>
                 <p className="lead"><span className="font-weight-bolder">Latest Stats: </span>India</p>
                 <div className="row">
                     <div className="col-6 col-md-3 pt-4">
-                        <p style={{color:'blue'}}>{`${Total}`}<br/>
+                        <div className="container btn btn-primary">
+                        <p>{`${Total}`}<br/>
                         {`${DeltaIncrease[0]}`} <i className={`fa fa-lg ${fontawesomeFlag[0]}`}></i></p>
                         <small>Total</small>
+                        </div>
                     </div>
                     <div className="col-6 col-md-3 pt-4">
-                    <p style={{color:'red'}}>{`${Active}`}<br/>
+                    <div className="container btn btn-danger">
+                    <p>{`${Active}`}<br/>
                     {`${DeltaIncrease[1]}`} <i className={`fa fa-lg ${fontawesomeFlag[1]}`}></i></p>
                         <small>Active</small>
                     </div>
-                    <div className="col-6 col-md-3 pt-4">
-                    <p style={{color:'green'}}>{`${Recovered}`} <br/>
+                    </div>
+                    <div className="col-6 col-md-3 pt-4 ">
+                    <div className="container btn btn-success">
+                    <p>{`${Recovered}`} <br/>
                     {`${DeltaIncrease[2]}`} <i className={`fa fa-lg ${fontawesomeFlag[2]}`}></i></p>
                         <small>Recovered</small>
                     </div>
-                    <div className="col-6 col-md-3 pt-4">
-                    <p style={{color:'black'}}>{`${Deceased}`}<br/>
+                    </div>
+                    <div className="col-6 col-md-3 pt-4 ">
+                    <div className="container btn btn-dark">
+                    <p>{`${Deceased}`}<br/>
                     {`${DeltaIncrease[3]}`} <i className={`fa fa-lg ${fontawesomeFlag[3]}`}></i></p>
                         <small>Deceased</small>
+                    </div>
                     </div>
                 </div>
                
