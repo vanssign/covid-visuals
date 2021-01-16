@@ -3,6 +3,7 @@ import Header from './HeaderComponent';
 import Home from './HomeComponent';
 import About from './AboutComponent';
 import Footer from './FooterComponent';
+import RenderNews from './NewsComponent';
 import {Switch,Route,Redirect,withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import { fetchCases,fetchTests,fetchNews } from "../redux/ActionCreaters";
@@ -49,6 +50,19 @@ class Main extends Component {
                 errMess={this.props.cases.errMess}/>
             )
         }
+        const NewsWithId = ({match}) => {
+           
+            return(
+
+                <RenderNews
+                indexCount={parseInt(match.params.newsId,10)}
+                news={this.props.news.news.articles[match.params.newsId]}
+                isLoading={this.props.news.isLoading}
+                errMess={this.props.news.errMess}
+                    
+                />
+            );
+      }
 
         return (
             <div>
@@ -57,6 +71,7 @@ class Main extends Component {
                     <Route exact path="/home" component={HomePage}/>
                     <Route exact path="/state-wise" component={StatewisePage}/>
                     <Route exact path="/about" component={()=><About/>}/>
+                    <Route path="/news/:newsId" component={NewsWithId} defaultParams={{ newsId: 0 }}/> 
                     <Redirect to="/home"/>
                 </Switch>
                 <Footer/>

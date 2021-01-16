@@ -314,7 +314,7 @@ export default function Home(props) {
         return (
             <>
                 <Breadcrumb>
-                    <BreadcrumbItem active>India</BreadcrumbItem>
+                    <BreadcrumbItem active >India</BreadcrumbItem>
                     <BreadcrumbItem>
                         <Link to="/state-wise">
                             <small className="text-info">State</small>

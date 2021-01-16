@@ -232,7 +232,7 @@ function changeState(){
         return (
             <>
             <Breadcrumb>
-        <BreadcrumbItem className="text-info"><Link to="/home">India</Link></BreadcrumbItem>
+        <BreadcrumbItem><Link to="/home" className="text-info">India</Link></BreadcrumbItem>
         <BreadcrumbItem active>{`${SelectedState}`} <button className="btn btn-link text-info"
                     onClick={toggle}><i className="fa fa-edit"></i></button></BreadcrumbItem>
       </Breadcrumb>

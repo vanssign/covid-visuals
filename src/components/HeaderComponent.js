@@ -17,7 +17,7 @@ const Header = (props) => {
   return (
     <div>
       <Navbar dark className="bg-dark" expand="xs">
-        <NavbarBrand to="/">Covid Stats</NavbarBrand>
+        <NavbarBrand to="/">CoVisuals</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
@@ -25,7 +25,7 @@ const Header = (props) => {
               <NavLink className="nav-link" to="/home">India</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink className="nav-link" to="/news">News</NavLink>
+              <NavLink className="nav-link" to="/news/0">News</NavLink>
             </NavItem>
             <NavItem>
               <NavLink className="nav-link" to="/about">About</NavLink>
