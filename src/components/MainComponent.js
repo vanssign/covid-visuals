@@ -56,7 +56,7 @@ class Main extends Component {
 
                 <RenderNews
                 indexCount={parseInt(match.params.newsId,10)}
-                news={this.props.news.news.articles[match.params.newsId]}
+                news={this.props.news.news.data[match.params.newsId]}
                 isLoading={this.props.news.isLoading}
                 errMess={this.props.news.errMess}
                     

@@ -39,8 +39,10 @@ function RenderNews(props) {
 
         )
     } else if (props.news) {
-        console.log("props.indexCount is");
-        console.log(props.indexCount);
+        console.log("props.news is");
+        console.log(props.news);
+        var imageUrl='https://www.imf.org/-/media/Images/IMF/Topics/COVID19/lending-tracker-fullsize-istock-1213355637.ashx?h=1413&w=2122&la=en';
+        if(props.news.image) imageUrl=`${props.news.image}`;
         return (
         <div className="fs-sm-min container" >
             <br/>
@@ -49,10 +51,10 @@ function RenderNews(props) {
             <div className="col">
                 <Link to="/indian-states">
                     <i className="fa fa-globe"></i>
-                    <div className="make-it-small">Change Countary</div>
+                    <div className="make-it-small">Change Country</div>
                 </Link>
                 <small className="text-reset">
-               countaryName
+               {props.news.country}
                </small>
             </div>
                 <div className="col">
@@ -63,24 +65,26 @@ function RenderNews(props) {
                 </div>   
         </div>
         </div>
-        <img className="img-fluid border" src={`${props.news.urlToImage}`}></img>
+        <div className="border">
+        <img className="img-fluid" src={imageUrl}></img>
+        </div>
         <Card className="rounded-0">
                 <CardBody>
-                    <CardTitle>{
+                    <CardTitle className="font-weight-bolder">{
                         props.news.title
                     }
                   </CardTitle>
                     <CardText>
-                        <p>{
+                        {
                             props.news.description
-                        }</p>
+                        }
                        
                     </CardText>
 
                     <small className="text-muted">
                         <span className="d-md-none">Swipe up to</span>
-                        explore next news in 
-                        countaryName
+                        explore next news in&nbsp;
+                        {props.news.country}
                         <br/>
                         <Link to={
                             `/news/${
@@ -97,7 +101,7 @@ function RenderNews(props) {
             <div className='bg-dark text-white rounded-bottom'>
                 Read entire article at&nbsp;
                 {
-                props.news.source.name
+                props.news.source
             } </div>
             </a>
             <br/>
