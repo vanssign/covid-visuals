@@ -16,7 +16,7 @@ function RenderNews(props) {
             <div className="container">
                 <div className="row">
                     <div className="col-12">
-                        <img className="img-fluid" src="https://fuselabcreative.com/wp-content/themes/fuselab/img/loading.gif"/>
+                        <img className="img-fluid" alt="LOADING...." src="https://fuselabcreative.com/wp-content/themes/fuselab/img/loading.gif"/>
                     </div>
                 </div>
 
@@ -38,30 +38,41 @@ function RenderNews(props) {
         console.log(props.news[0]);
         var imageUrl='https://www.imf.org/-/media/Images/IMF/Topics/COVID19/lending-tracker-fullsize-istock-1213355637.ashx?h=1413&w=2122&la=en';
         if(props.news[0].media) imageUrl=`${props.news[0].media}`;
+        const shareData = {
+            title: `${props.news[0].title}`,
+            text: 'Check out other covid stats and news at CoVisuals',
+            url: 'https://vanssign.github.io/covid-visuals/#/news/'
+          }
+        function clickShare(){
+            navigator.share(shareData);
+        }
         return (
         <div className="fs-sm-min container" >
             <br/>
         <div className="container">
          <div className="row border rounded-top">
             <div className="col">
-                <Link to="/news/0" className="text-info">
+                <button to="/news/0" className="text-info btn btn-link">
                     <i className="fa fa-globe"></i>
                     <div className="make-it-small">Change Country</div>
-                </Link>
+                </button>
+                <br/>
                 <small className="text-muted">
                {props.news[0].country}
                </small>
             </div>
                 <div className="col">
+                    <button className="btn btn-link text-dark" onClick={()=>clickShare()}>
                     <i className="fa fa-share-alt"></i>
                     <div className="make-it-small">Share<span className="d-none d-md-block">
                             this news</span>
                     </div>
+                    </button>
                 </div>   
         </div>
         </div>
         <div className="border-right border-left bg-light">
-        <img className="img-fluid" src={imageUrl}></img>
+        <img className="img-fluid" src={imageUrl} alt="Respresentative"></img>
         </div>
         <Card className="rounded-0">
                 <CardBody>
@@ -94,7 +105,7 @@ function RenderNews(props) {
                     </small>
                 </CardBody>
             </Card>
-            <a href={`${props.news[0].link}`} target="_blank" className="text-reset">
+            <a href={`${props.news[0].link}`} target="_blank" rel="noopener noreferrer" className="text-reset">
             <div className='bg-dark text-white rounded-bottom'>
                 Read entire article at&nbsp;
                 {
@@ -105,6 +116,16 @@ function RenderNews(props) {
             </div>
         )
 
+    }
+    else{
+        return(
+            <div className="container text-centre">
+                <br/>
+                Could not fetch anything from API
+                <br/>
+                <br/>
+            </div>
+        )
     }
 }
 

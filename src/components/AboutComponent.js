@@ -6,7 +6,7 @@ export default function About() {
 <div>
     <br/>
     <h3>App Information</h3>
-    <p>The App uses <a href="https://api.rootnet.in/">api.rootnet.in</a> as backend
+    <p>The App uses <a target="_blank" rel="noopener noreferrer" href="https://api.rootnet.in/">api.rootnet.in</a> as backend
     </p>
     <p ><bold>Dependencies and Packages used:</bold><br/>
         "axios": "^0.20.0"<br/>
@@ -24,17 +24,17 @@ export default function About() {
     "redux-thunk": "^2.3.0"</p>
 <h3>Check My Works</h3>
         <div>
-            <a href="https://github.com/vanssign" target="_blank" class="btn">
+            <a  rel="noopener noreferrer" href="https://github.com/vanssign" target="_blank" class="btn">
                 <i class="fa fa-lg fa-github"
                     
                     aria-hidden="true"></i>
             </a>
-            <a href="https://behance.net/thindvansh7aab" target="_blank" class="btn">
+            <a  rel="noopener noreferrer" href="https://behance.net/thindvansh7aab" target="_blank" class="btn">
                 <i class="fa fa-lg fa-behance"
                     
                     aria-hidden="true"></i>
             </a>
-            <a href="https://lifeviawindow.wordpress.com" target="_blank" class="btn">
+            <a  rel="noopener noreferrer" href="https://lifeviawindow.wordpress.com" target="_blank" class="btn">
                 <i class="fa fa-lg fa-wordpress"
                     
                     aria-hidden="true"></i>
@@ -43,30 +43,30 @@ export default function About() {
         <br/>
         <h3>Contact Me</h3>
         <div>
-            <a href="https://www.facebook.com/singh.vansh1999" target="_blank" class="btn btn-social-icon btn-facebook">
+            <a  rel="noopener noreferrer" href="https://www.facebook.com/singh.vansh1999" target="_blank" class="btn btn-social-icon btn-facebook">
                 <i className="text-light" class="fa fa-lg fa-facebook-f"
                    
                     aria-hidden="true"></i>
             </a>
 
-            <a href="https://in.linkedin.com/in/vansh-singh" target="_blank" class="btn btn-linkedin">
+            <a  rel="noopener noreferrer" href="https://in.linkedin.com/in/vansh-singh" target="_blank" class="btn btn-linkedin">
                 <i class="fa fa-lg fa-linkedin"
                    
                     aria-hidden="true"></i>
             </a>
 
-            <a href="https://www.instagram.com/vanssign" target="_blank" class="btn btn-instagram">
+            <a  rel="noopener noreferrer" href="https://www.instagram.com/vanssign" target="_blank" class="btn btn-instagram">
                 <i class="fa fa-lg fa-instagram"
                    
                     aria-hidden="true"></i>
             </a>
 
-            <a href="https://wa.me/918279762669" target="_blank" class="btn btn-whatsapp">
+            <a  rel="noopener noreferrer" href="https://wa.me/918279762669" target="_blank" class="btn btn-whatsapp">
                 <i class="fa fa-lg fa-whatsapp"
                    
                     aria-hidden="true"></i>
             </a>
-            <a href="mailto:thindvansh1999@gmail.com" target="_blank" class="btn">
+            <a  rel="noopener noreferrer" href="mailto:thindvansh1999@gmail.com" target="_blank" class="btn">
                 <i class="fa fa-lg fa-envelope"
                    
                     aria-hidden="true"></i>

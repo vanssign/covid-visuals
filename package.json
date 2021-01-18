@@ -20,8 +20,7 @@
     "react-swipeable-routes": "^0.8.0",
     "reactstrap": "^8.5.1",
     "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0",
-    "web-social-share": "^6.4.1"
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
