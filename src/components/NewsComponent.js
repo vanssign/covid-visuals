@@ -40,8 +40,8 @@ function RenderNews(props) {
         if(props.news[0].media) imageUrl=`${props.news[0].media}`;
         const shareData = {
             title: `${props.news[0].title}`,
-            text: 'Check out other covid stats and news at CoVisuals',
-            url: 'https://vanssign.github.io/covid-visuals/#/news/'
+            text: 'Check out covid stats and news at CoVisuals.',
+            url: `https://vanssign.github.io/covid-visuals/#/news/${props.indexCount}`
           }
         function clickShare(){
             navigator.share(shareData);
@@ -52,7 +52,13 @@ function RenderNews(props) {
         <div className="container">
          <div className="row border rounded-top">
             <div className="col">
-                <button to="/news/0" className="text-info btn btn-link">
+                <button to="/news/0" className="text-info btn btn-link" onClick={async () => {
+  try {
+    await navigator.share(shareData)
+    console.log('MDN shared successfully')
+  } catch(err) {
+    console.log('Error: ' + err)
+  }}}>
                     <i className="fa fa-globe"></i>
                     <div className="make-it-small">Change Country</div>
                 </button>
@@ -62,7 +68,12 @@ function RenderNews(props) {
                </small>
             </div>
                 <div className="col">
-                    <button className="btn btn-link text-dark" onClick={()=>clickShare()}>
+                    <button className="btn btn-link text-dark" onClick={async()=>{ try {
+    await navigator.share(shareData)
+    console.log('MDN shared successfully');
+  } catch(err) {
+    console.log('Error: ' + err);
+  }}}>
                     <i className="fa fa-share-alt"></i>
                     <div className="make-it-small">Share<span className="d-none d-md-block">
                             this news</span>

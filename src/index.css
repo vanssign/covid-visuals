@@ -16,6 +16,9 @@ code {
 .make-it-small{
   font-size:0.65rem;
 }
+.pop-hover:hover{
+  font-size:1,2em;
+}
 
 
 .slider {
