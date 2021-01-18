@@ -42,13 +42,13 @@ function RenderNews(props) {
         <div className="fs-sm-min container" >
             <br/>
         <div className="container">
-         <div className="row border rounded-top bg-dark text-white">
+         <div className="row border rounded-top">
             <div className="col">
-                <Link to="/news/0">
+                <Link to="/news/0" className="text-info">
                     <i className="fa fa-globe"></i>
                     <div className="make-it-small">Change Country</div>
                 </Link>
-                <small className="text-reset">
+                <small className="text-muted">
                {props.news[0].country}
                </small>
             </div>
@@ -60,7 +60,7 @@ function RenderNews(props) {
                 </div>   
         </div>
         </div>
-        <div className="border">
+        <div className="border-right border-left bg-light">
         <img className="img-fluid" src={imageUrl}></img>
         </div>
         <Card className="rounded-0">
@@ -82,7 +82,7 @@ function RenderNews(props) {
                         explore next news in&nbsp;
                         {props.news[0].country}
                         <br/>
-                        <Link to={
+                        <Link className="text-info" to={
                             `/news/${
                                 props.indexCount + 1
                             }`
@@ -94,7 +94,7 @@ function RenderNews(props) {
                     </small>
                 </CardBody>
             </Card>
-            <a href={`${props.news[0].link}`} target="_blank">
+            <a href={`${props.news[0].link}`} target="_blank" className="text-reset">
             <div className='bg-dark text-white rounded-bottom'>
                 Read entire article at&nbsp;
                 {
