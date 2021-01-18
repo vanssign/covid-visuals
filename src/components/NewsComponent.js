@@ -1,18 +1,13 @@
 import React from 'react';
-// For RenderImgs Carousel
-import {UncontrolledCarousel} from 'reactstrap';
 import {withRouter} from 'react-router-dom'
 // For RenderNewsInfo
 import {
     Card,
     CardText,
     CardBody,
-    CardTitle,
-    Button,
-    Row,
-    Col
+    CardTitle
 } from 'reactstrap';
-import {Link, Redirect} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 function RenderNews(props) {
   
@@ -38,11 +33,11 @@ function RenderNews(props) {
             </div>
 
         )
-    } else if (props.news) {
-        console.log("props.news is");
-        console.log(props.news);
+    } else if (props.news[0]) {
+        console.log("props.news[0] is");
+        console.log(props.news[0]);
         var imageUrl='https://www.imf.org/-/media/Images/IMF/Topics/COVID19/lending-tracker-fullsize-istock-1213355637.ashx?h=1413&w=2122&la=en';
-        if(props.news.image) imageUrl=`${props.news.image}`;
+        if(props.news[0].media) imageUrl=`${props.news[0].media}`;
         return (
         <div className="fs-sm-min container" >
             <br/>
@@ -54,7 +49,7 @@ function RenderNews(props) {
                     <div className="make-it-small">Change Country</div>
                 </Link>
                 <small className="text-reset">
-               {props.news.country}
+               {props.news[0].country}
                </small>
             </div>
                 <div className="col">
@@ -71,12 +66,12 @@ function RenderNews(props) {
         <Card className="rounded-0">
                 <CardBody>
                     <CardTitle className="font-weight-bolder">{
-                        props.news.title
+                        props.news[0].title
                     }
                   </CardTitle>
                     <CardText>
                         {
-                            props.news.description
+                            props.news[0].summary
                         }
                        
                     </CardText>
@@ -84,7 +79,7 @@ function RenderNews(props) {
                     <small className="text-muted">
                         <span className="d-md-none">Swipe up to</span>
                         explore next news in&nbsp;
-                        {props.news.country}
+                        {props.news[0].country}
                         <br/>
                         <Link to={
                             `/news/${
@@ -97,11 +92,11 @@ function RenderNews(props) {
                     </small>
                 </CardBody>
             </Card>
-            <a href={`${props.news.url}`}>
+            <a href={`${props.news[0].url}`}>
             <div className='bg-dark text-white rounded-bottom'>
                 Read entire article at&nbsp;
                 {
-                props.news.source
+                props.news[0].clean_url
             } </div>
             </a>
             <br/>

@@ -70,10 +70,20 @@ export const fetchTests=()=>(dispatch)=>{
     })
 }
 
+const options = {
+    method: 'GET',
+    url: 'https://newscatcher.p.rapidapi.com/v1/search_free',
+    params: {q: 'Covid', lang: 'en', sort_by: 'relevancy', page: '1', media: 'True'},
+    headers: {
+      'x-rapidapi-key': '3cc37c16e3msh53638f35ab97a9dp1c3953jsn9369dcb421d4',
+      'x-rapidapi-host': 'newscatcher.p.rapidapi.com'
+    }
+  };
+
 export const fetchNews=()=>(dispatch)=>{
     dispatch(newsLoading(true));
-    return axios.get(newsAPIbaseUrl)
-    .then(res=>dispatch(addNews(res.data)))
+    return axios.request(options)
+    .then(res=>dispatch(addNews(res.data.articles)))
     .catch(function(error){
         dispatch(newsLoading(false))
         const errmess='Error: '+ error.message;

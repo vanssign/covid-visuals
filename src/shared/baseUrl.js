@@ -1,2 +1,2 @@
 export const baseUrl ='https://api.rootnet.in/covid19-in/stats/';
-export const newsAPIbaseUrl='http://api.mediastack.com/v1/news?access_key=080e0694ebf91a0d72aa3685e5a7edbb&keywords=covid&languages=en'
+export const newsAPIbaseUrl='https://newscatcher.p.rapidapi.com/v1/search'

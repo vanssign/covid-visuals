@@ -56,7 +56,7 @@ class Main extends Component {
 
                 <RenderNews
                 indexCount={parseInt(match.params.newsId,10)}
-                news={this.props.news.news.data[match.params.newsId]}
+                news={this.props.news.news.filter((allNews,index)=>index==[parseInt(match.params.newsId,10)])}
                 isLoading={this.props.news.isLoading}
                 errMess={this.props.news.errMess}
                     
