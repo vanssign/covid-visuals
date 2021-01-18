@@ -52,14 +52,8 @@ function RenderNews(props) {
         <div className="container">
          <div className="row border rounded-top">
             <div className="col">
-                <button to="/news/0" className="text-info btn btn-link" onClick={async () => {
-  try {
-    await navigator.share(shareData)
-    console.log('MDN shared successfully')
-  } catch(err) {
-    console.log('Error: ' + err)
-  }}}>
-                    <i className="fa fa-globe"></i>
+                <button to="/news/0" className="text-info btn btn-link">
+                    <i className="fa fa-lg fa-globe"></i>
                     <div className="make-it-small">Change Country</div>
                 </button>
                 <br/>
@@ -74,7 +68,7 @@ function RenderNews(props) {
   } catch(err) {
     console.log('Error: ' + err);
   }}}>
-                    <i className="fa fa-share-alt"></i>
+                    <i className="fa fa-lg fa-share-alt"></i>
                     <div className="make-it-small">Share<span className="d-none d-md-block">
                             this news</span>
                     </div>
