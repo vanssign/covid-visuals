@@ -52,14 +52,12 @@ function RenderNews(props) {
         <div className="container">
          <div className="row border rounded-top">
             <div className="col">
-                <button to="/news/0" className="text-info btn btn-link">
-                    <i className="fa fa-lg fa-globe"></i>
-                    <div className="make-it-small">Change Country</div>
-                </button>
-                <br/>
-                <small className="text-muted">
+                <button to="/news/0" className="text-dark btn btn-link">
+                    <i className="fa fa-lg fa-globe"></i> <small className="text-muted">
                {props.news[0].country}
                </small>
+                    <div className="make-it-small">Change Country</div>
+                </button>
             </div>
                 <div className="col">
                     <button className="btn btn-link text-dark" onClick={async()=>{ try {

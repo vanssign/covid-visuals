@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Header from './HeaderComponent';
 import Home from './HomeComponent';
 import About from './AboutComponent';
-import Footer from './FooterComponent';
 import RenderNews from './NewsComponent';
 import {Switch,Route,Redirect,withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
@@ -74,7 +73,6 @@ class Main extends Component {
                     <Route path="/news/:newsId" component={NewsWithId} defaultParams={{ newsId: 0 }}/> 
                     <Redirect to="/home"/>
                 </Switch>
-                <Footer/>
                 
             </div>
         )

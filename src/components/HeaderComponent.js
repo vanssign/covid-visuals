@@ -20,19 +20,23 @@ const Header = (props) => {
         <NavbarBrand to="/">CoVisuals</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
+          <Nav navbar >
             <NavItem>
-              <NavLink className="nav-link" to="/home">India</NavLink>
+              <NavLink className="nav-link" to="/home"><i className="fa fa-bar-chart fa-2x"></i>
+              <br/>
+              <span className="make-it-small">stats</span></NavLink>
             </NavItem>
             <NavItem>
-              <NavLink className="nav-link" to="/news/0">News</NavLink>
+              <NavLink className="nav-link" to="/news/0"><i className="fa fa-newspaper-o fa-2x"></i>
+              <br/>
+              <span className="make-it-small">news</span></NavLink>
             </NavItem>
             <NavItem>
-              <NavLink className="nav-link" to="/about">About</NavLink>
+              <NavLink className="nav-link" to="/about"><i className="fa fa-info-circle fa-2x"></i><br/>
+              <span className="make-it-small">about</span></NavLink>
             </NavItem>
           </Nav>
         </Collapse>
-        
       </Navbar>
     </div>
   );
