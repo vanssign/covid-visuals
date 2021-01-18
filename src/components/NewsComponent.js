@@ -42,9 +42,9 @@ function RenderNews(props) {
         <div className="fs-sm-min container" >
             <br/>
         <div className="container">
-         <div className="row border rounded-top">
+         <div className="row border rounded-top bg-dark text-white">
             <div className="col">
-                <Link to="/indian-states">
+                <Link to="/news/0">
                     <i className="fa fa-globe"></i>
                     <div className="make-it-small">Change Country</div>
                 </Link>
@@ -54,7 +54,7 @@ function RenderNews(props) {
             </div>
                 <div className="col">
                     <i className="fa fa-share-alt"></i>
-                    <div className="make-it-small">Share(webshareapi)<span className="d-none d-md-block">
+                    <div className="make-it-small">Share<span className="d-none d-md-block">
                             this news</span>
                     </div>
                 </div>   
@@ -75,9 +75,10 @@ function RenderNews(props) {
                         }
                        
                     </CardText>
-
-                    <small className="text-muted">
-                        <span className="d-md-none">Swipe up to</span>
+                    <small className="text-muted">Dated: {props.news[0].published_date}</small>
+                    <br/>
+                    <small className="text-info">
+                        {/* <span className="d-md-none">Swipe up to</span> */}
                         explore next news in&nbsp;
                         {props.news[0].country}
                         <br/>
@@ -86,20 +87,20 @@ function RenderNews(props) {
                                 props.indexCount + 1
                             }`
                         }>
-                            <i className="fa fa-chevron-circle-up d-md-none fa-2x"></i>
-                            <i className="fa fa-chevron-circle-right fa-3x d-none d-md-block"></i>
+                            {/* <i className="fa fa-chevron-circle-up d-md-none fa-2x"></i> */}
+                            {/* <i className="fa fa-chevron-circle-right fa-3x d-none d-md-block"></i> */}
+                            <i className="fa fa-chevron-circle-right fa-3x"></i>
                         </Link>
                     </small>
                 </CardBody>
             </Card>
-            <a href={`${props.news[0].url}`}>
+            <a href={`${props.news[0].link}`} target="_blank">
             <div className='bg-dark text-white rounded-bottom'>
                 Read entire article at&nbsp;
                 {
                 props.news[0].clean_url
             } </div>
             </a>
-            <br/>
             <br/>
             </div>
         )
