@@ -47,6 +47,7 @@ function RenderNews(props) {
             text: `${props.news[0].title}. Check out latest covid stats and news at CoVisuals.`,
             url: "https://vanssign.github.io/covid-visuals/"
           }
+          
         return (
             <>
         <div className="fs-sm-min container" >

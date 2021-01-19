@@ -173,7 +173,7 @@ function changeState(){
                   data:totalcases,
                   pointRadius: 0,
                   borderWidth: 2,
-                  borderColor:'blue',
+                  borderColor:'#2980b9',
                   backgroundColor:'rgba(0,0,255,0.1)'
     
               }]
