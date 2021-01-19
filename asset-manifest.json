@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/covid-visuals/static/css/main.7d09d9ec.chunk.css",
-    "main.js": "/covid-visuals/static/js/main.3d4379ed.chunk.js",
-    "main.js.map": "/covid-visuals/static/js/main.3d4379ed.chunk.js.map",
+    "main.css": "/covid-visuals/static/css/main.b986b8c0.chunk.css",
+    "main.js": "/covid-visuals/static/js/main.2329ce6b.chunk.js",
+    "main.js.map": "/covid-visuals/static/js/main.2329ce6b.chunk.js.map",
     "runtime-main.js": "/covid-visuals/static/js/runtime-main.17be3502.js",
     "runtime-main.js.map": "/covid-visuals/static/js/runtime-main.17be3502.js.map",
     "static/css/2.9792af2f.chunk.css": "/covid-visuals/static/css/2.9792af2f.chunk.css",
-    "static/js/2.6cea05b5.chunk.js": "/covid-visuals/static/js/2.6cea05b5.chunk.js",
-    "static/js/2.6cea05b5.chunk.js.map": "/covid-visuals/static/js/2.6cea05b5.chunk.js.map",
+    "static/js/2.26e3e7db.chunk.js": "/covid-visuals/static/js/2.26e3e7db.chunk.js",
+    "static/js/2.26e3e7db.chunk.js.map": "/covid-visuals/static/js/2.26e3e7db.chunk.js.map",
     "index.html": "/covid-visuals/index.html",
-    "precache-manifest.f87b503fd0bb76cc7729c5baae68de97.js": "/covid-visuals/precache-manifest.f87b503fd0bb76cc7729c5baae68de97.js",
+    "precache-manifest.a53c8262f0ecfa379b24e3e13ef4bfa9.js": "/covid-visuals/precache-manifest.a53c8262f0ecfa379b24e3e13ef4bfa9.js",
     "service-worker.js": "/covid-visuals/service-worker.js",
     "static/css/2.9792af2f.chunk.css.map": "/covid-visuals/static/css/2.9792af2f.chunk.css.map",
-    "static/css/main.7d09d9ec.chunk.css.map": "/covid-visuals/static/css/main.7d09d9ec.chunk.css.map",
-    "static/js/2.6cea05b5.chunk.js.LICENSE.txt": "/covid-visuals/static/js/2.6cea05b5.chunk.js.LICENSE.txt",
+    "static/css/main.b986b8c0.chunk.css.map": "/covid-visuals/static/css/main.b986b8c0.chunk.css.map",
+    "static/js/2.26e3e7db.chunk.js.LICENSE.txt": "/covid-visuals/static/js/2.26e3e7db.chunk.js.LICENSE.txt",
     "static/media/font-awesome.min.css": "/covid-visuals/static/media/fontawesome-webfont.fee66e71.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.17be3502.js",
     "static/css/2.9792af2f.chunk.css",
-    "static/js/2.6cea05b5.chunk.js",
-    "static/css/main.7d09d9ec.chunk.css",
-    "static/js/main.3d4379ed.chunk.js"
+    "static/js/2.26e3e7db.chunk.js",
+    "static/css/main.b986b8c0.chunk.css",
+    "static/js/main.2329ce6b.chunk.js"
   ]
 }
