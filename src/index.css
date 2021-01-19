@@ -26,10 +26,10 @@ code {
   background-image: linear-gradient(to right,#2980b9,#2c3e50);
 }
 .bg-danger-grad{
-  background-image: linear-gradient(to right,#8e0e00,#412b33);
+  background-image: linear-gradient(to left,#8e0e00,red);
 }
 .bg-success-grad{
-  background-image: linear-gradient(to right,#00bf8f,#001510);
+  background-image: linear-gradient(to left,rgb(7, 46, 7),green);
 }
 .bg-dark-grad{
   background-image: linear-gradient(to right,#232526,#001510);
@@ -53,7 +53,7 @@ code {
   height: 10px;
 }
 .slides::-webkit-scrollbar-thumb {
-  background: black;
+  background-image: linear-gradient(to right,#136a8a,#267871);;
   border-radius: 10px;
 }
 .slides::-webkit-scrollbar-track {

@@ -244,7 +244,7 @@ function changeState(){
                         <small>Select a radio button, Press Select State and then Compute Data</small>
                         <br/>
                     <Button className="mr-2" className="bg-grad text-white"
-                             onClick={()=>{changeState()}} >Select State</Button>
+                             onClick={()=>{changeState()}} >Select State</Button> &nbsp;
                     <Button className="bg-grad text-white"
                              onClick={()=>{formGraph()}} >Compute Data</Button>
                              <br/>
