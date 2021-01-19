@@ -19,7 +19,21 @@ code {
 .pop-hover:hover{
   font-size:1,2em;
 }
-
+.bg-grad{
+  background-image: linear-gradient(to right,#136a8a,#267871);
+}
+.bg-primary-grad{
+  background-image: linear-gradient(to right,#2980b9,#2c3e50);
+}
+.bg-danger-grad{
+  background-image: linear-gradient(to right,#8e0e00,#412b33);
+}
+.bg-success-grad{
+  background-image: linear-gradient(to right,#00bf8f,#001510);
+}
+.bg-dark-grad{
+  background-image: linear-gradient(to right,#232526,#001510);
+}
 
 .slider {
   width:100%;

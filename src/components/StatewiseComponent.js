@@ -231,11 +231,10 @@ function changeState(){
 
         return (
             <>
-            <Breadcrumb>
-        <BreadcrumbItem><Link to="/home" className="text-info">India</Link></BreadcrumbItem>
-        <BreadcrumbItem active>{`${SelectedState}`} <button className="btn btn-link text-info"
-                    onClick={toggle}><i className="fa fa-edit"></i></button></BreadcrumbItem>
-      </Breadcrumb>
+            <div className="bg-grad text-white">
+            <Link to="/home" className="text-white">India</Link> <i className="fa fa-chevron-right"></i> {`${SelectedState}`} <button className="btn btn-link text-white"
+                    onClick={toggle}><i className="fa fa-edit"></i></button>
+                </div>
             <div className="container">
                 <br/>
                 <Modal isOpen={modal}
@@ -244,9 +243,9 @@ function changeState(){
                         <ModalHeader>
                         <small>Select a radio button, Press Select State and then Compute Data</small>
                         <br/>
-                    <Button className="mr-2" color="light"
+                    <Button className="mr-2" className="bg-grad text-white"
                              onClick={()=>{changeState()}} >Select State</Button>
-                    <Button color="light"
+                    <Button className="bg-grad text-white"
                              onClick={()=>{formGraph()}} >Compute Data</Button>
                              <br/>
         <small>Selected: <span className="text-info font-weight-bolder">{`${SelectedState}`}</span></small>
@@ -272,28 +271,28 @@ function changeState(){
                 <p className="lead"><span className="font-weight-bolder">Latest Stats:</span> {`${SelectedState}`}</p>
                 <div className="row">
                     <div className="col-6 col-md-3 pt-4">
-                    <button className="container btn btn-primary" onClick={()=>scrollInto1()}>
+                    <button className="container btn bg-primary-grad text-white" onClick={()=>scrollInto1()}>
                         <p>{`${Total}`}<br/>
                         {`${DeltaIncrease[0]}`} <i className={`fa fa-lg ${fontawesomeFlag[0]}`}></i></p>
                         <small>Total</small>
                     </button>
                     </div>
                     <div className="col-6 col-md-3 pt-4">
-                    <button className="container btn btn-danger" onClick={()=>scrollInto2()}>
+                    <button className="container btn bg-danger-grad text-white" onClick={()=>scrollInto2()}>
                     <p>{`${Active}`}<br/>
                     {`${DeltaIncrease[1]}`} <i className={`fa fa-lg ${fontawesomeFlag[1]}`}></i></p>
                         <small>Active</small>
                     </button>
                     </div>
                     <div className="col-6 col-md-3 pt-4">
-                    <button className="container btn btn-success" onClick={()=>scrollInto3()}>
+                    <button className="container btn bg-success-grad text-white" onClick={()=>scrollInto3()}>
                     <p>{`${Recovered}`} <br/>
                     {`${DeltaIncrease[2]}`} <i className={`fa fa-lg ${fontawesomeFlag[2]}`}></i></p>
                         <small>Recovered</small>
                     </button>
                     </div>
                     <div className="col-6 col-md-3 pt-4">
-                    <button className="container btn btn-dark" onClick={()=>scrollInto4()}>
+                    <button className="container btn bg-dark-grad text-white" onClick={()=>scrollInto4()}>
                     <p>{`${Deceased}`}<br/>
                     {`${DeltaIncrease[3]}`} <i className={`fa fa-lg ${fontawesomeFlag[3]}`}></i></p>
                         <small>Deceased</small>

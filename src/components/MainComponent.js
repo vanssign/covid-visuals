@@ -68,10 +68,10 @@ class Main extends Component {
                 <Header/>
                 <Switch>
                     <Route exact path="/home" component={HomePage}/>
-                    <Route exact path="/state-wise" component={StatewisePage}/>
+                    <Route path="/home/state-wise" component={StatewisePage}/>
                     <Route exact path="/about" component={()=><About/>}/>
                     <Route path="/news/:newsId" component={NewsWithId} defaultParams={{ newsId: 0 }}/> 
-                    <Redirect to="/home"/>
+                    <Redirect to="/news/0"/>
                 </Switch>
                 
             </div>

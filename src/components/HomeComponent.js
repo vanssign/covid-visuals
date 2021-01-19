@@ -311,25 +311,17 @@ export default function Home(props) {
 
         return (
             <>
-                <Breadcrumb>
-                    <BreadcrumbItem active >India</BreadcrumbItem>
-                    <BreadcrumbItem>
-                        <Link to="/state-wise">
-                            <small className="text-info">State</small>
-                        </Link>
-                    </BreadcrumbItem>
-                </Breadcrumb>
+                <div className="bg-grad text-white">
+                    India <i className="fa fa-chevron-right"></i> <Link to="/home/state-wise" className="text-white"><small>Set State</small></Link>
+                </div>
                 <div className="container">
                     <br/>
                     <p className="lead">
                         <span className="font-weight-bolder">Latest Stats:
                         </span>India</p>
-                    <p>Looking for&nbsp;
-                        <Link className="text-info" to="/state-wise">State-Wise</Link>
-                        &nbsp;data?</p>
                     <div className="row">
                         <div className="col-6 col-md-3 pt-4">
-                            <button onClick={()=>scrollInto1()} className="container btn btn-primary">
+                            <button onClick={()=>scrollInto1()} className="container btn bg-primary-grad text-white">
                                 <p>{
                                     `${Total}`
                                 }<br/> {
@@ -347,7 +339,7 @@ export default function Home(props) {
                             </button>
                         </div>
                         <div className="col-6 col-md-3 pt-4">
-                            <button onClick={()=>scrollInto2()} className="container btn btn-danger">
+                            <button onClick={()=>scrollInto2()} className="container btn bg-danger-grad text-white">
                                 <p>{
                                     `${Active}`
                                 }<br/> {
@@ -365,7 +357,7 @@ export default function Home(props) {
                             </button>
                         </div>
                         <div className="col-6 col-md-3 pt-4 ">
-                            <button onClick={()=>scrollInto3()} className="container btn btn-success">
+                            <button onClick={()=>scrollInto3()} className="container btn bg-success-grad text-white">
                                 <p>{
                                     `${Recovered}`
                                 }
@@ -384,7 +376,7 @@ export default function Home(props) {
                             </button>
                         </div>
                         <div className="col-6 col-md-3 pt-4 ">
-                            <button onClick={()=>scrollInto4()} className="container btn btn-dark">
+                            <button onClick={()=>scrollInto4()} className="container btn bg-dark-grad text-white">
                                 <p>{
                                     `${Deceased}`
                                 }<br/> {
@@ -414,7 +406,7 @@ export default function Home(props) {
                     <div className="slider">
                         <div className="slides">
                             <div id="btnCompute">
-                        <Button color="light"
+                        <Button className="bg-grad text-white"
                         onClick={
                             () => {
                                 formGraph()

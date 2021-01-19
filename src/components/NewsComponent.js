@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {withRouter} from 'react-router-dom'
 // For RenderNewsInfo
 import {
@@ -8,8 +8,11 @@ import {
     CardTitle
 } from 'reactstrap';
 import {Link} from 'react-router-dom';
+import {useDrag} from 'react-use-gesture';
 
 function RenderNews(props) {
+    // const [newsIndex,updatenewsIndex]=useState("")
+    // const bind = useDrag(({ down, movement: [mx] }) => updatenewsIndex(newsIndex+1), { axis: 'x' })
   
     if (props.isLoading) {
         return (
@@ -36,23 +39,22 @@ function RenderNews(props) {
     } else if (props.news[0]) {
         console.log("props.news[0] is");
         console.log(props.news[0]);
+        
         var imageUrl='https://www.imf.org/-/media/Images/IMF/Topics/COVID19/lending-tracker-fullsize-istock-1213355637.ashx?h=1413&w=2122&la=en';
         if(props.news[0].media) imageUrl=`${props.news[0].media}`;
         const shareData = {
             title: `${props.news[0].title}`,
-            text: 'Check out covid stats and news at CoVisuals.',
-            url: `https://vanssign.github.io/covid-visuals/#/news/${props.indexCount}`
+            text: `${props.news[0].title}. Check out latest covid stats and news at CoVisuals.`,
+            url: "https://vanssign.github.io/covid-visuals/"
           }
-        function clickShare(){
-            navigator.share(shareData);
-        }
         return (
+            <>
         <div className="fs-sm-min container" >
             <br/>
         <div className="container">
          <div className="row border rounded-top">
             <div className="col">
-                <button to="/news/0" className="text-dark btn btn-link">
+                <button to="/news/0" className="text-dark btn btn-link" disabled>
                     <i className="fa fa-lg fa-globe"></i> <small className="text-muted">
                {props.news[0].country}
                </small>
@@ -117,6 +119,7 @@ function RenderNews(props) {
             </a>
             <br/>
             </div>
+            </>
         )
 
     }
