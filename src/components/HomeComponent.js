@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import {Line} from 'react-chartjs-2'
 import {Button} from 'reactstrap';
 import {Link} from 'react-router-dom';
+import Skeleton from 'react-loading-skeleton';
 
 export default function Home(props) {
     const [chartData, updateChart] = useState({
@@ -112,12 +113,79 @@ export default function Home(props) {
     if (props.isLoading || props.testsisLoading) {
 
         return (
-            <div className="container-fluid text-center">
+            <>
+                <div className="bg-grad text-white">
+                    <Skeleton/>
+                </div>
+                <div className="container">
+                    <br/>
+                    <p className="lead">
+                        <span className="font-weight-bolder">
+                        </span><Skeleton/></p>
+                    <div className="row">
+                        <div className="col-6 col-md-3 pt-4">
+                            <button className="container btn bg-primary-grad text-white">
+                                <p>
+                                    <Skeleton/>
+                                    <br/> 
+                                    <Skeleton/>
+                                </p>
+                                <small><Skeleton/></small>
+                            </button>
+                        </div>
+                        <div className="col-6 col-md-3 pt-4">
+                            <button className="container btn bg-danger-grad text-white">
+                            <p>
+                                    <Skeleton/>
+                                    <br/> 
+                                    <Skeleton/>
+                                </p>
+                                <small><Skeleton/></small>
+                            </button>
+                        </div>
+                        <div className="col-6 col-md-3 pt-4 ">
+                            <button  className="container btn bg-success-grad text-white">
+                            <p>
+                                    <Skeleton/>
+                                    <br/> 
+                                    <Skeleton/>
+                                </p>
+                                <small><Skeleton/></small>
+                            </button>
+                        </div>
+                        <div className="col-6 col-md-3 pt-4 ">
+                            <button className="container btn bg-dark-grad text-white">
+                            <p>
+                                    <Skeleton/>
+                                    <br/> 
+                                    <Skeleton/>
+                                </p>
+                                <small><Skeleton/></small>
+                                </button>
+                                </div>
+                    </div>
 
-                <img src="https://64.media.tumblr.com/30989303b244278454e07c53dd3a47ac/tumblr_nxa257Q6Zh1uzo3myo1_500.gif" className="img-fluid"/>
+                    <small className="text-muted">
+                        {<>
+                        `Last updated`
+                        <Skeleton/>
+                        </>
+                    }</small>
+                    <br/>
+                    <br/>
+                    <div className="slider">
+                        <div className="slides">
+                            <div id="btnCompute">
+                        <Button className="bg-grad text-white"
+                    ><Skeleton/></Button></div>
+                            <div id="slide-1">
+                            <Line data={chartData}/>
+                            </div>
 
-
-            </div>
+                        </div>
+                    </div>
+                </div>
+            </>
         )
     } else if (props.errMess) {
         return (

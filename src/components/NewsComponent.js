@@ -38,7 +38,7 @@ function RenderNews(props) {
         </div>
         </div>
         <div className="border-right border-left bg-light">
-        <Skeleton height={300}/>
+        <Skeleton height={250}/>
         </div>
         <Card className="rounded-0">
                 <CardBody>
@@ -128,18 +128,18 @@ function RenderNews(props) {
                 </div>   
         </div>
         </div>
-        <div className="border-right border-left bg-light">
+        <div className="border-right border-left bg-light" >
         <img className="img-fluid" src={imageUrl} alt="Respresentative"></img>
         </div>
         <Card className="rounded-0">
                 <CardBody>
                     <CardTitle className="font-weight-bolder">{
-                        props.news[0].title
+                        props.news[0].title || <Skeleton/>
                     }
                   </CardTitle>
                     <CardText>
                         {
-                            props.news[0].summary
+                            props.news[0].summary || <Skeleton/>
                         }
                        
                     </CardText>
@@ -166,7 +166,7 @@ function RenderNews(props) {
             <div className='bg-dark text-white rounded-bottom'>
                 Read entire article at&nbsp;
                 {
-                props.news[0].clean_url
+                props.news[0].clean_url || <Skeleton/>
             } </div>
             </a>
             <br/>
