@@ -8,7 +8,7 @@ import {
     CardTitle
 } from 'reactstrap';
 import {Link} from 'react-router-dom';
-import {useDrag} from 'react-use-gesture';
+import Skeleton from 'react-loading-skeleton';
 
 function RenderNews(props) {
     // const [newsIndex,updatenewsIndex]=useState("")
@@ -16,14 +16,65 @@ function RenderNews(props) {
   
     if (props.isLoading) {
         return (
-            <div className="container">
-                <div className="row">
-                    <div className="col-12">
-                        <img className="img-fluid" alt="LOADING...." src="https://fuselabcreative.com/wp-content/themes/fuselab/img/loading.gif"/>
-                    </div>
-                </div>
-
+            <>
+        <div className="fs-sm-min container" >
+            <br/>
+        <div className="container">
+         <div className="row border rounded-top">
+            <div className="col">
+                <button to="/news/0" className="text-dark btn btn-link" disabled>
+                    <i className="fa fa-lg fa-globe"></i> <small className="text-muted">
+               </small>
+                    <div className="make-it-small"><Skeleton/></div>
+                </button>
             </div>
+                <div className="col">
+                    <button className="btn btn-link text-dark">
+                    <i className="fa fa-lg fa-share-alt"></i>
+                    <div className="make-it-small"><Skeleton/>
+                    </div>
+                    </button>
+                </div>   
+        </div>
+        </div>
+        <div className="border-right border-left bg-light">
+        <Skeleton height={300}/>
+        </div>
+        <Card className="rounded-0">
+                <CardBody>
+                    <CardTitle className="font-weight-bolder">
+                        <Skeleton/>
+                  </CardTitle>
+                    <CardText>
+                       <Skeleton count="7"/>
+                       
+                    </CardText>
+                    <small className="text-muted"><Skeleton/></small>
+                    <br/>
+                    <small className="text-info">
+                        {/* <span className="d-md-none">Swipe up to</span> */}
+                        <Skeleton/>
+
+                        <br/>
+                            <i className="fa fa-chevron-circle-right fa-3x"></i>
+                        
+                    </small>
+                </CardBody>
+            </Card>
+            <div className='bg-dark text-white rounded-bottom'>
+                <Skeleton/>
+                </div>
+            <br/>
+            </div>
+            </>
+            // <div className="container">
+            //     <div className="row">
+            //         <div className="col-12">
+            //             <img className="img-fluid" alt="LOADING...." src="https://fuselabcreative.com/wp-content/themes/fuselab/img/loading.gif"/>
+            //         </div>
+            //     </div>
+
+            // </div>
         )
     } else if (props.errMess) {
         return (

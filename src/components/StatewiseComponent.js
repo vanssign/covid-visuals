@@ -5,8 +5,7 @@ import {
     Modal,
     ModalHeader,
     ModalBody,
-    ModalFooter,
-    Breadcrumb, BreadcrumbItem
+    ModalFooter
 } from 'reactstrap';
 import {Link} from 'react-router-dom';
 
