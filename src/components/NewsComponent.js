@@ -112,7 +112,7 @@ function RenderNews(props) {
                     <i className="fa fa-lg fa-globe"></i> <small className="text-muted">
                {props.news[0].country}
                </small>
-                    <div className="make-it-small">Change Country</div>
+                    <div className="make-it-small">Country</div>
                 </button>
             </div>
                 <div className="col">
@@ -133,13 +133,13 @@ function RenderNews(props) {
         <div className="border-right border-left bg-light" style={{height:250,overflowY:'hidden',overflowX:'hidden'}} >
         <img id="imageR" src={imageUrl} style={{objectFit:'fill',height:250}}></img>
         </div>
-        <div className=" border-right border-left rounded-0 p-4">
+        <div className="border-right border-left rounded-0 p-4">
                 <div>
-                    <div className="font-weight-bolder p-2">{
+                    <div className="text-left font-weight-bolder p-2">{
                         props.news[0].title || <Skeleton/>
                     }
                   </div>
-                    <div>
+                    <div className="text-left">
                         {
                             props.news[0].summary || <Skeleton/>
                         }
@@ -165,7 +165,7 @@ function RenderNews(props) {
                 </div>
             </div>
             <a href={`${props.news[0].link}`} target="_blank" rel="noopener noreferrer" className="text-reset">
-            <div className='bg-dark text-white rounded-bottom'>
+            <div className='bg-dark text-white px-4 text-left rounded-bottom'>
                 Read entire article at&nbsp;
                 {
                 props.news[0].clean_url || <Skeleton/>
