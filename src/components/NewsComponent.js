@@ -49,7 +49,7 @@ function RenderNews(props) {
                   </div>
                     <div>
                         
-                             <Skeleton/>
+                             <Skeleton count={7}/>
                         
                        
                     </div>
@@ -63,6 +63,7 @@ function RenderNews(props) {
                 </div>
             </div>
                 <div className='bg-dark text-white rounded-bottom'>
+                    <Skeleton width={100}/>
                 </div>
             <br/>
             </div>
