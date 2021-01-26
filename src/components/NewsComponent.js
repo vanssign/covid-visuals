@@ -9,6 +9,7 @@ import {
 } from 'reactstrap';
 import {Link} from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
+import { baseUrl } from '../shared/baseUrl';
 
 function RenderNews(props) {
     // const [newsIndex,updatenewsIndex]=useState("")
@@ -37,32 +38,31 @@ function RenderNews(props) {
                 </div>   
         </div>
         </div>
-        <div className="border-right border-left bg-light">
+        <div className="border-right border-left bg-light" style={{minHeight:250}} >
         <Skeleton height={250}/>
         </div>
-        <Card className="rounded-0">
-                <CardBody>
-                    <CardTitle className="font-weight-bolder">
-                        <Skeleton/>
-                  </CardTitle>
-                    <CardText>
-                       <Skeleton count="7"/>
+        <div className=" border-right border-left rounded-0 p-4">
+                <div>
+                    <div className="font-weight-bolder p-2">
+                         <Skeleton/>
+                    
+                  </div>
+                    <div>
+                        
+                             <Skeleton/>
+                        
                        
-                    </CardText>
+                    </div>
                     <small className="text-muted"><Skeleton/></small>
                     <br/>
                     <small className="text-info">
-                        {/* <span className="d-md-none">Swipe up to</span> */}
                         <Skeleton/>
-
                         <br/>
                             <i className="fa fa-chevron-circle-right fa-3x"></i>
-                        
                     </small>
-                </CardBody>
-            </Card>
-            <div className='bg-dark text-white rounded-bottom'>
-                <Skeleton/>
+                </div>
+            </div>
+                <div className='bg-dark text-white rounded-bottom'>
                 </div>
             <br/>
             </div>
@@ -91,7 +91,8 @@ function RenderNews(props) {
         console.log("props.news[0] is");
         console.log(props.news[0]);
         
-        var imageUrl='https://www.imf.org/-/media/Images/IMF/Topics/COVID19/lending-tracker-fullsize-istock-1213355637.ashx?h=1413&w=2122&la=en';
+        var defaultImageUrl='https://www.imf.org/-/media/Images/IMF/Topics/COVID19/lending-tracker-fullsize-istock-1213355637.ashx?h=1413&w=2122&la=en';
+        var imageUrl=defaultImageUrl;
         if(props.news[0].media) imageUrl=`${props.news[0].media}`;
         const shareData = {
             title: `${props.news[0].title}`,
@@ -128,21 +129,21 @@ function RenderNews(props) {
                 </div>   
         </div>
         </div>
-        <div className="border-right border-left bg-light" >
-        <img className="img-fluid" src={imageUrl} alt="Respresentative"></img>
+        <div className="border-right border-left bg-light" style={{height:250,overflowY:'hidden',overflowX:'hidden'}} >
+        <img id="imageR" src={imageUrl} style={{objectFit:'fill',height:250}}></img>
         </div>
-        <Card className="rounded-0">
-                <CardBody>
-                    <CardTitle className="font-weight-bolder">{
+        <div className=" border-right border-left rounded-0 p-4">
+                <div>
+                    <div className="font-weight-bolder p-2">{
                         props.news[0].title || <Skeleton/>
                     }
-                  </CardTitle>
-                    <CardText>
+                  </div>
+                    <div>
                         {
                             props.news[0].summary || <Skeleton/>
                         }
                        
-                    </CardText>
+                    </div>
                     <small className="text-muted">Dated: {props.news[0].published_date}</small>
                     <br/>
                     <small className="text-info">
@@ -160,8 +161,8 @@ function RenderNews(props) {
                             <i className="fa fa-chevron-circle-right fa-3x"></i>
                         </Link>
                     </small>
-                </CardBody>
-            </Card>
+                </div>
+            </div>
             <a href={`${props.news[0].link}`} target="_blank" rel="noopener noreferrer" className="text-reset">
             <div className='bg-dark text-white rounded-bottom'>
                 Read entire article at&nbsp;
@@ -177,7 +178,7 @@ function RenderNews(props) {
     }
     else{
         return(
-            <div className="container text-centre">
+            <div className="container text-center">
                 <br/>
                 Could not fetch anything from API
                 <br/>
