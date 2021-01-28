@@ -188,12 +188,7 @@ export default function Home(props) {
           </div>
 
           <small className="text-muted">
-            {
-              <>
-                `Last updated`
                 <Skeleton />
-              </>
-            }
           </small>
           <br />
           <br />

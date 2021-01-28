@@ -66,14 +66,6 @@ function RenderNews(props) {
           <br />
         </div>
       </>
-      // <div className="container">
-      //     <div className="row">
-      //         <div className="col-12">
-      //             <img className="img-fluid" alt="LOADING...." src="https://fuselabcreative.com/wp-content/themes/fuselab/img/loading.gif"/>
-      //         </div>
-      //     </div>
-
-      // </div>
     );
   } else if (props.errMess) {
     return (
@@ -135,8 +127,9 @@ function RenderNews(props) {
             </div>
           </div>
           <div
-            className="border-right border-left bg-light"
-            style={{ height: 250, overflowY: "hidden", overflowX: "hidden" }}
+          id="imageRContainer"
+            className="border-right border-left" 
+            style={{ height: 250, overflowY: "hidden", overflowX: "hidden",background:`linear-gradient(0deg, rgba(2,173,231,0.5), rgba(2,173,231,0.5)),url(${imageUrl})`,backgroundSize:'cover'}}
           >
             <img
               id="imageR"
@@ -144,6 +137,7 @@ function RenderNews(props) {
               style={{ objectFit: "fill", height: 250 }}
             onError={()=>{
                 document.getElementById("imageR").src=defaultImageUrl;
+                document.getElementById("imageRContainer").style.backgroundImage=`url(${defaultImageUrl})`;
             }}></img>
           </div>
           <div className="border-right border-left rounded-0 p-4">
@@ -159,7 +153,6 @@ function RenderNews(props) {
               </small>
               <br />
               <small className="text-info">
-                {/* <span className="d-md-none">Swipe up to</span> */}
                 explore next news in&nbsp;
                 {props.news[0].country}
                 <br />
@@ -167,8 +160,6 @@ function RenderNews(props) {
                   className="text-info"
                   to={`/news/${props.indexCount + 1}`}
                 >
-                  {/* <i className="fa fa-chevron-circle-up d-md-none fa-2x"></i> */}
-                  {/* <i className="fa fa-chevron-circle-right fa-3x d-none d-md-block"></i> */}
                   <i className="fa fa-chevron-circle-right fa-3x"></i>
                 </Link>
               </small>
@@ -181,7 +172,7 @@ function RenderNews(props) {
             className="text-reset"
           >
             <div className="bg-dark text-white px-4 text-left rounded-bottom">
-              Read entire article at&nbsp;
+              Read entire article at <br/>
               {props.news[0].clean_url || <Skeleton />}{" "}
             </div>
           </a>
