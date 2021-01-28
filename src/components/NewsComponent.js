@@ -129,7 +129,7 @@ function RenderNews(props) {
           <div
           id="imageRContainer"
             className="border-right border-left" 
-            style={{ height: 250, overflowY: "hidden", overflowX: "hidden",background:`linear-gradient(0deg, rgba(2,173,231,0.5), rgba(2,173,231,0.5)),url(${imageUrl})`,backgroundSize:'cover'}}
+            style={{ height: 250, overflowY: "hidden", overflowX: "hidden",background:`linear-gradient(0deg, rgba(255,255,255,0.6), rgba(255,255,255,0.6)),url(${imageUrl})`,backgroundSize:'cover'}}
           >
             <img
               id="imageR"
