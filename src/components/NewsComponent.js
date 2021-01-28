@@ -1,15 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { withRouter } from "react-router-dom";
-// For RenderNewsInfo
-import { Card, CardText, CardBody, CardTitle } from "reactstrap";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
-import { baseUrl } from "../shared/baseUrl";
 
 function RenderNews(props) {
-  // const [newsIndex,updatenewsIndex]=useState("")
-  // const bind = useDrag(({ down, movement: [mx] }) => updatenewsIndex(newsIndex+1), { axis: 'x' })
-
+  
   if (props.isLoading) {
     return (
       <>
@@ -147,7 +142,9 @@ function RenderNews(props) {
               id="imageR"
               src={imageUrl}
               style={{ objectFit: "fill", height: 250 }}
-            ></img>
+            onError={()=>{
+                document.getElementById("imageR").src=defaultImageUrl;
+            }}></img>
           </div>
           <div className="border-right border-left rounded-0 p-4">
             <div>
