@@ -3,6 +3,7 @@ import { Line } from "react-chartjs-2";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 
+
 export default function Home(props) {
   function formGraph() {
     updateChart({
@@ -76,7 +77,7 @@ export default function Home(props) {
     if (props.cases != null && props.tests != null) {
       formGraph();
     }
-  });
+  },[]);
 
   const [chartData, updateChart] = useState({
     labels: [],
@@ -306,24 +307,6 @@ export default function Home(props) {
     function scrollInto4() {
       document.getElementById("slide-4").scrollIntoView(true);
     }
-
-    const options={scales: {
-      xAxes: [{
-          gridLines: {
-              drawOnChartArea: false
-          },
-          ticks: {
-            autoSkip: true,
-            maxTicksLimit: 10
-        }
-      }],
-      yAxes: [{
-          gridLines: {
-              drawOnChartArea: false
-          }
-      }]
-  }}
-
     return (
       <>
         <div className="bg-grad text-white">
@@ -400,19 +383,19 @@ export default function Home(props) {
           <div className="slider">
             <div className="slides">
               <div id="slide-1">
-                <Line data={chartData} options={options} />
+                <Line data={chartData}  />
               </div>
               <div id="slide-2">
-                <Line data={chartDataActive} options={options}/>
+                <Line data={chartDataActive} />
               </div>
               <div id="slide-3">
-                <Line data={chartDataRecovered} options={options} />
+                <Line data={chartDataRecovered}  />
               </div>
               <div id="slide-4">
-                <Line data={chartDataDeceased} options={options}/>
+                <Line data={chartDataDeceased} />
               </div>
               <div id="slide-5">
-                <Line data={chartDataTests} options={options} />
+                <Line data={chartDataTests}  />
               </div>
             </div>
           </div>

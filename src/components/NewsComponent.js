@@ -79,7 +79,7 @@ function RenderNews(props) {
     console.log("props.news[0] is");
     console.log(props.news[0]);
 
-    var defaultImageUrl ="https://resize.indiatvnews.com/en/resize/newbucket/715_-/2020/03/coronavirus-1584623808.jpg";
+    var defaultImageUrl ="https://familydoctor.org/wp-content/uploads/2020/03/coronavirus-1200-1.jpg";
 
 
       // "https://www.imf.org/-/media/Images/IMF/Topics/COVID19/lending-tracker-fullsize-istock-1213355637.ashx?h=1413&w=2122&la=en";
@@ -131,7 +131,12 @@ function RenderNews(props) {
           <div
           id="imageRContainer"
             className="border-right border-left" 
-            style={{ height: 250, overflowY: "hidden", overflowX: "hidden",background:`linear-gradient(0deg, rgba(255,255,255,0.7), rgba(255,255,255,0.7)),url(${imageUrl})`,backgroundSize:'cover'}}
+            style={{ height: 250, overflowY: "hidden", overflowX: "hidden",
+            background:`linear-gradient(0deg, rgba(255,255,255,0.7), rgba(255,255,255,0.7)),url(${imageUrl})`,backgroundSize:'cover'}}
+            onLoad={()=>{
+              if(!document.getElementById("imageRContainer").style.background)
+              document.getElementById("imageRContainer").style.background=`linear-gradient(0deg, rgba(255,255,255,0.7), rgba(255,255,255,0.7)),url(${defaultImageUrl})`;
+          }}
           >
             <img
               id="imageR"
@@ -139,8 +144,7 @@ function RenderNews(props) {
               style={{ objectFit: "fill", height: 250 }}
             onError={()=>{
                 document.getElementById("imageR").src=defaultImageUrl;
-                document.getElementById("imageRContainer").style.backgroundImage=`url(${defaultImageUrl})`;
-            }}></img>
+                document.getElementById("imageRContainer").style.background=`linear-gradient(0deg, rgba(255,255,255,0.7), rgba(255,255,255,0.7)),url(${defaultImageUrl})`;            }}></img>
           </div>
           <div className="border-right border-left rounded-0 p-4">
             <div>

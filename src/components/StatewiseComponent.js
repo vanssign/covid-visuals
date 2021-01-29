@@ -439,16 +439,16 @@ export default function Statewise(props) {
           <div className="slider">
             <div className="slides">
               <div id="slide-1">
-                <Line data={chartData} options={options} />
+                <Line data={chartData}  />
               </div>
               <div id="slide-2">
-                <Line data={chartDataActive} options={options}/>
+                <Line data={chartDataActive} />
               </div>
               <div id="slide-3">
-                <Line data={chartDataRecovered} options={options}/>
+                <Line data={chartDataRecovered} />
               </div>
               <div id="slide-4">
-                <Line data={chartDataDeceased} options={options}/>
+                <Line data={chartDataDeceased} />
               </div>
             </div>
           </div>
