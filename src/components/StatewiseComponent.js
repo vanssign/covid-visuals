@@ -118,7 +118,7 @@ export default function Statewise(props) {
           </div>
 
           <small className="text-muted">
-                <Skeleton />
+            <Skeleton />
           </small>
           <br />
           <br />
@@ -233,7 +233,7 @@ export default function Statewise(props) {
             pointRadius: 0,
             borderWidth: 3,
             borderColor: "#2980b9",
-            backgroundColor:"transparent"
+            backgroundColor: "transparent",
           },
         ],
       });
@@ -246,7 +246,7 @@ export default function Statewise(props) {
             pointRadius: 0,
             borderWidth: 3,
             borderColor: "black",
-            backgroundColor:"transparent"
+            backgroundColor: "transparent",
           },
         ],
       });
@@ -259,7 +259,7 @@ export default function Statewise(props) {
             pointRadius: 0,
             borderWidth: 3,
             borderColor: "green",
-            backgroundColor:"transparent"
+            backgroundColor: "transparent",
           },
         ],
       });
@@ -272,7 +272,7 @@ export default function Statewise(props) {
             pointRadius: 0,
             borderWidth: 3,
             borderColor: "red",
-            backgroundColor:"transparent"
+            backgroundColor: "transparent",
           },
         ],
       });
@@ -291,23 +291,28 @@ export default function Statewise(props) {
     function scrollInto4() {
       document.getElementById("slide-4").scrollIntoView(true);
     }
-    const options={scales: {
-      xAxes: [{
-          gridLines: {
-              drawOnChartArea: false
+    const options = {
+      scales: {
+        xAxes: [
+          {
+            gridLines: {
+              drawOnChartArea: false,
+            },
+            ticks: {
+              autoSkip: true,
+              maxTicksLimit: 10,
+            },
           },
-          ticks: {
-            autoSkip: true,
-            maxTicksLimit: 10
-        }
-      }],
-      yAxes: [{
-          gridLines: {
-              drawOnChartArea: false
-          }
-      }]
-  }}
-
+        ],
+        yAxes: [
+          {
+            gridLines: {
+              drawOnChartArea: false,
+            },
+          },
+        ],
+      },
+    };
 
     return (
       <>
@@ -439,16 +444,72 @@ export default function Statewise(props) {
           <div className="slider">
             <div className="slides">
               <div id="slide-1">
-                <Line data={chartData}  />
+                <Line
+                  data={chartData}
+                  options={{
+                    scales: {
+                      xAxes: [
+                        {
+                          ticks: {
+                            autoSkip: true,
+                            maxTicksLimit: 10,
+                          },
+                        },
+                      ],
+                    },
+                  }}
+                />
               </div>
               <div id="slide-2">
-                <Line data={chartDataActive} />
+                <Line
+                  data={chartDataActive}
+                  options={{
+                    scales: {
+                      xAxes: [
+                        {
+                          ticks: {
+                            autoSkip: true,
+                            maxTicksLimit: 10,
+                          },
+                        },
+                      ],
+                    },
+                  }}
+                />
               </div>
               <div id="slide-3">
-                <Line data={chartDataRecovered} />
+                <Line
+                  data={chartDataRecovered}
+                  options={{
+                    scales: {
+                      xAxes: [
+                        {
+                          ticks: {
+                            autoSkip: true,
+                            maxTicksLimit: 10,
+                          },
+                        },
+                      ],
+                    },
+                  }}
+                />
               </div>
               <div id="slide-4">
-                <Line data={chartDataDeceased} />
+                <Line
+                  data={chartDataDeceased}
+                  options={{
+                    scales: {
+                      xAxes: [
+                        {
+                          ticks: {
+                            autoSkip: true,
+                            maxTicksLimit: 10,
+                          },
+                        },
+                      ],
+                    },
+                  }}
+                />
               </div>
             </div>
           </div>

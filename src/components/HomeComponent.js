@@ -3,7 +3,6 @@ import { Line } from "react-chartjs-2";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 
-
 export default function Home(props) {
   function formGraph() {
     updateChart({
@@ -15,7 +14,7 @@ export default function Home(props) {
           pointRadius: 0,
           borderWidth: 3,
           borderColor: "#2980b9",
-          backgroundColor:"transparent"
+          backgroundColor: "transparent",
         },
       ],
     });
@@ -28,7 +27,7 @@ export default function Home(props) {
           pointRadius: 0,
           borderWidth: 3,
           borderColor: "black",
-          backgroundColor:"transparent"
+          backgroundColor: "transparent",
         },
       ],
     });
@@ -41,7 +40,7 @@ export default function Home(props) {
           pointRadius: 0,
           borderWidth: 3,
           borderColor: "green",
-          backgroundColor:"transparent"
+          backgroundColor: "transparent",
         },
       ],
     });
@@ -54,7 +53,7 @@ export default function Home(props) {
           pointRadius: 0,
           borderWidth: 3,
           borderColor: "red",
-          backgroundColor:"transparent"
+          backgroundColor: "transparent",
         },
       ],
     });
@@ -67,7 +66,7 @@ export default function Home(props) {
           pointRadius: 0,
           borderWidth: 3,
           borderColor: "orange",
-          backgroundColor:"transparent"
+          backgroundColor: "transparent",
         },
       ],
     });
@@ -77,7 +76,7 @@ export default function Home(props) {
     if (props.cases != null && props.tests != null) {
       formGraph();
     }
-  },[]);
+  }, []);
 
   const [chartData, updateChart] = useState({
     labels: [],
@@ -190,7 +189,7 @@ export default function Home(props) {
           </div>
 
           <small className="text-muted">
-                <Skeleton />
+            <Skeleton />
           </small>
           <br />
           <br />
@@ -383,19 +382,89 @@ export default function Home(props) {
           <div className="slider">
             <div className="slides">
               <div id="slide-1">
-                <Line data={chartData}  />
+                <Line
+                  data={chartData}
+                  options={{
+                    scales: {
+                      xAxes: [
+                        {
+                          ticks: {
+                            autoSkip: true,
+                            maxTicksLimit: 10,
+                          },
+                        },
+                      ],
+                    },
+                  }}
+                />
               </div>
               <div id="slide-2">
-                <Line data={chartDataActive} />
+                <Line
+                  data={chartDataActive}
+                  options={{
+                    scales: {
+                      xAxes: [
+                        {
+                          ticks: {
+                            autoSkip: true,
+                            maxTicksLimit: 10,
+                          },
+                        },
+                      ],
+                    },
+                  }}
+                />
               </div>
               <div id="slide-3">
-                <Line data={chartDataRecovered}  />
+                <Line
+                  data={chartDataRecovered}
+                  options={{
+                    scales: {
+                      xAxes: [
+                        {
+                          ticks: {
+                            autoSkip: true,
+                            maxTicksLimit: 10,
+                          },
+                        },
+                      ],
+                    },
+                  }}
+                />
               </div>
               <div id="slide-4">
-                <Line data={chartDataDeceased} />
+                <Line
+                  data={chartDataDeceased}
+                  options={{
+                    scales: {
+                      xAxes: [
+                        {
+                          ticks: {
+                            autoSkip: true,
+                            maxTicksLimit: 10,
+                          },
+                        },
+                      ],
+                    },
+                  }}
+                />
               </div>
               <div id="slide-5">
-                <Line data={chartDataTests}  />
+                <Line
+                  data={chartDataTests}
+                  options={{
+                    scales: {
+                      xAxes: [
+                        {
+                          ticks: {
+                            autoSkip: true,
+                            maxTicksLimit: 10,
+                          },
+                        },
+                      ],
+                    },
+                  }}
+                />
               </div>
             </div>
           </div>
