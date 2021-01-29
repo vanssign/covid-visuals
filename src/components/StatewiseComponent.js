@@ -295,7 +295,11 @@ export default function Statewise(props) {
       xAxes: [{
           gridLines: {
               drawOnChartArea: false
-          }
+          },
+          ticks: {
+            autoSkip: true,
+            maxTicksLimit: 10
+        }
       }],
       yAxes: [{
           gridLines: {

@@ -76,7 +76,7 @@ export default function Home(props) {
     if (props.cases != null && props.tests != null) {
       formGraph();
     }
-  }, [props.cases,props.tests]);
+  });
 
   const [chartData, updateChart] = useState({
     labels: [],
@@ -311,7 +311,11 @@ export default function Home(props) {
       xAxes: [{
           gridLines: {
               drawOnChartArea: false
-          }
+          },
+          ticks: {
+            autoSkip: true,
+            maxTicksLimit: 10
+        }
       }],
       yAxes: [{
           gridLines: {
