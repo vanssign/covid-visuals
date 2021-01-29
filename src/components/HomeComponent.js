@@ -12,9 +12,9 @@ export default function Home(props) {
           label: "Total cases",
           data: totalcases,
           pointRadius: 0,
-          borderWidth: 2,
+          borderWidth: 3,
           borderColor: "#2980b9",
-          backgroundColor: "rgba(0,0,255,0.1)",
+          backgroundColor:"transparent"
         },
       ],
     });
@@ -25,8 +25,9 @@ export default function Home(props) {
           label: "Deceased",
           data: deceasedcases,
           pointRadius: 0,
-          borderWidth: 2,
+          borderWidth: 3,
           borderColor: "black",
+          backgroundColor:"transparent"
         },
       ],
     });
@@ -37,9 +38,9 @@ export default function Home(props) {
           label: "Recovered",
           data: recoveredcases,
           pointRadius: 0,
-          borderWidth: 2,
+          borderWidth: 3,
           borderColor: "green",
-          backgroundColor: "rgba(0,255,0,0.1)",
+          backgroundColor:"transparent"
         },
       ],
     });
@@ -50,9 +51,9 @@ export default function Home(props) {
           label: "Active Cases",
           data: activecases,
           pointRadius: 0,
-          borderWidth: 2,
+          borderWidth: 3,
           borderColor: "red",
-          backgroundColor: "rgba(255,0,0,0.1)",
+          backgroundColor:"transparent"
         },
       ],
     });
@@ -63,9 +64,9 @@ export default function Home(props) {
           label: "Samples Tested",
           data: nooftests,
           pointRadius: 0,
-          borderWidth: 2,
+          borderWidth: 3,
           borderColor: "orange",
-          backgroundColor: "rgba(253,227,167,0.5)",
+          backgroundColor:"transparent"
         },
       ],
     });
@@ -123,6 +124,7 @@ export default function Home(props) {
       },
     ],
   });
+
   if (props.isLoading || props.testsisLoading) {
     return (
       <>
@@ -137,7 +139,7 @@ export default function Home(props) {
           </p>
           <div className="row">
             <div className="col-6 col-md-3 pt-4">
-              <button className="container btn bg-primary-grad text-white">
+              <div className="container btn bg-primary-grad text-white">
                 <p>
                   <Skeleton />
                   <br />
@@ -146,10 +148,10 @@ export default function Home(props) {
                 <small>
                   <Skeleton />
                 </small>
-              </button>
+              </div>
             </div>
             <div className="col-6 col-md-3 pt-4">
-              <button className="container btn bg-danger-grad text-white">
+              <div className="container btn bg-danger-grad text-white">
                 <p>
                   <Skeleton />
                   <br />
@@ -158,10 +160,10 @@ export default function Home(props) {
                 <small>
                   <Skeleton />
                 </small>
-              </button>
+              </div>
             </div>
             <div className="col-6 col-md-3 pt-4 ">
-              <button className="container btn bg-success-grad text-white">
+              <div className="container btn bg-success-grad text-white">
                 <p>
                   <Skeleton />
                   <br />
@@ -170,10 +172,10 @@ export default function Home(props) {
                 <small>
                   <Skeleton />
                 </small>
-              </button>
+              </div>
             </div>
             <div className="col-6 col-md-3 pt-4 ">
-              <button className="container btn bg-dark-grad text-white">
+              <div className="container btn bg-dark-grad text-white">
                 <p>
                   <Skeleton />
                   <br />
@@ -182,7 +184,7 @@ export default function Home(props) {
                 <small>
                   <Skeleton />
                 </small>
-              </button>
+              </div>
             </div>
           </div>
 
@@ -218,6 +220,7 @@ export default function Home(props) {
       </div>
     );
   } else if (props.cases != null && props.tests != null) {
+    console.log(chartData);
     var labelArray = [];
     var testlabelArray = [];
     var str = [];
@@ -304,6 +307,19 @@ export default function Home(props) {
       document.getElementById("slide-4").scrollIntoView(true);
     }
 
+    const options={scales: {
+      xAxes: [{
+          gridLines: {
+              drawOnChartArea: false
+          }
+      }],
+      yAxes: [{
+          gridLines: {
+              drawOnChartArea: false
+          }
+      }]
+  }}
+
     return (
       <>
         <div className="bg-grad text-white">
@@ -319,7 +335,7 @@ export default function Home(props) {
           </p>
           <div className="row">
             <div className="col-6 col-md-3 pt-4">
-              <button
+              <div
                 onClick={() => scrollInto1()}
                 className="container btn bg-primary-grad text-white"
               >
@@ -329,10 +345,10 @@ export default function Home(props) {
                   <i className={`fa fa-lg ${fontawesomeFlag[0]}`}></i>
                 </p>
                 <small>Total</small>
-              </button>
+              </div>
             </div>
             <div className="col-6 col-md-3 pt-4">
-              <button
+              <div
                 onClick={() => scrollInto2()}
                 className="container btn bg-danger-grad text-white"
               >
@@ -342,10 +358,10 @@ export default function Home(props) {
                   <i className={`fa fa-lg ${fontawesomeFlag[1]}`}></i>
                 </p>
                 <small>Active</small>
-              </button>
+              </div>
             </div>
             <div className="col-6 col-md-3 pt-4 ">
-              <button
+              <div
                 onClick={() => scrollInto3()}
                 className="container btn bg-success-grad text-white"
               >
@@ -355,10 +371,10 @@ export default function Home(props) {
                   <i className={`fa fa-lg ${fontawesomeFlag[2]}`}></i>
                 </p>
                 <small>Recovered</small>
-              </button>
+              </div>
             </div>
             <div className="col-6 col-md-3 pt-4 ">
-              <button
+              <div
                 onClick={() => scrollInto4()}
                 className="container btn bg-dark-grad text-white"
               >
@@ -368,7 +384,7 @@ export default function Home(props) {
                   <i className={`fa fa-lg ${fontawesomeFlag[3]}`}></i>
                 </p>
                 <small>Deceased</small>
-              </button>
+              </div>
             </div>
           </div>
 
@@ -380,19 +396,19 @@ export default function Home(props) {
           <div className="slider">
             <div className="slides">
               <div id="slide-1">
-                <Line data={chartData} />
+                <Line data={chartData} options={options} />
               </div>
               <div id="slide-2">
-                <Line data={chartDataActive} />
+                <Line data={chartDataActive} options={options}/>
               </div>
               <div id="slide-3">
-                <Line data={chartDataRecovered} />
+                <Line data={chartDataRecovered} options={options} />
               </div>
               <div id="slide-4">
-                <Line data={chartDataDeceased} />
+                <Line data={chartDataDeceased} options={options}/>
               </div>
               <div id="slide-5">
-                <Line data={chartDataTests} />
+                <Line data={chartDataTests} options={options} />
               </div>
             </div>
           </div>

@@ -79,8 +79,10 @@ function RenderNews(props) {
     console.log("props.news[0] is");
     console.log(props.news[0]);
 
-    var defaultImageUrl =
-      "https://www.imf.org/-/media/Images/IMF/Topics/COVID19/lending-tracker-fullsize-istock-1213355637.ashx?h=1413&w=2122&la=en";
+    var defaultImageUrl ="https://resize.indiatvnews.com/en/resize/newbucket/715_-/2020/03/coronavirus-1584623808.jpg";
+
+
+      // "https://www.imf.org/-/media/Images/IMF/Topics/COVID19/lending-tracker-fullsize-istock-1213355637.ashx?h=1413&w=2122&la=en";
     var imageUrl = defaultImageUrl;
     if (props.news[0].media) imageUrl = `${props.news[0].media}`;
     const shareData = {
@@ -129,7 +131,7 @@ function RenderNews(props) {
           <div
           id="imageRContainer"
             className="border-right border-left" 
-            style={{ height: 250, overflowY: "hidden", overflowX: "hidden",background:`linear-gradient(0deg, rgba(255,255,255,0.6), rgba(255,255,255,0.6)),url(${imageUrl})`,backgroundSize:'cover'}}
+            style={{ height: 250, overflowY: "hidden", overflowX: "hidden",background:`linear-gradient(0deg, rgba(255,255,255,0.7), rgba(255,255,255,0.7)),url(${imageUrl})`,backgroundSize:'cover'}}
           >
             <img
               id="imageR"
