@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
-import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 
@@ -76,7 +75,7 @@ export default function Home(props) {
     if (props.cases != null && props.tests != null) {
       formGraph();
     }
-  }, []);
+  }, [props.cases,props.tests]);
 
   const [chartData, updateChart] = useState({
     labels: [],

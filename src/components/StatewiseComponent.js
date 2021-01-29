@@ -17,7 +17,7 @@ export default function Statewise(props) {
   var [Active, UpdateActive] = useState(" ");
 
   const [chartData, updateChart] = useState({
-    bels: [],
+    labels: [],
     datasets: [
       {
         label: "deceased",
@@ -26,7 +26,7 @@ export default function Statewise(props) {
     ],
   });
   const [chartDataDeceased, updateChartDeceased] = useState({
-    bels: [],
+    labels: [],
     datasets: [
       {
         label: "deceased",
@@ -35,7 +35,7 @@ export default function Statewise(props) {
     ],
   });
   const [chartDataRecovered, updateChartRecovered] = useState({
-    bels: [],
+    labels: [],
     datasets: [
       {
         label: "deceased",
@@ -44,7 +44,7 @@ export default function Statewise(props) {
     ],
   });
   const [chartDataActive, updateChartActive] = useState({
-    bels: [],
+    labels: [],
     datasets: [
       {
         label: "deceased",
@@ -231,7 +231,7 @@ export default function Statewise(props) {
       }
 
       updateChart({
-        labels: labelArray,
+        lalabels: labelArray,
         datasets: [
           {
             label: "Total cases",
@@ -244,7 +244,7 @@ export default function Statewise(props) {
         ],
       });
       updateChartDeceased({
-        labels: labelArray,
+        lalabels: labelArray,
         datasets: [
           {
             label: "Deceased",
@@ -256,7 +256,7 @@ export default function Statewise(props) {
         ],
       });
       updateChartRecovered({
-        labels: labelArray,
+        lalabels: labelArray,
         datasets: [
           {
             label: "Recovered",
@@ -269,7 +269,7 @@ export default function Statewise(props) {
         ],
       });
       updateChartActive({
-        labels: labelArray,
+        lalabels: labelArray,
         datasets: [
           {
             label: "Active Cases",
