@@ -16,7 +16,7 @@ const Header = (props) => {
 
   return (
     <div>
-      <Navbar dark className="bg-grad" expand="xs">
+      <Navbar dark expand="xs">
         <NavbarBrand to="/">CoVisuals</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>

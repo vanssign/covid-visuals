@@ -257,6 +257,51 @@ export default function Home(props) {
     const Recovered = recoveredcases[lastindex];
     const Deceased = deceasedcases[lastindex];
     const DeltaIncrease = [];
+    const chartOptions = {
+      legend: {
+        labels: {
+            fontColor: "#ffffff",
+        }
+    },
+      scales: {
+        xAxes: [
+          {
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: "Dates",
+              fontColor: "#ffffff",
+            },
+            gridLines: {
+              zeroLineColor: '#ffffff'
+          },
+            ticks: {
+              fontColor: "#ffffff",
+              autoSkip: true,
+              maxTicksLimit: 10,
+            },
+          },
+        ],
+        yAxes: [
+          {
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: "",
+              fontColor: "#ffffff",
+              fontSize: 10,
+            },
+            gridLines: {
+              zeroLineColor: '#ffffff'
+          },
+            ticks: {
+              fontColor: "#ffffff",
+            },
+          },
+        ],
+      },
+    };
+
     DeltaIncrease[0] = Math.abs(
       totalcases[lastindex] - totalcases[lastindex - 1]
     );
@@ -308,7 +353,7 @@ export default function Home(props) {
     }
     return (
       <>
-        <div className="bg-grad text-white">
+        <div className="text-white">
           India <i className="fa fa-chevron-right"></i>{" "}
           <Link to="/home/state-wise" className="text-white">
             <small>Set State</small>
@@ -382,88 +427,30 @@ export default function Home(props) {
           <div className="slider">
             <div className="slides">
               <div id="slide-1">
-                <Line
-                  data={chartData}
-                  options={{
-                    scales: {
-                      xAxes: [
-                        {
-                          ticks: {
-                            autoSkip: true,
-                            maxTicksLimit: 10,
-                          },
-                        },
-                      ],
-                    },
-                  }}
-                />
+                <Line data={chartData} options={chartOptions} />
               </div>
               <div id="slide-2">
                 <Line
                   data={chartDataActive}
-                  options={{
-                    scales: {
-                      xAxes: [
-                        {
-                          ticks: {
-                            autoSkip: true,
-                            maxTicksLimit: 10,
-                          },
-                        },
-                      ],
-                    },
-                  }}
+                  options={chartOptions}
                 />
               </div>
               <div id="slide-3">
                 <Line
                   data={chartDataRecovered}
-                  options={{
-                    scales: {
-                      xAxes: [
-                        {
-                          ticks: {
-                            autoSkip: true,
-                            maxTicksLimit: 10,
-                          },
-                        },
-                      ],
-                    },
-                  }}
+                  options={chartOptions}
                 />
               </div>
               <div id="slide-4">
                 <Line
                   data={chartDataDeceased}
-                  options={{
-                    scales: {
-                      xAxes: [
-                        {
-                          ticks: {
-                            autoSkip: true,
-                            maxTicksLimit: 10,
-                          },
-                        },
-                      ],
-                    },
-                  }}
+                  options={chartOptions}
                 />
               </div>
               <div id="slide-5">
                 <Line
                   data={chartDataTests}
-                  options={{
-                    scales: {
-                      xAxes: [
-                        {
-                          ticks: {
-                            autoSkip: true,
-                            maxTicksLimit: 10,
-                          },
-                        },
-                      ],
-                    },
-                  }}
+                  options={chartOptions}
                 />
               </div>
             </div>

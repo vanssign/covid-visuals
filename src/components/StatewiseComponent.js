@@ -155,6 +155,52 @@ export default function Statewise(props) {
     var recoveredcases = [];
     var activecases = [];
 
+
+    const chartOptions = {
+      legend: {
+        labels: {
+            fontColor: "#ffffff",
+        }
+    },
+      scales: {
+        xAxes: [
+          {
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: "Dates",
+              fontColor: "#ffffff",
+            },
+            gridLines: {
+              zeroLineColor: '#ffffff'
+          },
+            ticks: {
+              fontColor: "#ffffff",
+              autoSkip: true,
+              maxTicksLimit: 10,
+            },
+          },
+        ],
+        yAxes: [
+          {
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: "",
+              fontColor: "#ffffff",
+              fontSize: 10,
+            },
+            gridLines: {
+              zeroLineColor: '#ffffff'
+          },
+            ticks: {
+              fontColor: "#ffffff",
+            },
+          },
+        ],
+      },
+    };
+
     var lastindex = props.cases.data.length - 1;
 
     var radiobtns = document.getElementsByName("indianstate");
@@ -316,7 +362,7 @@ export default function Statewise(props) {
 
     return (
       <>
-        <div className="bg-grad text-white">
+        <div className="text-white">
           <Link to="/home" className="text-white">
             India
           </Link>{" "}
@@ -327,7 +373,7 @@ export default function Statewise(props) {
         </div>
         <div className="container">
           <br />
-          <Modal isOpen={modal} toggle={toggle} className={className}>
+          <Modal isOpen={modal} toggle={toggle} className={className} style={{color:'black'}}>
             <ModalHeader>
               <small>
                 Select a radio button, Press Select State and then Compute Data
@@ -446,69 +492,25 @@ export default function Statewise(props) {
               <div id="slide-1">
                 <Line
                   data={chartData}
-                  options={{
-                    scales: {
-                      xAxes: [
-                        {
-                          ticks: {
-                            autoSkip: true,
-                            maxTicksLimit: 10,
-                          },
-                        },
-                      ],
-                    },
-                  }}
+                  options={chartOptions}
                 />
               </div>
               <div id="slide-2">
                 <Line
                   data={chartDataActive}
-                  options={{
-                    scales: {
-                      xAxes: [
-                        {
-                          ticks: {
-                            autoSkip: true,
-                            maxTicksLimit: 10,
-                          },
-                        },
-                      ],
-                    },
-                  }}
+                  options={chartOptions}
                 />
               </div>
               <div id="slide-3">
                 <Line
                   data={chartDataRecovered}
-                  options={{
-                    scales: {
-                      xAxes: [
-                        {
-                          ticks: {
-                            autoSkip: true,
-                            maxTicksLimit: 10,
-                          },
-                        },
-                      ],
-                    },
-                  }}
+                  options={chartOptions}
                 />
               </div>
               <div id="slide-4">
                 <Line
                   data={chartDataDeceased}
-                  options={{
-                    scales: {
-                      xAxes: [
-                        {
-                          ticks: {
-                            autoSkip: true,
-                            maxTicksLimit: 10,
-                          },
-                        },
-                      ],
-                    },
-                  }}
+                  options={chartOptions}
                 />
               </div>
             </div>
