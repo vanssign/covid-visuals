@@ -9,13 +9,11 @@ body {
   background: #4b6cb7; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to left,
-    #182848,
-    #4b6cb7
+    #16222a, #3a6073
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to left,
-    #182848,
-    #4b6cb7
+    #16222a, #3a6073
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 color:white;
 }
@@ -37,10 +35,9 @@ code {
   background-image: linear-gradient(to right, #136a8a, #267871);
 }
 .bg-grad-body{
-  background: linear-gradient(
+ background: linear-gradient(
     to left,
-    #182848,
-    #4b6cb7
+    #16222a, #3a6073
   ); 
 }
 .bg-primary-grad {

@@ -139,7 +139,7 @@ export default function Home(props) {
           </p>
           <div className="row">
             <div className="col-6 col-md-3 pt-4">
-              <div className="container btn bg-primary-grad text-white">
+              <div className="container btn bg-dark text-white">
                 <p>
                   <Skeleton />
                   <br />
@@ -151,7 +151,7 @@ export default function Home(props) {
               </div>
             </div>
             <div className="col-6 col-md-3 pt-4">
-              <div className="container btn bg-danger-grad text-white">
+              <div className="container btn bg-dark text-white">
                 <p>
                   <Skeleton />
                   <br />
@@ -163,7 +163,7 @@ export default function Home(props) {
               </div>
             </div>
             <div className="col-6 col-md-3 pt-4 ">
-              <div className="container btn bg-success-grad text-white">
+              <div className="container btn bg-dark text-white">
                 <p>
                   <Skeleton />
                   <br />
@@ -175,7 +175,7 @@ export default function Home(props) {
               </div>
             </div>
             <div className="col-6 col-md-3 pt-4 ">
-              <div className="container btn bg-dark-grad text-white">
+              <div className="container btn bg-dark text-white">
                 <p>
                   <Skeleton />
                   <br />
@@ -362,13 +362,13 @@ export default function Home(props) {
         <div className="container">
           <br />
           <p className="lead">
-            <span className="font-weight-bolder">Latest Stats:</span>India
+            <span className="font-weight-bolder">Latest Stats: </span>India
           </p>
           <div className="row">
             <div className="col-6 col-md-3 pt-4">
               <div
                 onClick={() => scrollInto1()}
-                className="container btn bg-primary-grad text-white"
+                className="container btn bg-dark text-white"
               >
                 <p>
                   {`${Total}`}
@@ -381,7 +381,7 @@ export default function Home(props) {
             <div className="col-6 col-md-3 pt-4">
               <div
                 onClick={() => scrollInto2()}
-                className="container btn bg-danger-grad text-white"
+                className="container btn bg-dark text-white"
               >
                 <p>
                   {`${Active}`}
@@ -394,7 +394,7 @@ export default function Home(props) {
             <div className="col-6 col-md-3 pt-4 ">
               <div
                 onClick={() => scrollInto3()}
-                className="container btn bg-success-grad text-white"
+                className="container btn bg-dark text-white"
               >
                 <p>
                   {`${Recovered}`}
@@ -407,7 +407,7 @@ export default function Home(props) {
             <div className="col-6 col-md-3 pt-4 ">
               <div
                 onClick={() => scrollInto4()}
-                className="container btn bg-dark-grad text-white"
+                className="container btn bg-dark text-white"
               >
                 <p>
                   {`${Deceased}`}

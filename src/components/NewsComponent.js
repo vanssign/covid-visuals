@@ -11,22 +11,21 @@ function RenderNews(props) {
         <div className="fs-sm-min container">
           <br />
           <div className="container">
-            <div className="row border rounded-top">
+            <div className="row bg-dark border rounded-top">
               <div className="col">
                 <button
                   to="/news/0"
-                  className="btn btn-link"
-                  disabled
+                  className="btn"
                 >
                   <i className="fa fa-lg fa-globe"></i>{" "}
-                  <small className="text-muted"></small>
+                  <small>XX</small>
                   <div className="make-it-small">
                     <Skeleton />
                   </div>
                 </button>
               </div>
               <div className="col">
-                <button className="btn btn-link ">
+                <button className="btn">
                   <i className="fa fa-lg fa-share-alt"></i>
                   <div className="make-it-small">
                     <Skeleton />
@@ -36,7 +35,7 @@ function RenderNews(props) {
             </div>
           </div>
           <div
-            className="border-right border-left bg-light"
+            className="border-right border"
             style={{ minHeight: 250 }}
           >
             <Skeleton height={250} />
@@ -96,14 +95,14 @@ function RenderNews(props) {
         <div className="fs-sm-min container">
           <br />
           <div className="container">
-            <div className="row bg-grad border rounded-top">
+            <div className="row bg-dark border rounded-top">
               <div className="col">
                 <button
                   to="/news/0"
                   className=" btn text-white"
                 >
                   <i className="fa fa-lg fa-globe"></i>{" "}
-                  <small className="text-muted">{props.news[0].country}</small>
+                  <small>{props.news[0].country}</small>
                   <div className="make-it-small">Country</div>
                 </button>
               </div>
@@ -129,7 +128,7 @@ function RenderNews(props) {
           </div>
           <div
           id="imageRContainer"
-            className="border-right border-left" 
+            className="border" 
             style={{ height: 250, overflowY: "hidden", overflowX: "hidden",
             background:`linear-gradient(0deg, rgba(255,255,255,0.7), rgba(255,255,255,0.7)),url(${imageUrl})`,backgroundSize:'cover'}}
             onLoad={()=>{
@@ -176,7 +175,7 @@ function RenderNews(props) {
             rel="noopener noreferrer"
             className="text-reset"
           >
-            <div className="text-reset bg-grad border px-4 text-left rounded-bottom">
+            <div className="text-reset bg-dark border px-4 text-left rounded-bottom">
               Read entire article at <br/>
               {props.news[0].clean_url || <Skeleton />}{" "}
             </div>

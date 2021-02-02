@@ -68,7 +68,7 @@ export default function Statewise(props) {
           </p>
           <div className="row">
             <div className="col-6 col-md-3 pt-4">
-              <div className="container btn bg-primary-grad text-white">
+              <div className="container btn bg-dark text-white">
                 <p>
                   <Skeleton />
                   <br />
@@ -80,7 +80,7 @@ export default function Statewise(props) {
               </div>
             </div>
             <div className="col-6 col-md-3 pt-4">
-              <div className="container btn bg-danger-grad text-white">
+              <div className="container btn bg-dark text-white">
                 <p>
                   <Skeleton />
                   <br />
@@ -92,7 +92,7 @@ export default function Statewise(props) {
               </div>
             </div>
             <div className="col-6 col-md-3 pt-4 ">
-              <div className="container btn bg-success-grad text-white">
+              <div className="container btn bg-dark text-white">
                 <p>
                   <Skeleton />
                   <br />
@@ -104,7 +104,7 @@ export default function Statewise(props) {
               </div>
             </div>
             <div className="col-6 col-md-3 pt-4 ">
-              <div className="container btn bg-dark-grad text-white">
+              <div className="container btn bg-dark text-white">
                 <p>
                   <Skeleton />
                   <br />
@@ -429,7 +429,7 @@ export default function Statewise(props) {
           <div className="row">
             <div className="col-6 col-md-3 pt-4">
               <div
-                className="container btn bg-primary-grad text-white"
+                className="container btn bg-dark text-white"
                 onClick={() => scrollInto1()}
               >
                 <p>
@@ -443,7 +443,7 @@ export default function Statewise(props) {
             </div>
             <div className="col-6 col-md-3 pt-4">
               <div
-                className="container btn bg-danger-grad text-white"
+                className="container btn bg-dark text-white"
                 onClick={() => scrollInto2()}
               >
                 <p>
@@ -457,7 +457,7 @@ export default function Statewise(props) {
             </div>
             <div className="col-6 col-md-3 pt-4">
               <div
-                className="container btn bg-success-grad text-white"
+                className="container btn bg-dark text-white"
                 onClick={() => scrollInto3()}
               >
                 <p>
@@ -470,7 +470,7 @@ export default function Statewise(props) {
             </div>
             <div className="col-6 col-md-3 pt-4">
               <div
-                className="container btn bg-dark-grad text-white"
+                className="container btn bg-dark text-white"
                 onClick={() => scrollInto4()}
               >
                 <p>
