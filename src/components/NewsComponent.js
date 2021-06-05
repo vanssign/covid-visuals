@@ -138,6 +138,7 @@ function RenderNews(props) {
           >
             <img
               id="imageR"
+              alt="representative news"
               src={imageUrl}
               style={{ objectFit: "fill", height: 250 }}
             onError={()=>{

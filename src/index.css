@@ -6,14 +6,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  background: #4b6cb7; /* fallback for old browsers */
+  background: #16222a; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to left,
-    #16222a, #3a6073
+    #16222a, #16222a
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to left,
-    #16222a, #3a6073
+    #16222a, #16222a
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 color:white;
 }
@@ -37,20 +37,8 @@ code {
 .bg-grad-body{
  background: linear-gradient(
     to left,
-    #16222a, #3a6073
+    #16222a, #16222a
   ); 
-}
-.bg-primary-grad {
-  background-image: linear-gradient(to right, #2980b9, #2c3e50);
-}
-.bg-danger-grad {
-  background-image: linear-gradient(to left, #8e0e00, red);
-}
-.bg-success-grad {
-  background-image: linear-gradient(to left, rgb(7, 46, 7), green);
-}
-.bg-dark-grad {
-  background-image: linear-gradient(to right, #232526, #001510);
 }
 
 .slider {
@@ -92,4 +80,15 @@ code {
   justify-content: center;
   align-items: center;
   font-size: 100px;
+}
+
+@media only screen and (max-width: 720px){
+.small-footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+}
 }

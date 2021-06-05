@@ -1,5 +1,5 @@
 import * as ActionTypes from './ActionTypes';
-import {baseUrl,newsAPIbaseUrl} from '../shared/baseUrl';
+import {baseUrl} from '../shared/baseUrl';
 import axios from 'axios'
 
 export const casesLoading=()=>({

@@ -76,7 +76,7 @@ export default function Home(props) {
     if (props.cases != null && props.tests != null) {
       formGraph();
     }
-  }, []);
+  },[props.cases,props.tests]);
 
   const [chartData, updateChart] = useState({
     labels: [],
@@ -232,7 +232,7 @@ export default function Home(props) {
     }
     for (let i = 0; i < props.tests.data.length; i++) {
       teststr[i] = `${props.tests.data[i].day}`;
-      var res = teststr[i].split("-");
+      res = teststr[i].split("-");
       testlabelArray[i] = res[2] + "/" + res[1];
     }
 

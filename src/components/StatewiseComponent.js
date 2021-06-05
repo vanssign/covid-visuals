@@ -381,7 +381,7 @@ export default function Statewise(props) {
               <br />
               <Button
                 className="mr-2"
-                className="bg-grad text-white"
+                className="bg-grad-body text-white"
                 onClick={() => {
                   changeState();
                 }}
@@ -390,7 +390,7 @@ export default function Statewise(props) {
               </Button>{" "}
               &nbsp;
               <Button
-                className="bg-grad text-white"
+                className="bg-grad-body text-white"
                 onClick={() => {
                   formGraph();
                 }}

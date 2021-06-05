@@ -15,8 +15,8 @@ const Header = (props) => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div>
-      <Navbar dark expand="xs">
+    <div style={{opacity:1}} className="small-footer">
+      <Navbar color="dark" dark expand="xs">
         <NavbarBrand to="/">CoVisuals</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
