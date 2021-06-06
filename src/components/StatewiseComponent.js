@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { Modal, ModalBody } from "reactstrap";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 
 export default function Statewise(props) {
   const { className } = props;
   const [modal, setModal] = useState(true);
-  const [SelectedState, UpdateState] = useState("None");
+  const [SelectedState, UpdateState] = useState("Delhi");
   var [DeltaIncrease, UpdateDeltaIncrease] = useState([]);
   var [IncreaseFlag, UpdateIncreaseFlag] = useState([]);
   var [fontawesomeFlag, UpdatefontawesomeFlag] = useState([]);
@@ -52,7 +52,123 @@ export default function Statewise(props) {
       },
     ],
   });
+  function formGraph() {
+    for (let i = 0; i < props.cases.data.length; i++) {
+      x = -1;
+      for (let j = 0; j < props.cases.data[i].regional.length; j++) {
+        if (props.cases.data[i].regional[j].loc === SelectedState) {
+          x = j;
+          break;
+        }
+      }
+      if (x === -1) {
+        totalcases[i] = 0;
+        deceasedcases[i] = 0;
+        recoveredcases[i] = 0;
+        activecases[i] = 0;
+      } else {
+        totalcases[i] = props.cases.data[i].regional[x].totalConfirmed;
+        deceasedcases[i] = props.cases.data[i].regional[x].deaths;
+        recoveredcases[i] = props.cases.data[i].regional[x].discharged;
+        activecases[i] = totalcases[i] - recoveredcases[i] - deceasedcases[i];
+      }
+    }
+    UpdateTotal(totalcases[lastindex]);
+    UpdateActive(activecases[lastindex]);
+    UpdateRecovered(recoveredcases[lastindex]);
+    UpdateDeceased(deceasedcases[lastindex]);
 
+    DeltaIncrease[0] = Math.abs(
+      totalcases[lastindex] - totalcases[lastindex - 1]
+    );
+    DeltaIncrease[1] = Math.abs(
+      activecases[lastindex] - activecases[lastindex - 1]
+    );
+    DeltaIncrease[2] = Math.abs(
+      recoveredcases[lastindex] - recoveredcases[lastindex - 1]
+    );
+    DeltaIncrease[3] = Math.abs(
+      deceasedcases[lastindex] - deceasedcases[lastindex - 1]
+    );
+
+    if (totalcases[lastindex] < totalcases[lastindex - 1]) {
+      IncreaseFlag[0] = false;
+    } else IncreaseFlag[0] = true;
+    if (activecases[lastindex] < activecases[lastindex - 1]) {
+      IncreaseFlag[1] = false;
+    } else IncreaseFlag[1] = true;
+    if (recoveredcases[lastindex] < recoveredcases[lastindex - 1]) {
+      IncreaseFlag[2] = false;
+    } else IncreaseFlag[2] = true;
+    if (deceasedcases[lastindex] < deceasedcases[lastindex - 1]) {
+      IncreaseFlag[3] = false;
+    } else IncreaseFlag[3] = true;
+
+    for (let i = 0; i < 4; i++) {
+      if (IncreaseFlag[i]) {
+        fontawesomeFlag[i] = "fa-arrow-up";
+      } else fontawesomeFlag[i] = "fa-arrow-down";
+    }
+
+    updateChart({
+      labels: labelArray,
+      datasets: [
+        {
+          label: "Total cases",
+          data: totalcases,
+          pointRadius: 0,
+          borderWidth: 3,
+          borderColor: "#2980b9",
+          backgroundColor: "transparent",
+        },
+      ],
+    });
+    updateChartDeceased({
+      labels: labelArray,
+      datasets: [
+        {
+          label: "Deceased",
+          data: deceasedcases,
+          pointRadius: 0,
+          borderWidth: 3,
+          borderColor: "black",
+          backgroundColor: "transparent",
+        },
+      ],
+    });
+    updateChartRecovered({
+      labels: labelArray,
+      datasets: [
+        {
+          label: "Recovered",
+          data: recoveredcases,
+          pointRadius: 0,
+          borderWidth: 3,
+          borderColor: "green",
+          backgroundColor: "transparent",
+        },
+      ],
+    });
+    updateChartActive({
+      labels: labelArray,
+      datasets: [
+        {
+          label: "Active Cases",
+          data: activecases,
+          pointRadius: 0,
+          borderWidth: 3,
+          borderColor: "red",
+          backgroundColor: "transparent",
+        },
+      ],
+    });
+  }
+
+  useEffect(() => {
+    if (props.cases.data) {
+      formGraph();
+    }
+  }, [SelectedState,props.cases.data])
   const toggle = () => setModal(!modal);
   if (props.isLoading) {
     return (
@@ -159,9 +275,9 @@ export default function Statewise(props) {
     const chartOptions = {
       legend: {
         labels: {
-            fontColor: "#ffffff",
+          fontColor: "#ffffff",
         }
-    },
+      },
       scales: {
         xAxes: [
           {
@@ -173,7 +289,7 @@ export default function Statewise(props) {
             },
             gridLines: {
               zeroLineColor: '#ffffff'
-          },
+            },
             ticks: {
               fontColor: "#ffffff",
               autoSkip: true,
@@ -192,7 +308,7 @@ export default function Statewise(props) {
             },
             gridLines: {
               zeroLineColor: '#ffffff'
-          },
+            },
             ticks: {
               fontColor: "#ffffff",
             },
@@ -203,128 +319,10 @@ export default function Statewise(props) {
 
     var lastindex = props.cases.data.length - 1;
 
-    var radiobtns = document.getElementsByName("indianstate");
-    function changeState() {
-      for (let i = 0; i < radiobtns.length; i++) {
-        if (radiobtns[i].checked === true) {
-          UpdateState(`${radiobtns[i].value}`);
-        }
-      }
-    }
-    function formGraph() {
-      console.log(SelectedState);
-      for (let i = 0; i < props.cases.data.length; i++) {
-        x = -1;
-        for (let j = 0; j < props.cases.data[i].regional.length; j++) {
-          if (props.cases.data[i].regional[j].loc === SelectedState) {
-            x = j;
-            break;
-          }
-        }
-        if (x === -1) {
-          totalcases[i] = 0;
-          deceasedcases[i] = 0;
-          recoveredcases[i] = 0;
-          activecases[i] = 0;
-        } else {
-          totalcases[i] = props.cases.data[i].regional[x].totalConfirmed;
-          deceasedcases[i] = props.cases.data[i].regional[x].deaths;
-          recoveredcases[i] = props.cases.data[i].regional[x].discharged;
-          activecases[i] = totalcases[i] - recoveredcases[i] - deceasedcases[i];
-        }
-      }
-      UpdateTotal(totalcases[lastindex]);
-      UpdateActive(activecases[lastindex]);
-      UpdateRecovered(recoveredcases[lastindex]);
-      UpdateDeceased(deceasedcases[lastindex]);
-
-      DeltaIncrease[0] = Math.abs(
-        totalcases[lastindex] - totalcases[lastindex - 1]
-      );
-      DeltaIncrease[1] = Math.abs(
-        activecases[lastindex] - activecases[lastindex - 1]
-      );
-      DeltaIncrease[2] = Math.abs(
-        recoveredcases[lastindex] - recoveredcases[lastindex - 1]
-      );
-      DeltaIncrease[3] = Math.abs(
-        deceasedcases[lastindex] - deceasedcases[lastindex - 1]
-      );
-
-      if (totalcases[lastindex] < totalcases[lastindex - 1]) {
-        IncreaseFlag[0] = false;
-      } else IncreaseFlag[0] = true;
-      if (activecases[lastindex] < activecases[lastindex - 1]) {
-        IncreaseFlag[1] = false;
-      } else IncreaseFlag[1] = true;
-      if (recoveredcases[lastindex] < recoveredcases[lastindex - 1]) {
-        IncreaseFlag[2] = false;
-      } else IncreaseFlag[2] = true;
-      if (deceasedcases[lastindex] < deceasedcases[lastindex - 1]) {
-        IncreaseFlag[3] = false;
-      } else IncreaseFlag[3] = true;
-
-      for (let i = 0; i < 4; i++) {
-        if (IncreaseFlag[i]) {
-          fontawesomeFlag[i] = "fa-arrow-up";
-        } else fontawesomeFlag[i] = "fa-arrow-down";
-      }
-
-      updateChart({
-        labels: labelArray,
-        datasets: [
-          {
-            label: "Total cases",
-            data: totalcases,
-            pointRadius: 0,
-            borderWidth: 3,
-            borderColor: "#2980b9",
-            backgroundColor: "transparent",
-          },
-        ],
-      });
-      updateChartDeceased({
-        labels: labelArray,
-        datasets: [
-          {
-            label: "Deceased",
-            data: deceasedcases,
-            pointRadius: 0,
-            borderWidth: 3,
-            borderColor: "black",
-            backgroundColor: "transparent",
-          },
-        ],
-      });
-      updateChartRecovered({
-        labels: labelArray,
-        datasets: [
-          {
-            label: "Recovered",
-            data: recoveredcases,
-            pointRadius: 0,
-            borderWidth: 3,
-            borderColor: "green",
-            backgroundColor: "transparent",
-          },
-        ],
-      });
-      updateChartActive({
-        labels: labelArray,
-        datasets: [
-          {
-            label: "Active Cases",
-            data: activecases,
-            pointRadius: 0,
-            borderWidth: 3,
-            borderColor: "red",
-            backgroundColor: "transparent",
-          },
-        ],
-      });
+    function changeState(val) {
+      UpdateState(val);
       setModal(!modal);
     }
-
     function scrollInto1() {
       document.getElementById("slide-1").scrollIntoView(true);
     }
@@ -337,72 +335,21 @@ export default function Statewise(props) {
     function scrollInto4() {
       document.getElementById("slide-4").scrollIntoView(true);
     }
-    const options = {
-      scales: {
-        xAxes: [
-          {
-            gridLines: {
-              drawOnChartArea: false,
-            },
-            ticks: {
-              autoSkip: true,
-              maxTicksLimit: 10,
-            },
-          },
-        ],
-        yAxes: [
-          {
-            gridLines: {
-              drawOnChartArea: false,
-            },
-          },
-        ],
-      },
-    };
-
+    
     return (
       <>
         <div className="text-white">
           <Link to="/home" className="text-white">
             India
           </Link>{" "}
-          <i className="fa fa-chevron-right"></i> {`${SelectedState}`}{" "}
+          <i className="fa fa-chevron-right"></i>
           <button className="btn btn-link text-white" onClick={toggle}>
-            <i className="fa fa-edit"></i>
+            {`${SelectedState}`}
           </button>
         </div>
         <div className="container">
           <br />
-          <Modal isOpen={modal} toggle={toggle} className={className} style={{color:'black'}}>
-            <ModalHeader>
-              <small>
-                Select a radio button, Press Select State and then Compute Data
-              </small>
-              <br />
-              <Button
-                className="mr-2"
-                className="bg-grad-body text-white"
-                onClick={() => {
-                  changeState();
-                }}
-              >
-                Select State
-              </Button>{" "}
-              &nbsp;
-              <Button
-                className="bg-grad-body text-white"
-                onClick={() => {
-                  formGraph();
-                }}
-              >
-                Compute Data
-              </Button>
-              <br />
-              <small>
-                Selected:{" "}
-                <span className="text-info font-weight-bolder">{`${SelectedState}`}</span>
-              </small>
-            </ModalHeader>
+          <Modal isOpen={modal} toggle={toggle} className={className} style={{ color: 'black' }}>
             <ModalBody>
               {props.cases.data[lastindex].regional.map((region, index) => (
                 <>
@@ -411,16 +358,17 @@ export default function Statewise(props) {
                     id={`region${index}`}
                     name="indianstate"
                     value={region.loc}
+                    className="mr-1"
+                    checked={SelectedState==region.loc}
+                    onChange={()=>{
+                      changeState(region.loc)}}
                   />
                   <label for={`region${index}`}>{region.loc}</label>
                   <br />
                 </>
               ))}
 
-              {/* <input type="radio" id="delhi" name="indianstate" value="Delhi"/>
-                        <label for="andaman">Delhi</label><br/> */}
             </ModalBody>
-            <ModalFooter> </ModalFooter>
           </Modal>
           <p className="lead">
             <span className="font-weight-bolder">Latest Stats:</span>{" "}
