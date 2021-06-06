@@ -33,7 +33,7 @@ class Main extends Component {
     render() {
         const HomePage = () => {
             return (
-                <div style={{ paddingBottom: '18vh' , paddingTop:'4vh'}}>
+                <div className="container-2">
                     <Home cases={this.props.cases.cases}
                         isLoading={this.props.cases.isLoading}
                         errMess={this.props.cases.errMess}
@@ -46,7 +46,7 @@ class Main extends Component {
         }
         const StatewisePage = () => {
             return (
-                <div style={{ paddingBottom: '18vh' , paddingTop:'4vh'}}>
+                <div className="container-2">
                     <Statewise cases={this.props.cases.cases}
                         isLoading={this.props.cases.isLoading}
                         errMess={this.props.cases.errMess} />
@@ -56,7 +56,7 @@ class Main extends Component {
         const NewsWithId = ({ match }) => {
 
             return (
-                <div style={{ paddingBottom: '18vh' , paddingTop:'4vh'}}>
+                <div className="container-2">
                 <RenderNews
                     indexCount={parseInt(match.params.newsId, 10)}
                     news={this.props.news.news.filter((allNews, index) => index == [parseInt(match.params.newsId, 10)])}

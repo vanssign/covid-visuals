@@ -5,6 +5,7 @@ import Skeleton from "react-loading-skeleton";
 
 export default function Home(props) {
   function formGraph() {
+    console.log(activecases)
     updateChart({
       labels: labelArray,
       datasets: [

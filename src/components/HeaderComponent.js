@@ -17,10 +17,10 @@ const Header = (props) => {
   return (
     <div style={{opacity:1}} className="small-footer">
       <Navbar color="dark" dark expand="xs">
-        <NavbarBrand to="/">CoVisuals</NavbarBrand>
+        <NavbarBrand to="/" className="d-none d-md-block">CoVisuals</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav navbar >
+          <Nav navbar>
             <NavItem>
               <NavLink className="nav-link" to="/home"><i className="fa fa-bar-chart fa-2x"></i>
               <br/>
