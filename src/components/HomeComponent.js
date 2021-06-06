@@ -5,7 +5,54 @@ import Skeleton from "react-loading-skeleton";
 
 export default function Home(props) {
   function formGraph() {
-    console.log(activecases)
+
+    let labelArray = [];
+    let testlabelArray = [];
+    let str = [];
+    let teststr = [];
+    for (let i = 0; i < props.cases.data.length; i++) {
+      str[i] = `${props.cases.data[i].day}`;
+      let res = str[i].split("-");
+      labelArray[i] = res[2] + "/" + res[1];
+    }
+    for (let i = 0; i < props.tests.data.length; i++) {
+      teststr[i] = `${props.tests.data[i].day}`;
+      let res = teststr[i].split("-");
+      testlabelArray[i] = res[2] + "/" + res[1];
+    }
+
+    let totalcases = [];
+    let deceasedcases = [];
+    let recoveredcases = [];
+    let activecases = [];
+    let nooftests = [];
+    for (let i = 0; i < props.cases.data.length; i++) {
+      totalcases[i] = props.cases.data[i].summary.total;
+      deceasedcases[i] = props.cases.data[i].summary.deaths;
+      recoveredcases[i] = props.cases.data[i].summary.discharged;
+      activecases[i] = totalcases[i] - recoveredcases[i] - deceasedcases[i];
+    }
+    for (let i = 0; i < props.tests.data.length; i++) {
+      nooftests[i] = props.tests.data[i].totalSamplesTested;
+    }
+
+    let lastindex = props.cases.data.length - 1;
+    UpdateTotal(totalcases[lastindex]);
+    UpdateRecovered(recoveredcases[lastindex]);
+    UpdateActive(activecases[lastindex]);
+    UpdateDeceased(deceasedcases[lastindex]);
+
+    let newDeltaIncrease = [];
+    newDeltaIncrease[0] =
+      totalcases[lastindex] - totalcases[lastindex - 1];
+    newDeltaIncrease[1] =
+      activecases[lastindex] - activecases[lastindex - 1];
+    newDeltaIncrease[2] =
+      recoveredcases[lastindex] - recoveredcases[lastindex - 1];
+    newDeltaIncrease[3] =
+      deceasedcases[lastindex] - deceasedcases[lastindex - 1];
+    UpdateDeltaIncrease(newDeltaIncrease);
+
     updateChart({
       labels: labelArray,
       datasets: [
@@ -71,13 +118,14 @@ export default function Home(props) {
         },
       ],
     });
+
   }
 
   useEffect(() => {
-    if (props.cases != null && props.tests != null) {
+    if (props.cases.data != null && props.tests != null) {
       formGraph();
     }
-  },[props.cases,props.tests]);
+  }, [props.cases, props.tests]);
 
   const [chartData, updateChart] = useState({
     labels: [],
@@ -125,6 +173,11 @@ export default function Home(props) {
       },
     ],
   });
+  const [DeltaIncrease, UpdateDeltaIncrease] = useState([]);
+  const [Total, UpdateTotal] = useState(" ");
+  const [Deceased, UpdateDeceased] = useState(" ");
+  const [Recovered, UpdateRecovered] = useState(" ");
+  const [Active, UpdateActive] = useState(" ");
 
   if (props.isLoading || props.testsisLoading) {
     return (
@@ -221,49 +274,13 @@ export default function Home(props) {
       </div>
     );
   } else if (props.cases != null && props.tests != null) {
-    console.log(chartData);
-    var labelArray = [];
-    var testlabelArray = [];
-    var str = [];
-    var teststr = [];
-    for (let i = 0; i < props.cases.data.length; i++) {
-      str[i] = `${props.cases.data[i].day}`;
-      var res = str[i].split("-");
-      labelArray[i] = res[2] + "/" + res[1];
-    }
-    for (let i = 0; i < props.tests.data.length; i++) {
-      teststr[i] = `${props.tests.data[i].day}`;
-      res = teststr[i].split("-");
-      testlabelArray[i] = res[2] + "/" + res[1];
-    }
 
-    var totalcases = [];
-    var deceasedcases = [];
-    var recoveredcases = [];
-    var activecases = [];
-    var nooftests = [];
-    for (let i = 0; i < props.cases.data.length; i++) {
-      totalcases[i] = props.cases.data[i].summary.total;
-      deceasedcases[i] = props.cases.data[i].summary.deaths;
-      recoveredcases[i] = props.cases.data[i].summary.discharged;
-      activecases[i] = totalcases[i] - recoveredcases[i] - deceasedcases[i];
-    }
-    for (let i = 0; i < props.tests.data.length; i++) {
-      nooftests[i] = props.tests.data[i].totalSamplesTested;
-    }
-    var lastindex = props.cases.data.length - 1;
-
-    const Total = totalcases[lastindex];
-    const Active = activecases[lastindex];
-    const Recovered = recoveredcases[lastindex];
-    const Deceased = deceasedcases[lastindex];
-    const DeltaIncrease = [];
     const chartOptions = {
       legend: {
         labels: {
-            fontColor: "#ffffff",
+          fontColor: "#ffffff",
         }
-    },
+      },
       scales: {
         xAxes: [
           {
@@ -275,7 +292,7 @@ export default function Home(props) {
             },
             gridLines: {
               zeroLineColor: '#ffffff'
-          },
+            },
             ticks: {
               fontColor: "#ffffff",
               autoSkip: true,
@@ -294,7 +311,7 @@ export default function Home(props) {
             },
             gridLines: {
               zeroLineColor: '#ffffff'
-          },
+            },
             ticks: {
               fontColor: "#ffffff",
             },
@@ -302,43 +319,6 @@ export default function Home(props) {
         ],
       },
     };
-
-    DeltaIncrease[0] = Math.abs(
-      totalcases[lastindex] - totalcases[lastindex - 1]
-    );
-    DeltaIncrease[1] = Math.abs(
-      activecases[lastindex] - activecases[lastindex - 1]
-    );
-    DeltaIncrease[2] = Math.abs(
-      recoveredcases[lastindex] - recoveredcases[lastindex - 1]
-    );
-    DeltaIncrease[3] = Math.abs(
-      deceasedcases[lastindex] - deceasedcases[lastindex - 1]
-    );
-
-    const IncreaseFlag = [];
-    if (totalcases[lastindex] < totalcases[lastindex - 1]) {
-      IncreaseFlag[0] = false;
-    } else IncreaseFlag[0] = true;
-
-    if (activecases[lastindex] < activecases[lastindex - 1]) {
-      IncreaseFlag[1] = false;
-    } else IncreaseFlag[1] = true;
-
-    if (recoveredcases[lastindex] < recoveredcases[lastindex - 1]) {
-      IncreaseFlag[2] = false;
-    } else IncreaseFlag[2] = true;
-
-    if (deceasedcases[lastindex] < deceasedcases[lastindex - 1]) {
-      IncreaseFlag[3] = false;
-    } else IncreaseFlag[3] = true;
-
-    const fontawesomeFlag = [];
-    for (let i = 0; i < 4; i++) {
-      if (IncreaseFlag[i]) {
-        fontawesomeFlag[i] = "fa-arrow-up";
-      } else fontawesomeFlag[i] = "fa-arrow-down";
-    }
 
     function scrollInto1() {
       document.getElementById("slide-1").scrollIntoView(true);
@@ -368,52 +348,55 @@ export default function Home(props) {
           <div className="row">
             <div className="col-6 col-md-3 pt-4">
               <div
-                onClick={() => scrollInto1()}
                 className="container btn bg-dark text-white"
+                onClick={() => scrollInto1()}
               >
                 <p>
                   {`${Total}`}
-                  <br /> {`${DeltaIncrease[0]}`}
-                  <i className={`fa fa-lg ${fontawesomeFlag[0]}`}></i>
+                  <br />
+                  {`${DeltaIncrease[0]}`}{" "}
+                  <i className="fa fa-lg  fa-arrow-up"></i>
                 </p>
                 <small>Total</small>
               </div>
             </div>
             <div className="col-6 col-md-3 pt-4">
               <div
-                onClick={() => scrollInto2()}
                 className="container btn bg-dark text-white"
+                onClick={() => scrollInto2()}
               >
                 <p>
                   {`${Active}`}
-                  <br /> {`${DeltaIncrease[1]}`}
-                  <i className={`fa fa-lg ${fontawesomeFlag[1]}`}></i>
+                  <br />
+                  {`${Math.abs(DeltaIncrease[1])}`}{" "}
+                  <i className={DeltaIncrease[1]<0?("fa fa-lg fa-arrow-down"):("fa fa-lg fa-arrow-up")}></i>
                 </p>
                 <small>Active</small>
               </div>
             </div>
-            <div className="col-6 col-md-3 pt-4 ">
+            <div className="col-6 col-md-3 pt-4">
               <div
-                onClick={() => scrollInto3()}
                 className="container btn bg-dark text-white"
+                onClick={() => scrollInto3()}
               >
                 <p>
-                  {`${Recovered}`}
-                  <br /> {`${DeltaIncrease[2]}`}
-                  <i className={`fa fa-lg ${fontawesomeFlag[2]}`}></i>
+                  {`${Recovered}`} <br />
+                  {`${DeltaIncrease[2]}`}{" "}
+                  <i className={"fa fa-lg fa-arrow-up"}></i>
                 </p>
                 <small>Recovered</small>
               </div>
             </div>
-            <div className="col-6 col-md-3 pt-4 ">
+            <div className="col-6 col-md-3 pt-4">
               <div
-                onClick={() => scrollInto4()}
                 className="container btn bg-dark text-white"
+                onClick={() => scrollInto4()}
               >
                 <p>
                   {`${Deceased}`}
-                  <br /> {`${DeltaIncrease[3]}`}
-                  <i className={`fa fa-lg ${fontawesomeFlag[3]}`}></i>
+                  <br />
+                  {`${DeltaIncrease[3]}`}{" "}
+                  <i className="fa fa-lg  fa-arrow-up"></i>
                 </p>
                 <small>Deceased</small>
               </div>

@@ -9,8 +9,6 @@ export default function Statewise(props) {
   const [modal, setModal] = useState(true);
   const [SelectedState, UpdateState] = useState("Delhi");
   var [DeltaIncrease, UpdateDeltaIncrease] = useState([]);
-  var [IncreaseFlag, UpdateIncreaseFlag] = useState([]);
-  var [fontawesomeFlag, UpdatefontawesomeFlag] = useState([]);
   var [Total, UpdateTotal] = useState(" ");
   var [Deceased, UpdateDeceased] = useState(" ");
   var [Recovered, UpdateRecovered] = useState(" ");
@@ -78,38 +76,6 @@ export default function Statewise(props) {
     UpdateRecovered(recoveredcases[lastindex]);
     UpdateDeceased(deceasedcases[lastindex]);
 
-    DeltaIncrease[0] = Math.abs(
-      totalcases[lastindex] - totalcases[lastindex - 1]
-    );
-    DeltaIncrease[1] = Math.abs(
-      activecases[lastindex] - activecases[lastindex - 1]
-    );
-    DeltaIncrease[2] = Math.abs(
-      recoveredcases[lastindex] - recoveredcases[lastindex - 1]
-    );
-    DeltaIncrease[3] = Math.abs(
-      deceasedcases[lastindex] - deceasedcases[lastindex - 1]
-    );
-
-    if (totalcases[lastindex] < totalcases[lastindex - 1]) {
-      IncreaseFlag[0] = false;
-    } else IncreaseFlag[0] = true;
-    if (activecases[lastindex] < activecases[lastindex - 1]) {
-      IncreaseFlag[1] = false;
-    } else IncreaseFlag[1] = true;
-    if (recoveredcases[lastindex] < recoveredcases[lastindex - 1]) {
-      IncreaseFlag[2] = false;
-    } else IncreaseFlag[2] = true;
-    if (deceasedcases[lastindex] < deceasedcases[lastindex - 1]) {
-      IncreaseFlag[3] = false;
-    } else IncreaseFlag[3] = true;
-
-    for (let i = 0; i < 4; i++) {
-      if (IncreaseFlag[i]) {
-        fontawesomeFlag[i] = "fa-arrow-up";
-      } else fontawesomeFlag[i] = "fa-arrow-down";
-    }
-
     updateChart({
       labels: labelArray,
       datasets: [
@@ -162,6 +128,16 @@ export default function Statewise(props) {
         },
       ],
     });
+    let newDeltaIncrease=[];
+    newDeltaIncrease[0] = 
+      totalcases[lastindex] - totalcases[lastindex - 1];
+    newDeltaIncrease[1] = 
+      activecases[lastindex] - activecases[lastindex - 1];
+    newDeltaIncrease[2] = 
+      recoveredcases[lastindex] - recoveredcases[lastindex - 1];
+    newDeltaIncrease[3] = 
+      deceasedcases[lastindex] - deceasedcases[lastindex - 1];
+    UpdateDeltaIncrease(newDeltaIncrease);
   }
 
   useEffect(() => {
@@ -359,7 +335,7 @@ export default function Statewise(props) {
                     name="indianstate"
                     value={region.loc}
                     className="mr-1"
-                    checked={SelectedState==region.loc}
+                    checked={SelectedState===region.loc}
                     onChange={()=>{
                       changeState(region.loc)}}
                   />
@@ -384,7 +360,7 @@ export default function Statewise(props) {
                   {`${Total}`}
                   <br />
                   {`${DeltaIncrease[0]}`}{" "}
-                  <i className={`fa fa-lg ${fontawesomeFlag[0]}`}></i>
+                  <i className="fa fa-lg  fa-arrow-up"></i>
                 </p>
                 <small>Total</small>
               </div>
@@ -397,8 +373,8 @@ export default function Statewise(props) {
                 <p>
                   {`${Active}`}
                   <br />
-                  {`${DeltaIncrease[1]}`}{" "}
-                  <i className={`fa fa-lg ${fontawesomeFlag[1]}`}></i>
+                  {`${Math.abs(DeltaIncrease[1])}`}{" "}
+                  <i className={DeltaIncrease[1]<0?("fa fa-lg fa-arrow-down"):("fa fa-lg fa-arrow-up")}></i>
                 </p>
                 <small>Active</small>
               </div>
@@ -411,7 +387,7 @@ export default function Statewise(props) {
                 <p>
                   {`${Recovered}`} <br />
                   {`${DeltaIncrease[2]}`}{" "}
-                  <i className={`fa fa-lg ${fontawesomeFlag[2]}`}></i>
+                  <i className={"fa fa-lg fa-arrow-up"}></i>
                 </p>
                 <small>Recovered</small>
               </div>
@@ -425,7 +401,7 @@ export default function Statewise(props) {
                   {`${Deceased}`}
                   <br />
                   {`${DeltaIncrease[3]}`}{" "}
-                  <i className={`fa fa-lg ${fontawesomeFlag[3]}`}></i>
+                  <i className="fa fa-lg  fa-arrow-up"></i>
                 </p>
                 <small>Deceased</small>
               </div>
