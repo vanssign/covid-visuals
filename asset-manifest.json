@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/covid-visuals/static/css/main.58c17844.chunk.css",
-    "main.js": "/covid-visuals/static/js/main.0b5a9f4e.chunk.js",
-    "main.js.map": "/covid-visuals/static/js/main.0b5a9f4e.chunk.js.map",
+    "main.css": "/covid-visuals/static/css/main.f5ad056f.chunk.css",
+    "main.js": "/covid-visuals/static/js/main.45b53a93.chunk.js",
+    "main.js.map": "/covid-visuals/static/js/main.45b53a93.chunk.js.map",
     "runtime-main.js": "/covid-visuals/static/js/runtime-main.17be3502.js",
     "runtime-main.js.map": "/covid-visuals/static/js/runtime-main.17be3502.js.map",
-    "static/css/2.6b6eb0d3.chunk.css": "/covid-visuals/static/css/2.6b6eb0d3.chunk.css",
-    "static/js/2.eb0b8870.chunk.js": "/covid-visuals/static/js/2.eb0b8870.chunk.js",
-    "static/js/2.eb0b8870.chunk.js.map": "/covid-visuals/static/js/2.eb0b8870.chunk.js.map",
+    "static/css/2.17b8ad6a.chunk.css": "/covid-visuals/static/css/2.17b8ad6a.chunk.css",
+    "static/js/2.b7bb620e.chunk.js": "/covid-visuals/static/js/2.b7bb620e.chunk.js",
+    "static/js/2.b7bb620e.chunk.js.map": "/covid-visuals/static/js/2.b7bb620e.chunk.js.map",
     "index.html": "/covid-visuals/index.html",
-    "precache-manifest.2521935ef4f24e7a0ea7f7805f41ac99.js": "/covid-visuals/precache-manifest.2521935ef4f24e7a0ea7f7805f41ac99.js",
+    "precache-manifest.cf789e3f85871829de71b9791f4e9bb1.js": "/covid-visuals/precache-manifest.cf789e3f85871829de71b9791f4e9bb1.js",
     "service-worker.js": "/covid-visuals/service-worker.js",
-    "static/css/2.6b6eb0d3.chunk.css.map": "/covid-visuals/static/css/2.6b6eb0d3.chunk.css.map",
-    "static/css/main.58c17844.chunk.css.map": "/covid-visuals/static/css/main.58c17844.chunk.css.map",
-    "static/js/2.eb0b8870.chunk.js.LICENSE.txt": "/covid-visuals/static/js/2.eb0b8870.chunk.js.LICENSE.txt",
+    "static/css/2.17b8ad6a.chunk.css.map": "/covid-visuals/static/css/2.17b8ad6a.chunk.css.map",
+    "static/css/main.f5ad056f.chunk.css.map": "/covid-visuals/static/css/main.f5ad056f.chunk.css.map",
+    "static/js/2.b7bb620e.chunk.js.LICENSE.txt": "/covid-visuals/static/js/2.b7bb620e.chunk.js.LICENSE.txt",
     "static/media/font-awesome.min.css": "/covid-visuals/static/media/fontawesome-webfont.fee66e71.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.17be3502.js",
-    "static/css/2.6b6eb0d3.chunk.css",
-    "static/js/2.eb0b8870.chunk.js",
-    "static/css/main.58c17844.chunk.css",
-    "static/js/main.0b5a9f4e.chunk.js"
+    "static/css/2.17b8ad6a.chunk.css",
+    "static/js/2.b7bb620e.chunk.js",
+    "static/css/main.f5ad056f.chunk.css",
+    "static/js/main.45b53a93.chunk.js"
   ]
 }
