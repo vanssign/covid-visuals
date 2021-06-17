@@ -7,6 +7,7 @@ import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchCases, fetchTests, fetchNews } from "../redux/ActionCreaters";
 import Statewise from './StatewiseComponent';
+import PredictionMech from './PredictionComponent';
 
 
 const mapStateToProps = state => {
@@ -53,6 +54,17 @@ class Main extends Component {
                 </div>
             )
         }
+        const PredictionPage=()=>{
+            return(
+                <div className="container-2">
+                    <PredictionMech
+                    cases={this.props.cases.cases}
+                    isLoading={this.props.cases.isLoading}
+                    errMess={this.props.cases.errMess}
+                    />
+                </div>
+            )
+        }
         const NewsWithId = ({ match }) => {
 
             return (
@@ -76,6 +88,7 @@ class Main extends Component {
                     <Route path="/home/state-wise" component={StatewisePage} />
                     <Route exact path="/about" component={() => <About />} />
                     <Route path="/news/:newsId" component={NewsWithId} defaultParams={{ newsId: 0 }} />
+                    <Route path="/predict" component={()=><PredictionPage/>} />
                     <Redirect to="/news/0" />
                 </Switch>
 

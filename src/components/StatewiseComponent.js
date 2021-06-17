@@ -8,11 +8,11 @@ export default function Statewise(props) {
   const { className } = props;
   const [modal, setModal] = useState(true);
   const [SelectedState, UpdateState] = useState("Delhi");
-  var [DeltaIncrease, UpdateDeltaIncrease] = useState([]);
-  var [Total, UpdateTotal] = useState(" ");
-  var [Deceased, UpdateDeceased] = useState(" ");
-  var [Recovered, UpdateRecovered] = useState(" ");
-  var [Active, UpdateActive] = useState(" ");
+  const [DeltaIncrease, UpdateDeltaIncrease] = useState([]);
+  const [Total, UpdateTotal] = useState(" ");
+  const [Deceased, UpdateDeceased] = useState(" ");
+  const [Recovered, UpdateRecovered] = useState(" ");
+  const [Active, UpdateActive] = useState(" ");
 
   const [chartData, updateChart] = useState({
     labels: [],
@@ -51,6 +51,19 @@ export default function Statewise(props) {
     ],
   });
   function formGraph() {
+    let labelArray = [];
+    let str = [];
+    for (let i = 0; i < props.cases.data.length; i++) {
+      str[i] = `${props.cases.data[i].day}`;
+      let res = str[i].split("-");
+      labelArray[i] = res[2] + "/" + res[1];
+    }
+    let lastindex = props.cases.data.length - 1;
+    let x;
+    let totalcases = [];
+    let deceasedcases = [];
+    let recoveredcases = [];
+    let activecases = [];
     for (let i = 0; i < props.cases.data.length; i++) {
       x = -1;
       for (let j = 0; j < props.cases.data[i].regional.length; j++) {
@@ -152,12 +165,13 @@ export default function Statewise(props) {
         <div className="bg-grad text-white">
           <Skeleton />
         </div>
-        <div className="container">
+        <div className="container-fluid">
           <br />
           <p className="lead">
             <span className="font-weight-bolder"></span>
             <Skeleton />
           </p>
+          <div className="container">
           <div className="row">
             <div className="col-6 col-md-3 pt-4">
               <div className="container btn bg-dark text-white">
@@ -208,6 +222,7 @@ export default function Statewise(props) {
               </div>
             </div>
           </div>
+          </div>
 
           <small className="text-muted">
             <Skeleton />
@@ -233,20 +248,6 @@ export default function Statewise(props) {
       </div>
     );
   } else if (props.cases != null) {
-    var labelArray = [];
-    var str = [];
-    for (let i = 0; i < props.cases.data.length; i++) {
-      str[i] = `${props.cases.data[i].day}`;
-      var res = str[i].split("-");
-      labelArray[i] = res[2] + "/" + res[1];
-    }
-
-    var x;
-    var totalcases = [];
-    var deceasedcases = [];
-    var recoveredcases = [];
-    var activecases = [];
-
 
     const chartOptions = {
       legend: {
@@ -293,8 +294,6 @@ export default function Statewise(props) {
       },
     };
 
-    var lastindex = props.cases.data.length - 1;
-
     function changeState(val) {
       UpdateState(val);
       setModal(!modal);
@@ -323,12 +322,12 @@ export default function Statewise(props) {
             {`${SelectedState}`}
           </button>
         </div>
-        <div className="container">
+        <div className="container-fluid">
           <br />
           <Modal isOpen={modal} toggle={toggle} className={className} style={{ color: 'black' }}>
             <ModalBody>
-              {props.cases.data[lastindex].regional.map((region, index) => (
-                <>
+              {props.cases.data[props.cases.data.length-1].regional.map((region, index) => (
+                <div key={index}>
                   <input
                     type="radio"
                     id={`region${index}`}
@@ -339,9 +338,9 @@ export default function Statewise(props) {
                     onChange={()=>{
                       changeState(region.loc)}}
                   />
-                  <label for={`region${index}`}>{region.loc}</label>
+                  <label htmlFor={`region${index}`}>{region.loc}</label>
                   <br />
-                </>
+                </div>
               ))}
 
             </ModalBody>
@@ -350,6 +349,7 @@ export default function Statewise(props) {
             <span className="font-weight-bolder">Latest Stats:</span>{" "}
             {`${SelectedState}`}
           </p>
+          <div className="container">
           <div className="row">
             <div className="col-6 col-md-3 pt-4">
               <div
@@ -406,6 +406,7 @@ export default function Statewise(props) {
                 <small>Deceased</small>
               </div>
             </div>
+          </div>
           </div>
 
           <small className="text-muted">{`Last updated: ${props.cases.lastOriginUpdate}`}</small>

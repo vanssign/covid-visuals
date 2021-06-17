@@ -185,12 +185,13 @@ export default function Home(props) {
         <div className="bg-grad text-white">
           <Skeleton />
         </div>
-        <div className="container">
+        <div>
           <br />
           <p className="lead">
             <span className="font-weight-bolder"></span>
             <Skeleton />
           </p>
+          <div className="container">
           <div className="row">
             <div className="col-6 col-md-3 pt-4">
               <div className="container btn bg-dark text-white">
@@ -240,6 +241,7 @@ export default function Home(props) {
                 </small>
               </div>
             </div>
+          </div>
           </div>
 
           <small className="text-muted">
@@ -340,11 +342,12 @@ export default function Home(props) {
             <small>Set State</small>
           </Link>
         </div>
-        <div className="container">
+        <div className="container-fluid">
           <br />
           <p className="lead">
             <span className="font-weight-bolder">Latest Stats: </span>India
           </p>
+          <div className="container">
           <div className="row">
             <div className="col-6 col-md-3 pt-4">
               <div
@@ -401,6 +404,7 @@ export default function Home(props) {
                 <small>Deceased</small>
               </div>
             </div>
+          </div>
           </div>
 
           <small className="text-muted">
