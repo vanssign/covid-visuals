@@ -31,9 +31,13 @@ const Header = (props) => {
               <br/>
               <span className="make-it-small">news</span></NavLink>
             </NavItem>
-            <NavItem>
-              <NavLink className="nav-link" to="/predict"><i className="fa fa-calculator fa-2x"></i><br/>
-              <span className="make-it-small">predict</span></NavLink>
+            <NavItem >
+              {/* <NavLink className="nav-link" to="/predict"> */}
+              <div className="nav-link" style={{opacity:0.4}}>
+              <i className="fa fa-calculator fa-2x"></i><br/>
+              <span className="make-it-small">predict</span>
+              </div>
+              {/* </NavLink> */}
             </NavItem>
             <NavItem>
               <NavLink className="nav-link" to="/about"><i className="fa fa-info-circle fa-2x"></i><br/>

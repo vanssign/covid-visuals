@@ -97,7 +97,7 @@ export default function Statewise(props) {
           data: totalcases,
           pointRadius: 0,
           borderWidth: 3,
-          borderColor: "#2980b9",
+          borderColor: "#DEEDF0",
           backgroundColor: "transparent",
         },
       ],
