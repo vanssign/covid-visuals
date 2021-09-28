@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Line } from "react-chartjs-2";
 import { Modal, ModalBody } from "reactstrap";
 import { Link } from "react-router-dom";
-import Skeleton from "react-loading-skeleton";
+import CardGroup from "./CardGroup";
+import GraphGroup from "./GraphGroup";
+import CardGraphSkeleton from "./CardGraphSkeleton";
 
 export default function Statewise(props) {
   const { className } = props;
@@ -161,83 +162,7 @@ export default function Statewise(props) {
   const toggle = () => setModal(!modal);
   if (props.isLoading) {
     return (
-      <>
-        <div className="bg-grad text-white">
-          <Skeleton />
-        </div>
-        <div className="container-fluid">
-          <br />
-          <p className="lead">
-            <span className="font-weight-bolder"></span>
-            <Skeleton />
-          </p>
-          <div className="container">
-          <div className="row">
-            <div className="col-6 col-md-3 pt-4">
-              <div className="container btn bg-dark text-white">
-                <p>
-                  <Skeleton />
-                  <br />
-                  <Skeleton />
-                </p>
-                <small>
-                  <Skeleton />
-                </small>
-              </div>
-            </div>
-            <div className="col-6 col-md-3 pt-4">
-              <div className="container btn bg-dark text-white">
-                <p>
-                  <Skeleton />
-                  <br />
-                  <Skeleton />
-                </p>
-                <small>
-                  <Skeleton />
-                </small>
-              </div>
-            </div>
-            <div className="col-6 col-md-3 pt-4 ">
-              <div className="container btn bg-dark text-white">
-                <p>
-                  <Skeleton />
-                  <br />
-                  <Skeleton />
-                </p>
-                <small>
-                  <Skeleton />
-                </small>
-              </div>
-            </div>
-            <div className="col-6 col-md-3 pt-4 ">
-              <div className="container btn bg-dark text-white">
-                <p>
-                  <Skeleton />
-                  <br />
-                  <Skeleton />
-                </p>
-                <small>
-                  <Skeleton />
-                </small>
-              </div>
-            </div>
-          </div>
-          </div>
-
-          <small className="text-muted">
-            <Skeleton />
-          </small>
-          <br />
-          <br />
-          <div className="slider">
-            <div className="slides">
-              <div id="slide-1">
-                <Line data={chartData} />
-              </div>
-            </div>
-          </div>
-        </div>
-      </>
+      <CardGraphSkeleton chartData={chartData}/>
     );
   } else if (props.errMess) {
     return (
@@ -298,17 +223,8 @@ export default function Statewise(props) {
       UpdateState(val);
       setModal(!modal);
     }
-    function scrollInto1() {
-      document.getElementById("slide-1").scrollIntoView(true);
-    }
-    function scrollInto2() {
-      document.getElementById("slide-2").scrollIntoView(true);
-    }
-    function scrollInto3() {
-      document.getElementById("slide-3").scrollIntoView(true);
-    }
-    function scrollInto4() {
-      document.getElementById("slide-4").scrollIntoView(true);
+    function scrollIntoGraph(val){
+      document.getElementById(`slide-${val}`).scrollIntoView(true)
     }
     
     return (
@@ -349,97 +265,13 @@ export default function Statewise(props) {
             <span className="font-weight-bolder">Latest Stats:</span>{" "}
             {`${SelectedState}`}
           </p>
-          <div className="container">
-          <div className="row">
-            <div className="col-6 col-md-3 pt-4">
-              <div
-                className="container btn bg-dark text-white"
-                onClick={() => scrollInto1()}
-              >
-                <p>
-                  {`${Total}`}
-                  <br />
-                  {`${DeltaIncrease[0]}`}{" "}
-                  <i className="fa fa-lg  fa-arrow-up"></i>
-                </p>
-                <small>Total</small>
-              </div>
-            </div>
-            <div className="col-6 col-md-3 pt-4">
-              <div
-                className="container btn bg-dark text-white"
-                onClick={() => scrollInto2()}
-              >
-                <p>
-                  {`${Active}`}
-                  <br />
-                  {`${Math.abs(DeltaIncrease[1])}`}{" "}
-                  <i className={DeltaIncrease[1]<0?("fa fa-lg fa-arrow-down"):("fa fa-lg fa-arrow-up")}></i>
-                </p>
-                <small>Active</small>
-              </div>
-            </div>
-            <div className="col-6 col-md-3 pt-4">
-              <div
-                className="container btn bg-dark text-white"
-                onClick={() => scrollInto3()}
-              >
-                <p>
-                  {`${Recovered}`} <br />
-                  {`${DeltaIncrease[2]}`}{" "}
-                  <i className={"fa fa-lg fa-arrow-up"}></i>
-                </p>
-                <small>Recovered</small>
-              </div>
-            </div>
-            <div className="col-6 col-md-3 pt-4">
-              <div
-                className="container btn bg-dark text-white"
-                onClick={() => scrollInto4()}
-              >
-                <p>
-                  {`${Deceased}`}
-                  <br />
-                  {`${DeltaIncrease[3]}`}{" "}
-                  <i className="fa fa-lg  fa-arrow-up"></i>
-                </p>
-                <small>Deceased</small>
-              </div>
-            </div>
-          </div>
-          </div>
-
+          <CardGroup 
+          Total={Total} Active={Active} Recovered={Recovered} Deceased={Deceased}
+          DeltaTotal={DeltaIncrease[0]} DeltaActive={DeltaIncrease[1]} DeltaRecovered={DeltaIncrease[2]} DeltaDeceased={DeltaIncrease[3]} scrollIntoGraph={scrollIntoGraph}/>
           <small className="text-muted">{`Last updated: ${props.cases.lastOriginUpdate}`}</small>
           <br />
           <br />
-          <div className="slider">
-            <div className="slides">
-              <div id="slide-1">
-                <Line
-                  data={chartData}
-                  options={chartOptions}
-                />
-              </div>
-              <div id="slide-2">
-                <Line
-                  data={chartDataActive}
-                  options={chartOptions}
-                />
-              </div>
-              <div id="slide-3">
-                <Line
-                  data={chartDataRecovered}
-                  options={chartOptions}
-                />
-              </div>
-              <div id="slide-4">
-                <Line
-                  data={chartDataDeceased}
-                  options={chartOptions}
-                />
-              </div>
-            </div>
-          </div>
+          <GraphGroup chartData={chartData} chartDataActive={chartDataActive} chartDataDeceased={chartDataDeceased} chartDataRecovered={chartDataRecovered} chartOptions={chartOptions}/>
         </div>
       </>
     );
